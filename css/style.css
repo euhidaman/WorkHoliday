@@ -10711,7 +10711,8 @@ h6,
 @media (min-width: 992px) {
 
   #header-carousel,
-  .page-header {
+  .page-header,
+  .visa-hero {
     margin-top: -42px;
   }
 }

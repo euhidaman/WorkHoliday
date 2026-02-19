@@ -6,7 +6,9 @@
     <title>TRAVELER - Work Holiday Visas</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Work Holiday Visas, Travel Guide, Work Abroad" name="keywords">
-    <meta content="Expert guidance for your work holiday journey. Step-by-step guides for visas, jobs, and accommodation." name="description">
+    <meta
+        content="Expert guidance for your work holiday journey. Step-by-step guides for visas, jobs, and accommodation."
+        name="description">
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -24,10 +26,122 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .travel-selector-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+            transition: transform 0.3s ease;
+        }
+
+        .travel-selector-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .selector-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            white-space: nowrap;
+        }
+
+        .select-wrapper {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .custom-select-premium {
+            height: 60px !important;
+            border-radius: 12px !important;
+            border: 2px solid #f0f0f0 !important;
+            background-color: #f8fbff !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: #444 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            padding-right: 45px !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237AB730' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 15px center !important;
+            background-size: 20px !important;
+        }
+
+        .custom-select-premium:focus {
+            border-color: #7AB730 !important;
+            box-shadow: 0 0 0 4px rgba(122, 183, 48, 0.15) !important;
+            background-color: #fff !important;
+            outline: none;
+        }
+
+        .btn-premium {
+            height: 100%;
+            min-height: 60px;
+            border-radius: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #7AB730 0%, #8bc34a 100%);
+            border: none;
+            color: white !important;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-premium:hover {
+            background: linear-gradient(135deg, #8bc34a 0%, #7AB730 100%);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-premium i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-premium:hover i {
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 991.98px) {
+            .travel-selector-card {
+                margin: 0 15px;
+            }
+
+            .btn-premium {
+                border-radius: 0 0 20px 20px;
+                padding: 20px !important;
+            }
+
+            .selector-label {
+                margin-bottom: 15px;
+            }
+
+            .select-wrapper {
+                margin-bottom: 20px;
+                width: 100%;
+            }
+        }
+
+        /* Overlapping effect */
+        .booking-container {
+            margin-top: -60px;
+            position: relative;
+            z-index: 100;
+        }
+    </style>
 </head>
 
 <body>
-        <!-- Topbar Start -->
+    <!-- Topbar Start -->
     <div class="container-fluid bg-light pt-3 d-none d-lg-block">
         <div class="container">
             <!-- <div class="row">
@@ -63,7 +177,7 @@
     <!-- Topbar End -->
 
 
-        <!-- Navbar Start -->
+    <!-- Navbar Start -->
     <div class="container-fluid position-relative nav-bar p-0">
         <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
             <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
@@ -125,58 +239,58 @@
     <!-- Carousel End -->
 
 
-    <!-- Booking Start -->
-    <div class="container-fluid booking mt-5 pb-5">
+    <!-- Travel Selector Start -->
+    <div class="container-fluid booking-container pb-5">
         <div class="container pb-5">
-            <div class="bg-light shadow w-50 mx-auto" style="padding: 30px;">
-                <div class="row align-items-center" style="min-height: 60px;">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3 mb-md-0">
-                                    <select id="originSelect" class="custom-select px-4" style="height: 47px;">
-                                        <option selected value="">Origin</option>
-                                        <option value="Australia">Australia</option>
-                                        <option value="Austria">Austria</option>
-                                        <option value="Canada">Canada</option>
-                                        <option value="Germany">Germany</option>
-                                        <option value="United-Kingdom">United Kingdom</option>
-                                        <option value="New-Zealand">New Zealand</option>
-                                        <option value="Taiwan">Taiwan</option>
-                                        <option value="Hong-Kong">Hong Kong</option>
-                                        <option value="Mainland-China">Mainland China</option>
-                                        <option value="USA">USA</option>
-                                    </select>
-                                </div>
+            <div class="travel-selector-card shadow mx-auto">
+                <div class="row no-gutters align-items-stretch">
+                    <div class="col-lg-10 p-4 p-lg-5">
+                        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+                            <span class="selector-label">I am</span>
+                            <div class="select-wrapper mx-lg-3">
+                                <select id="originSelect" class="custom-select custom-select-premium px-4">
+                                    <option selected value="">from</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="United-Kingdom">United Kingdom</option>
+                                    <option value="New-Zealand">New Zealand</option>
+                                    <option value="Taiwan">Taiwan</option>
+                                    <option value="Hong-Kong">Hong Kong</option>
+                                    <option value="Mainland-China">Mainland China</option>
+                                    <option value="USA">USA</option>
+                                </select>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3 mb-md-0">
-                                    <select id="destinationSelect" class="custom-select px-4" style="height: 47px;">
-                                        <option selected value="">Destination</option>
-                                        <option value="Australia">Australia</option>
-                                        <option value="Austria">Austria</option>
-                                        <option value="Canada">Canada</option>
-                                        <option value="Germany">Germany</option>
-                                        <option value="United-Kingdom">United Kingdom</option>
-                                        <option value="New-Zealand">New Zealand</option>
-                                        <option value="Taiwan">Taiwan</option>
-                                        <option value="Hong-Kong">Hong Kong</option>
-                                        <option value="Mainland-China">Mainland China</option>
-                                        <option value="USA">USA</option>
-                                    </select>
-                                </div>
+                            <span class="selector-label">and I am going</span>
+                            <div class="select-wrapper mx-lg-3">
+                                <select id="destinationSelect" class="custom-select custom-select-premium px-4">
+                                    <option selected value="">to</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="United-Kingdom">United Kingdom</option>
+                                    <option value="New-Zealand">New Zealand</option>
+                                    <option value="Taiwan">Taiwan</option>
+                                    <option value="Hong-Kong">Hong Kong</option>
+                                    <option value="Mainland-China">Mainland China</option>
+                                    <option value="USA">USA</option>
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center mt-3">
-                        <button id="submitBtn" class="btn btn-primary px-5" type="button"
-                            style="height: 47px;">Submit</button>
+                    <div class="col-lg-2">
+                        <button id="submitBtn" class="btn btn-primary btn-premium w-100 h-100" type="button">
+                            <span>Let's Go</span>
+                            <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Booking End -->
+    <!-- Travel Selector End -->
 
 
     <!-- About Start -->
@@ -191,10 +305,10 @@
                 <div class="col-lg-6 pt-5 pb-lg-5">
                     <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
                         <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
-                        <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
-                        <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore
-                            sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et
-                            erat sed diam duo</p>
+                        <h1 class="mb-3">Your Adventure starts here: We Help You Work and Move Abroad</h1>
+                        <p>Moving abroad is complicated - visas, documents, embassies, deadlines. We break down official
+                            work visa routes and relocation requirements country by country, so you know exactly what’s
+                            possible before you apply.</p>
                         <div class="row mb-4">
                             <div class="col-6">
                                 <img class="img-fluid" src="img/about-1.jpg" alt="">
@@ -220,11 +334,12 @@
                     <div class="d-flex mb-4 mb-lg-0">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
                             style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                            <i class="fa fa-2x fa-file-signature text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Competitive Pricing</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Clear Requirements</h5>
+                            <p class="m-0">No vague advice. We show official rules, documents, and real visa conditions.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -232,11 +347,11 @@
                     <div class="d-flex mb-4 mb-lg-0">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
                             style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-award text-white"></i>
+                            <i class="fa fa-2x fa-map-marked-alt text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Best Services</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Multiple Countries, One Platform</h5>
+                            <p class="m-0">Compare visa systems across Europe, Asia-Pacific, and beyond.</p>
                         </div>
                     </div>
                 </div>
@@ -244,11 +359,12 @@
                     <div class="d-flex mb-4 mb-lg-0">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3"
                             style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-globe text-white"></i>
+                            <i class="fa fa-2x fa-comments-dollar text-white"></i>
                         </div>
                         <div class="d-flex flex-column">
-                            <h5 class="">Worldwide Coverage</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
+                            <h5 class="">Get Paid for Your Experience</h5>
+                            <p class="m-0">Living or working abroad? Share your story or chat with future movers - and
+                                get rewarded for your insights.</p>
                         </div>
                     </div>
                 </div>
@@ -784,7 +900,7 @@
     Blog End -->
 
 
-        <!-- Footer Start -->
+    <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
@@ -805,11 +921,13 @@
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="destination.html"><i class="fa fa-angle-right mr-2"></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="destination.html"><i
+                            class="fa fa-angle-right mr-2"></i>Destination</a>
                     <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="guide.html"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="testimonial.html"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
+                    <a class="text-white-50 mb-2" href="testimonial.html"><i
+                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
                     <a class="text-white-50" href="blog.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
@@ -817,11 +935,13 @@
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Useful Links</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="about.html"><i class="fa fa-angle-right mr-2"></i>About</a>
-                    <a class="text-white-50 mb-2" href="destination.html"><i class="fa fa-angle-right mr-2"></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="destination.html"><i
+                            class="fa fa-angle-right mr-2"></i>Destination</a>
                     <a class="text-white-50 mb-2" href="service.html"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="package.html"><i class="fa fa-angle-right mr-2"></i>Packages</a>
                     <a class="text-white-50 mb-2" href="guide.html"><i class="fa fa-angle-right mr-2"></i>Guides</a>
-                    <a class="text-white-50 mb-2" href="testimonial.html"><i class="fa fa-angle-right mr-2"></i>Testimonial</a>
+                    <a class="text-white-50 mb-2" href="testimonial.html"><i
+                            class="fa fa-angle-right mr-2"></i>Testimonial</a>
                     <a class="text-white-50" href="blog.html"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
@@ -903,7 +1023,7 @@
             const currentDestination = destinationSelect.value;
 
             // Clear current options except the first one
-            destinationSelect.innerHTML = '<option value="">Destination</option>';
+            destinationSelect.innerHTML = '<option value="">to</option>';
 
             const availableDestinations = selectedOrigin ? validRoutes[selectedOrigin] : allDestinations;
 
@@ -928,7 +1048,7 @@
             const currentOrigin = originSelect.value;
 
             // Clear current options except the first one
-            originSelect.innerHTML = '<option value="">Origin</option>';
+            originSelect.innerHTML = '<option value="">from</option>';
 
             const availableOrigins = selectedDestination
                 ? allOrigins.filter(orig => validRoutes[orig].includes(selectedDestination))

@@ -34,6 +34,7 @@
             flex: 1;
             min-width: 250px;
         }
+
         .cs-display {
             height: 60px;
             border-radius: 12px;
@@ -53,11 +54,14 @@
             background-position: right 15px center;
             background-size: 20px;
         }
-        .cs-display:hover, .cs-display.open {
+
+        .cs-display:hover,
+        .cs-display.open {
             border-color: #7AB730;
-            box-shadow: 0 0 0 4px rgba(122,183,48,0.15);
+            box-shadow: 0 0 0 4px rgba(122, 183, 48, 0.15);
             background-color: #fff;
         }
+
         .cs-panel {
             position: absolute;
             top: calc(100% + 6px);
@@ -65,7 +69,7 @@
             right: 0;
             background: #fff;
             border-radius: 14px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
             z-index: 99999;
             display: none;
             overflow: hidden;
@@ -73,12 +77,17 @@
             flex-direction: column;
             border: 1px solid #e8f5e9;
         }
-        .cs-panel.open { display: flex; }
+
+        .cs-panel.open {
+            display: flex;
+        }
+
         .cs-search-wrap {
             padding: 12px 14px;
             border-bottom: 1px solid #f0f0f0;
             flex-shrink: 0;
         }
+
         .cs-search {
             width: 100%;
             height: 40px;
@@ -90,11 +99,16 @@
             outline: none;
             transition: border-color 0.2s;
         }
-        .cs-search:focus { border-color: #7AB730; }
+
+        .cs-search:focus {
+            border-color: #7AB730;
+        }
+
         .cs-list {
             overflow-y: auto;
             flex: 1;
         }
+
         .cs-group-label {
             padding: 8px 14px 4px;
             font-size: 0.7rem;
@@ -106,6 +120,7 @@
             position: sticky;
             top: 0;
         }
+
         .cs-option {
             padding: 10px 16px;
             cursor: pointer;
@@ -114,9 +129,26 @@
             color: #444;
             transition: background 0.15s;
         }
-        .cs-option:hover, .cs-option.highlighted { background: #f0fae5; color: #5a8a24; }
-        .cs-option.active { background: #e6f4d5; font-weight: 600; color: #4a7a1e; }
-        .cs-no-result { padding: 16px; text-align: center; color: #aaa; font-size: 0.9rem; }
+
+        .cs-option:hover,
+        .cs-option.highlighted {
+            background: #f0fae5;
+            color: #5a8a24;
+        }
+
+        .cs-option.active {
+            background: #e6f4d5;
+            font-weight: 600;
+            color: #4a7a1e;
+        }
+
+        .cs-no-result {
+            padding: 16px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
         /* ---- end searchable dropdown ---- */
 
         .travel-selector-card {
@@ -399,7 +431,7 @@
                     <img class="w-100" src="img/carousel-1.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Work Holiday Visas</h4>
+                            <h4 class="text-white text-uppercase mb-md-3">Working Holiday Visas</h4>
                             <h1 class="display-3 text-white mb-md-4">Earn Your Adventure!</h1>
                             <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a> -->
                         </div>
@@ -409,7 +441,7 @@
                     <img class="w-100" src="img/carousel-2.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Work Holiday Visas</h4>
+                            <h4 class="text-white text-uppercase mb-md-3">Working Holiday Visas</h4>
                             <h1 class="display-3 text-white mb-md-4">Earn Your Adventure!</h1>
                             <!-- <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a> -->
                         </div>
@@ -447,7 +479,8 @@
                                 <div class="cs-display" id="originDisplay" tabindex="0">Select your country</div>
                                 <div class="cs-panel" id="originPanel">
                                     <div class="cs-search-wrap">
-                                        <input class="cs-search" id="originSearch" type="text" placeholder="Search country..." autocomplete="off">
+                                        <input class="cs-search" id="originSearch" type="text"
+                                            placeholder="Search country..." autocomplete="off">
                                     </div>
                                     <div class="cs-list" id="originList"></div>
                                 </div>
@@ -455,8 +488,8 @@
                             <span class="selector-label">I am interested in working holiday in:</span>
                             <div class="select-wrapper mx-lg-3">
                                 <select id="destinationSelect" class="custom-select custom-select-premium px-4">
-<option value="">to</option>
-</select>
+                                    <option value="">to</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -498,7 +531,7 @@
                                 <img class="img-fluid" src="img/about-2.jpg" alt="">
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -555,7 +588,7 @@
     <!-- Feature End -->
 
 
-    
+
 
 
     <!-- Service Start
@@ -1094,47 +1127,47 @@
         //  ALL COUNTRIES LIST (for searchable dropdown)
         // =====================================================
         const ALL_COUNTRIES = [
-            "Afghanistan","Albania","Algeria","American Samoa","Andorra","Angola","Anguilla","Antigua and Barbuda",
-            "Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh",
-            "Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia and Herzegovina",
-            "Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada",
-            "Cape Verde","Cayman Islands","Central African Republic","Chad","Chile","China","Colombia","Comoros",
-            "Cook Islands","Costa Rica","Croatia","Cuba","Cyprus","Czechia","DR Congo","Denmark","Djibouti",
-            "Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea",
-            "Estonia","Eswatini","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France",
-            "French Polynesia","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland",
-            "Grenada","Guam","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hong Kong",
-            "Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy",
-            "Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait",
-            "Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania",
-            "Luxembourg","Macau","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands",
-            "Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco",
-            "Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Caledonia","New Zealand",
-            "Nicaragua","Niger","Nigeria","Niue","Norfolk Island","North Korea","North Macedonia","Norway",
-            "Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines",
-            "Poland","Portugal","Puerto Rico","Qatar","Republic of the Congo","Romania","Russia","Rwanda",
-            "Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
-            "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia",
-            "Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka",
-            "Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand",
-            "Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
-            "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States",
-            "Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-        ].sort((a,b) => a.localeCompare(b));
+            "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antigua and Barbuda",
+            "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
+            "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina",
+            "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
+            "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
+            "Cook Islands", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "DR Congo", "Denmark", "Djibouti",
+            "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea",
+            "Estonia", "Eswatini", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France",
+            "French Polynesia", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland",
+            "Grenada", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong",
+            "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy",
+            "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait",
+            "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
+            "Luxembourg", "Macau", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+            "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco",
+            "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand",
+            "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "North Macedonia", "Norway",
+            "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines",
+            "Poland", "Portugal", "Puerto Rico", "Qatar", "Republic of the Congo", "Romania", "Russia", "Rwanda",
+            "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino",
+            "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia",
+            "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka",
+            "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand",
+            "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
+            "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+            "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+        ].sort((a, b) => a.localeCompare(b));
 
         // Browser-language → country hints
         const LANG_COUNTRY_MAP = {
-            'de': ['Germany','Austria','Switzerland','Liechtenstein','Luxembourg'],
-            'fr': ['France','Belgium','Switzerland','Luxembourg','Monaco','Canada'],
-            'es': ['Spain','Mexico','Argentina','Colombia','Chile','Peru','Venezuela','Ecuador','Bolivia','Paraguay','Uruguay','Costa Rica','Panama','Guatemala','Honduras','El Salvador','Nicaragua','Dominican Republic','Cuba'],
-            'pt': ['Portugal','Brazil','Cape Verde','Mozambique','Angola'],
-            'it': ['Italy','Switzerland','San Marino'],
-            'nl': ['Netherlands','Belgium','Suriname'],
-            'zh': ['China','Taiwan','Hong Kong','Macau','Singapore'],
+            'de': ['Germany', 'Austria', 'Switzerland', 'Liechtenstein', 'Luxembourg'],
+            'fr': ['France', 'Belgium', 'Switzerland', 'Luxembourg', 'Monaco', 'Canada'],
+            'es': ['Spain', 'Mexico', 'Argentina', 'Colombia', 'Chile', 'Peru', 'Venezuela', 'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay', 'Costa Rica', 'Panama', 'Guatemala', 'Honduras', 'El Salvador', 'Nicaragua', 'Dominican Republic', 'Cuba'],
+            'pt': ['Portugal', 'Brazil', 'Cape Verde', 'Mozambique', 'Angola'],
+            'it': ['Italy', 'Switzerland', 'San Marino'],
+            'nl': ['Netherlands', 'Belgium', 'Suriname'],
+            'zh': ['China', 'Taiwan', 'Hong Kong', 'Macau', 'Singapore'],
             'ja': ['Japan'],
             'ko': ['South Korea'],
-            'ar': ['Saudi Arabia','Egypt','United Arab Emirates','Jordan','Kuwait','Qatar','Bahrain','Oman','Iraq','Syria','Lebanon','Libya','Tunisia','Algeria','Morocco','Yemen','Sudan'],
-            'ru': ['Russia','Belarus','Kazakhstan','Ukraine','Moldova'],
+            'ar': ['Saudi Arabia', 'Egypt', 'United Arab Emirates', 'Jordan', 'Kuwait', 'Qatar', 'Bahrain', 'Oman', 'Iraq', 'Syria', 'Lebanon', 'Libya', 'Tunisia', 'Algeria', 'Morocco', 'Yemen', 'Sudan'],
+            'ru': ['Russia', 'Belarus', 'Kazakhstan', 'Ukraine', 'Moldova'],
             'pl': ['Poland'],
             'sv': ['Sweden'],
             'da': ['Denmark'],
@@ -1165,11 +1198,11 @@
         // =====================================================
         //  CUSTOM SEARCHABLE DROPDOWN
         // =====================================================
-        const originSelect   = document.getElementById('originSelect');
-        const originDisplay  = document.getElementById('originDisplay');
-        const originPanel    = document.getElementById('originPanel');
-        const originSearch   = document.getElementById('originSearch');
-        const originList     = document.getElementById('originList');
+        const originSelect = document.getElementById('originSelect');
+        const originDisplay = document.getElementById('originDisplay');
+        const originPanel = document.getElementById('originPanel');
+        const originSearch = document.getElementById('originSearch');
+        const originList = document.getElementById('originList');
         const destinationSelect = document.getElementById('destinationSelect');
 
         let currentOrigin = '';
@@ -1287,7 +1320,7 @@
             // Sort continents alphabetically, then countries within each group
             const sortedContinents = Object.keys(eligibility).sort();
             for (const continent of sortedContinents) {
-                const destCountries = [...(eligibility[continent] || [])].sort((a,b) => a.localeCompare(b));
+                const destCountries = [...(eligibility[continent] || [])].sort((a, b) => a.localeCompare(b));
                 if (!destCountries.length) continue;
 
                 const optgroup = document.createElement('optgroup');
@@ -1327,17 +1360,17 @@
         // =====================================================
         async function autoDetectLocation() {
             try {
-                const res  = await fetch('https://ipapi.co/json/');
+                const res = await fetch('https://ipapi.co/json/');
                 const data = await res.json();
                 if (data && data.country_name && ALL_COUNTRIES.includes(data.country_name)) {
                     selectOrigin(data.country_name);
                 }
-            } catch(e) { /* silent fail */ }
+            } catch (e) { /* silent fail */ }
         }
 
         window.addEventListener('load', () => setTimeout(autoDetectLocation, 800));
-        
-        </script>
+
+    </script>
 </body>
 
 </html>

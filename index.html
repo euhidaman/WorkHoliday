@@ -241,22 +241,6 @@
 </head>
 
 <body>
-    <!-- Custom Geo Modal -->
-    <div id="geoModal" class="geo-modal-overlay">
-        <div class="geo-modal-card">
-            <div class="geo-icon-box">
-                <i class="fa fa-map-marker-alt"></i>
-            </div>
-            <div class="geo-modal-title">Enable Smart Detection?</div>
-            <div class="geo-modal-text">
-                Automatically detect your country to find the best work visa routes for you instantly.
-            </div>
-            <div class="geo-btn-group">
-                <button id="geoBtnNo" class="geo-btn geo-btn-no">Maybe Later</button>
-                <button id="geoBtnYes" class="geo-btn geo-btn-yes">Enable Now</button>
-            </div>
-        </div>
-    </div>
     <!-- Topbar Start -->
     <div class="container-fluid bg-light pt-3 d-none d-lg-block">
         <div class="container">
@@ -1338,51 +1322,29 @@
             window.location.href = pagePath;
         });
 
-        // --- NEW: Geo-Location Detection ---
+
+        // --- Silent Geo-Location Detection ---
         async function autoDetectLocation() {
-            const modal = document.getElementById('geoModal');
-            if(!modal) return;
-            const btnYes = document.getElementById('geoBtnYes');
-            const btnNo = document.getElementById('geoBtnNo');
-
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-
-            const closeModal = () => {
-                modal.classList.remove('active');
-                setTimeout(() => modal.style.display = 'none', 300);
-            };
-
-            btnNo.addEventListener('click', closeModal);
-
-            btnYes.addEventListener('click', async () => {
-                closeModal();
-                try {
-                    const response = await fetch('https://ipapi.co/json/');
-                    const data = await response.json();
-
-                    if (data && data.country_name) {
-                        const detectedCountry = data.country_name;
-                        const options = Array.from(originSelect.options).map(o => o.value);
-                        if (options.includes(detectedCountry)) {
-                            originSelect.value = detectedCountry;
-                            updateDestinationOptions();
-
-                            originSelect.style.borderColor = "#7AB730";
-                            setTimeout(() => {
-                                originSelect.style.borderColor = "#f0f0f0";
-                            }, 2000);
-                        }
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                if (data && data.country_name) {
+                    const detectedCountry = data.country_name;
+                    const options = Array.from(originSelect.options).map(o => o.value);
+                    if (options.includes(detectedCountry)) {
+                        originSelect.value = detectedCountry;
+                        updateDestinationOptions();
                     }
-                } catch (error) {
-                    console.error("Location detection failed:", error);
                 }
-            });
+            } catch (error) {
+                console.error("Location detection failed:", error);
+            }
         }
 
         window.addEventListener('load', () => {
-            setTimeout(autoDetectLocation, 1000);
+            setTimeout(autoDetectLocation, 800);
         });
+        
         </script>
 </body>
 

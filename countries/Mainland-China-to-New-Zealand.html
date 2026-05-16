@@ -24,6 +24,28 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-search">
+                        <span class="nav-label">From:</span>
+                        <div class="cs-wrapper" id="originWrapper">
+                            <select id="originSelect" style="display:none"></select>
+                            <div class="cs-display" id="originDisplay" tabindex="0">Select country</div>
+                            <div class="cs-panel" id="originPanel">
+                                <div class="cs-search-wrap">
+                                    <input class="cs-search" id="originSearch" type="text" placeholder="Search country..." autocomplete="off">
+                                </div>
+                                <div class="cs-list" id="originList"></div>
+                            </div>
+                        </div>
+                        <span class="nav-label">To:</span>
+                        <div class="select-wrapper">
+                            <select id="destinationSelect" class="custom-select custom-select-premium px-4">
+                                <option value="">Select destination</option>
+                            </select>
+                        </div>
+                        <button id="submitBtn" class="btn btn-nav-go" type="button">
+                            Go <i class="fa fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
                     <div class="navbar-nav ml-auto py-0">
                         <a href="../index.html" class="nav-item nav-link">Home</a>
                     </div>
@@ -123,9 +145,11 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="embassy-card p-4 rounded bg-light border">
-                        <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>Official Immigration Source</h5>
-                        <p class="mb-2"><strong>Portal:</strong> <a href="https://immigration.govt.nz" target="_blank">immigration.govt.nz</a></p>
-                        <p class="small mb-0 text-muted">Please consult the official New Zealand immigration website or your nearest embassy for the most up-to-date and legally binding information before applying.</p>
+                        <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>New Zealand Embassy, Beijing</h5>
+                        <p class="mb-2"><strong>Address:</strong> Ritan Donglu 1, Chaoyang District, Beijing 100600, China</p>
+                        <p class="mb-2"><strong>Phone:</strong> +86 10 8532 8300</p>
+                        <p class="mb-2"><strong>Website:</strong> <a href="https://mfat.govt.nz" target="_blank">mfat.govt.nz</a></p>
+                        <p class="small mb-0 text-muted"><strong>Application Note:</strong> Apply online at immigration.govt.nz or through VFS Global in major Chinese cities.</p>
                     </div>
                 </div>
             </div>
@@ -167,6 +191,159 @@
     </div>
     <!-- Footer End -->
 
+        <script src="../js/whv-data.js"></script>
+    <script>
+        const ALL_COUNTRIES = [
+            "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
+            "Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium",
+            "Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria",
+            "Cambodia","Cameroon","Canada","Cape Verde","Chile","Colombia","Costa Rica","Croatia","Cuba","Cyprus",
+            "Czech Republic","Denmark","Djibouti","Dominican Republic","Ecuador","Egypt","El Salvador","Estonia",
+            "Ethiopia","Finland","France","Georgia","Germany","Ghana","Greece","Guatemala","Honduras","Hong Kong",
+            "Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan",
+            "Jordan","Kazakhstan","Kenya","Kuwait","Latvia","Lebanon","Libya","Lithuania","Luxembourg","Macau",
+            "Madagascar","Malaysia","Maldives","Malta","Mexico","Moldova","Monaco","Mongolia","Morocco",
+            "Mozambique","Myanmar","Nepal","Netherlands","New Zealand","Nicaragua","Nigeria","North Korea",
+            "Norway","Oman","Pakistan","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
+            "Romania","Russia","Rwanda","San Marino","Saudi Arabia","Senegal","Serbia","Singapore","Slovakia",
+            "Slovenia","Somalia","South Africa","South Korea","Spain","Sri Lanka","Sudan","Sweden","Switzerland",
+            "Syria","Taiwan","Tanzania","Thailand","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine",
+            "United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Zambia","Zimbabwe"
+        ].sort((a, b) => a.localeCompare(b));
+
+        const LANG_COUNTRY_MAP = {
+            'de':['Germany','Austria','Switzerland','Luxembourg'],'fr':['France','Belgium','Switzerland','Luxembourg','Canada'],
+            'es':['Spain','Mexico','Argentina','Colombia','Chile','Peru','Uruguay','Costa Rica'],
+            'pt':['Portugal','Brazil'],'it':['Italy','Switzerland'],'nl':['Netherlands','Belgium'],
+            'zh':['Mainland China','Taiwan','Hong Kong','Singapore'],'ja':['Japan'],'ko':['South Korea'],
+            'pl':['Poland'],'sv':['Sweden'],'da':['Denmark'],'fi':['Finland'],'nb':['Norway'],'no':['Norway'],
+            'el':['Greece'],'cs':['Czech Republic'],'sk':['Slovakia'],'hu':['Hungary'],'ro':['Romania'],
+            'id':['Indonesia'],'ms':['Malaysia'],'th':['Thailand'],'vi':['Vietnam'],'hi':['India'],
+        };
+        function getLanguageHints() {
+            const lang = (navigator.language || '').toLowerCase().split('-')[0];
+            return LANG_COUNTRY_MAP[lang] || [];
+        }
+
+        const originSelect = document.getElementById('originSelect');
+        const originDisplay = document.getElementById('originDisplay');
+        const originPanel = document.getElementById('originPanel');
+        const originSearch = document.getElementById('originSearch');
+        const originList = document.getElementById('originList');
+        const destinationSelect = document.getElementById('destinationSelect');
+        let currentOrigin = '';
+
+        function buildOriginList(filter) {
+            originList.innerHTML = '';
+            const q = (filter || '').trim().toLowerCase();
+            const hints = getLanguageHints();
+            if (!q && hints.length) {
+                const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
+                if (pinned.length) {
+                    const grp = document.createElement('div');
+                    grp.className = 'cs-group-label'; grp.textContent = '🌐 Suggested for you';
+                    originList.appendChild(grp);
+                    pinned.forEach(c => appendOriginOption(c));
+                    const all = document.createElement('div');
+                    all.className = 'cs-group-label'; all.textContent = 'All Countries';
+                    originList.appendChild(all);
+                }
+            }
+            const filtered = q ? ALL_COUNTRIES.filter(c => c.toLowerCase().includes(q)) : ALL_COUNTRIES;
+            if (!filtered.length) {
+                const d = document.createElement('div'); d.className = 'cs-no-result';
+                d.textContent = 'No country found'; originList.appendChild(d); return;
+            }
+            filtered.forEach(c => appendOriginOption(c));
+        }
+        function appendOriginOption(country) {
+            const item = document.createElement('div');
+            item.className = 'cs-option' + (country === currentOrigin ? ' active' : '');
+            item.textContent = country; item.dataset.value = country;
+            item.addEventListener('mousedown', e => { e.preventDefault(); selectOrigin(country); });
+            originList.appendChild(item);
+        }
+        function selectOrigin(country) {
+            currentOrigin = country;
+            originDisplay.textContent = country;
+            originSelect.value = country;
+            closeOriginPanel();
+            updateDestinationOptions();
+        }
+        function openOriginPanel() {
+            originDisplay.classList.add('open'); originPanel.classList.add('open');
+            originSearch.value = ''; buildOriginList(''); originSearch.focus();
+            const active = originList.querySelector('.active');
+            if (active) active.scrollIntoView({ block: 'center' });
+        }
+        function closeOriginPanel() {
+            originDisplay.classList.remove('open'); originPanel.classList.remove('open');
+        }
+        originDisplay.addEventListener('click', () => originPanel.classList.contains('open') ? closeOriginPanel() : openOriginPanel());
+        originDisplay.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') openOriginPanel();
+            if (e.key === 'Escape') closeOriginPanel();
+        });
+        originSearch.addEventListener('input', () => buildOriginList(originSearch.value));
+        document.addEventListener('click', e => {
+            if (!document.getElementById('originWrapper').contains(e.target)) closeOriginPanel();
+        });
+
+        function getCountryCode(name) {
+            if (!name) return '';
+            if (name === 'United States') return 'USA';
+            return name.replace(/ /g, '-');
+        }
+        function navigate(origin, dest) {
+            if (!origin || !dest) return;
+            window.location.href = `../countries/${getCountryCode(origin)}-to-${getCountryCode(dest)}.html`;
+        }
+        function updateDestinationOptions() {
+            destinationSelect.innerHTML = '<option value="">Select destination...</option>';
+            const eligibility = WHV_ELIGIBILITY[currentOrigin];
+            if (!eligibility || !Object.keys(eligibility).length) {
+                const opt = document.createElement('option');
+                opt.value = ''; opt.textContent = 'No eligible destinations'; opt.disabled = true;
+                destinationSelect.appendChild(opt); return;
+            }
+            let total = 0, singleDest = null;
+            Object.keys(eligibility).sort().forEach(continent => {
+                const countries = [...(eligibility[continent] || [])].sort((a,b) => a.localeCompare(b));
+                if (!countries.length) return;
+                const optgroup = document.createElement('optgroup');
+                optgroup.label = continent;
+                countries.forEach(country => {
+                    const opt = document.createElement('option');
+                    opt.value = country; opt.textContent = country;
+                    optgroup.appendChild(opt); total++; singleDest = country;
+                });
+                destinationSelect.appendChild(optgroup);
+            });
+            if (total === 1) navigate(currentOrigin, singleDest);
+        }
+        destinationSelect.addEventListener('change', () => {
+            const dest = destinationSelect.value;
+            if (dest) navigate(currentOrigin, dest);
+        });
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            if (!currentOrigin) { alert('Please select your citizenship country.'); return; }
+            const dest = destinationSelect.value;
+            if (!dest) { alert('Please select a destination country.'); return; }
+            navigate(currentOrigin, dest);
+        });
+
+        // Auto geo-detect
+        async function autoDetectLocation() {
+            try {
+                const res = await fetch('https://ipapi.co/json/');
+                const data = await res.json();
+                if (data && data.country_name && ALL_COUNTRIES.includes(data.country_name)) {
+                    selectOrigin(data.country_name);
+                }
+            } catch(e) {}
+        }
+        window.addEventListener('load', () => setTimeout(autoDetectLocation, 800));
+    </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 </body>

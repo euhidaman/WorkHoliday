@@ -1,4 +1,4 @@
-/******* Bootstrap Theming ********/
+﻿/******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -11407,3 +11407,350 @@ h6,
         height: 45px !important;
     }
 }
+        /* ---- Navbar Search Bar ---- */
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            justify-content: center;
+            padding: 8px 0;
+        }
+        .navbar-search .nav-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            white-space: nowrap;
+        }
+        .navbar-search .cs-wrapper {
+            min-width: 200px;
+            max-width: 260px;
+        }
+        .navbar-search .cs-display {
+            height: 48px;
+            font-size: 0.9rem;
+            padding: 0 34px 0 14px;
+            background-size: 16px;
+            background-position: right 10px center;
+        }
+        .navbar-search .select-wrapper {
+            min-width: 200px;
+            max-width: 260px;
+        }
+        .navbar-search .custom-select-premium {
+            height: 48px !important;
+            font-size: 0.9rem !important;
+            padding: 0 34px 0 14px !important;
+            background-size: 16px !important;
+            background-position: right 10px center !important;
+            border-radius: 10px !important;
+        }
+        .navbar-search .btn-nav-go {
+            height: 48px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: #7AB730;
+            border: none;
+            color: white;
+            padding: 0 22px;
+            white-space: nowrap;
+            transition: background 0.3s;
+        }
+        .navbar-search .btn-nav-go:hover {
+            background: #6aa128;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-search {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px 0;
+            }
+            .navbar-search .cs-wrapper,
+            .navbar-search .select-wrapper {
+                min-width: 100%;
+                max-width: 100%;
+            }
+        }
+        /* ---- Searchable Dropdown ---- */
+        .cs-wrapper {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .cs-display {
+            height: 60px;
+            border-radius: 12px;
+            border: 2px solid #f0f0f0;
+            background-color: #f8fbff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: #444;
+            cursor: pointer;
+            padding: 0 45px 0 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            user-select: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237AB730' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+        }
+
+        .cs-display:hover,
+        .cs-display.open {
+            border-color: #7AB730;
+            box-shadow: 0 0 0 4px rgba(122, 183, 48, 0.15);
+            background-color: #fff;
+        }
+
+        .cs-panel {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+            z-index: 99999;
+            display: none;
+            overflow: hidden;
+            max-height: 320px;
+            flex-direction: column;
+            border: 1px solid #e8f5e9;
+        }
+
+        .cs-panel.open {
+            display: flex;
+        }
+
+        .cs-search-wrap {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f0f0f0;
+            flex-shrink: 0;
+        }
+
+        .cs-search {
+            width: 100%;
+            height: 40px;
+            border: 2px solid #e8f5e9;
+            border-radius: 8px;
+            padding: 0 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .cs-search:focus {
+            border-color: #7AB730;
+        }
+
+        .cs-list {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .cs-group-label {
+            padding: 8px 14px 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #7AB730;
+            text-transform: uppercase;
+            background: #f9fff4;
+            position: sticky;
+            top: 0;
+        }
+
+        .cs-option {
+            padding: 10px 16px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: #444;
+            transition: background 0.15s;
+        }
+
+        .cs-option:hover,
+        .cs-option.highlighted {
+            background: #f0fae5;
+            color: #5a8a24;
+        }
+
+        .cs-option.active {
+            background: #e6f4d5;
+            font-weight: 600;
+            color: #4a7a1e;
+        }
+
+        .cs-no-result {
+            padding: 16px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* ---- end searchable dropdown ---- */
+
+        /* Hero layout */
+        .hero-content-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-content-row h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-shadow: 2px 4px 12px rgba(0,0,0,0.4);
+        }
+        .hero-content-row p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-shadow: 1px 2px 6px rgba(0,0,0,0.4);
+            opacity: 0.95;
+        }
+        @media (max-width: 768px) {
+            .hero-content-row h1 { font-size: 2.2rem; }
+            .hero-content-row p { font-size: 0.95rem; }
+        }
+
+        .select-wrapper {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .custom-select-premium {
+            height: 60px !important;
+            border-radius: 12px !important;
+            border: 2px solid #f0f0f0 !important;
+            background-color: #f8fbff !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: #444 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            padding-right: 45px !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%237AB730' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 15px center !important;
+            background-size: 20px !important;
+        }
+
+        .custom-select-premium:focus {
+            border-color: #7AB730 !important;
+            box-shadow: 0 0 0 4px rgba(122, 183, 48, 0.15) !important;
+            background-color: #fff !important;
+            outline: none;
+        }
+
+        /* Custom Modal Styles */
+        .geo-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .geo-modal-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .geo-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .geo-modal-overlay.active .geo-modal-card {
+            transform: translateY(0);
+        }
+
+        .geo-icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(122, 183, 48, 0.1);
+            color: #7AB730;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 25px;
+        }
+
+        .geo-modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .geo-modal-text {
+            color: #64748b;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .geo-btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .geo-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .geo-btn-yes {
+            background: #7AB730;
+            color: white;
+        }
+
+        .geo-btn-yes:hover {
+            background: #6aa128;
+            transform: translateY(-2px);
+        }
+
+        .geo-btn-no {
+            background: #f1f5f9;
+            color: #64748b;
+        }
+
+        .geo-btn-no:hover {
+            background: #e2e8f0;
+        }

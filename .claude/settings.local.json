@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(python add_dest_tabs.py)",
+      "Bash(python -c ' *)",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Argentina-to-Australia.html\")",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Australia-to-Germany.html\")",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Mainland-China-to-Australia.html\")"
     ]
   }
 }

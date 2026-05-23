@@ -987,8 +987,9 @@ const COL_DATA = {
     var idx = f.indexOf('-to-');
     if (idx === -1) return null;
     var slug = f.substring(idx + 4);
-    if (slug === 'USA') return 'United States';
-    return slug.replace(/-/g, ' ');
+    if (slug.toUpperCase() === 'USA') return 'United States';
+    // Title-case each word so "new-zealand" → "New Zealand" to match COL_DATA keys
+    return slug.replace(/-/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
   }
 
   function buildColHtml(dest) {

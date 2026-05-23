@@ -1,527 +1,118 @@
 const WHV_ELIGIBILITY = {
+  "Andorra": {
+    "Europe": [
+      "Norway",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Argentina": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Europe": [
+      "Austria",
+      "Denmark",
+      "France",
+      "Germany",
+      "Hungary",
+      "Ireland",
+      "Netherlands",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Sweden",
+      "Switzerland"
+    ]
+  },
   "Australia": {
     "Asia-Pacific": [
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
       "Hong Kong",
-      "Mainland China",
-      "Singapore",
-      "Malaysia",
       "Indonesia",
-      "Thailand",
-      "Vietnam",
-      "Philippines"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Italy",
-      "Spain",
-      "Portugal",
-      "Netherlands",
-      "Belgium",
-      "Denmark",
-      "Sweden",
-      "Norway",
-      "Finland",
-      "Austria",
-      "Czech Republic",
-      "Slovakia",
-      "Hungary",
-      "Poland",
-      "Greece",
-      "Cyprus",
-      "Malta",
-      "Estonia",
-      "Latvia",
-      "Lithuania",
-      "Slovenia",
-      "Croatia",
-      "Romania",
-      "Bulgaria",
-      "Luxembourg"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina",
-      "Uruguay",
-      "Peru",
-      "United States",
-      "Brazil",
-      "Colombia",
-      "Mexico",
-      "Costa Rica"
-    ]
-  },
-  "New Zealand": {
-    "Asia-Pacific": [
-      "Australia",
       "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong",
       "Mainland China",
-      "Singapore",
       "Malaysia",
-      "Philippines",
-      "Vietnam",
-      "Thailand"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Italy",
-      "Spain",
-      "Portugal",
-      "Netherlands",
-      "Belgium",
-      "Denmark",
-      "Sweden",
-      "Norway",
-      "Finland",
-      "Austria",
-      "Czech Republic",
-      "Slovakia",
-      "Hungary",
-      "Poland",
-      "Greece",
-      "Croatia",
-      "Slovenia",
-      "Estonia",
-      "Latvia",
-      "Lithuania",
-      "Malta",
-      "Luxembourg"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina",
-      "Uruguay",
-      "Peru",
-      "United States",
-      "Brazil",
-      "Mexico",
-      "Colombia"
-    ]
-  },
-  "Canada": {
-    "Asia-Pacific": [
-      "Australia",
       "New Zealand",
-      "Japan",
+      "Philippines",
+      "Singapore",
       "South Korea",
       "Taiwan",
-      "Hong Kong"
+      "Thailand",
+      "Vietnam"
     ],
     "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Italy",
-      "Spain",
-      "Portugal",
-      "Netherlands",
-      "Belgium",
-      "Denmark",
-      "Sweden",
-      "Norway",
-      "Finland",
       "Austria",
-      "Czech Republic",
-      "Slovakia",
-      "Hungary",
-      "Poland",
-      "Greece",
+      "Belgium",
+      "Bulgaria",
       "Croatia",
-      "Slovenia",
+      "Cyprus",
+      "Czech Republic",
+      "Denmark",
       "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Hungary",
+      "Ireland",
+      "Israel",
+      "Italy",
       "Latvia",
       "Lithuania",
       "Luxembourg",
-      "Switzerland"
+      "Malta",
+      "Netherlands",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Romania",
+      "Slovakia",
+      "Slovenia",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "United Kingdom"
     ],
     "Americas": [
-      "Chile",
-      "Costa Rica"
-    ]
-  },
-  "United Kingdom": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong",
-      "India",
-      "Singapore"
-    ],
-    "Europe": [
-      "Monaco",
-      "San Marino",
-      "Iceland",
-      "Andorra"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "United States": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "South Korea",
-      "Singapore"
-    ],
-    "Europe": [
-      "Ireland"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "Ireland": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Europe": [],
-    "Americas": [
-      "Canada",
-      "United States",
       "Argentina",
-      "Chile"
-    ]
-  },
-  "Germany": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong",
-      "Singapore"
-    ],
-    "Europe": [
-      "Israel"
-    ],
-    "Americas": [
+      "Brazil",
       "Canada",
-      "Chile",
-      "Argentina",
-      "Uruguay",
-      "Brazil"
-    ]
-  },
-  "France": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Americas": [
-      "Canada",
-      "Argentina",
       "Chile",
       "Colombia",
+      "Costa Rica",
       "Mexico",
       "Peru",
-      "Uruguay",
-      "Brazil"
-    ]
-  },
-  "Italy": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "South Korea",
-      "Hong Kong"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "Spain": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Philippines"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "Japan": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Spain",
-      "Portugal",
-      "Denmark",
-      "Norway",
-      "Slovakia",
-      "Hungary",
-      "Poland",
-      "Austria",
-      "Iceland",
-      "Czech Republic",
-      "Lithuania",
-      "Sweden",
-      "Estonia",
-      "Netherlands",
-      "Latvia"
-    ],
-    "Americas": [
-      "Canada",
-      "Argentina",
-      "Chile",
+      "United States",
       "Uruguay"
     ]
-  },
-  "South Korea": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Italy",
-      "Spain",
-      "Portugal",
-      "Netherlands",
-      "Belgium",
-      "Denmark",
-      "Sweden",
-      "Austria",
-      "Czech Republic",
-      "Hungary",
-      "Poland"
-    ],
-    "Americas": [
-      "Canada",
-      "United States",
-      "Chile",
-      "Argentina"
-    ]
-  },
-  "Taiwan": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Belgium",
-      "Austria",
-      "Czech Republic",
-      "Slovakia",
-      "Hungary",
-      "Poland",
-      "Netherlands"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "Hong Kong": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea"
-    ],
-    "Europe": [
-      "United Kingdom",
-      "Ireland",
-      "Germany",
-      "France",
-      "Austria",
-      "Netherlands",
-      "Italy",
-      "Hungary",
-      "Sweden"
-    ],
-    "Americas": [
-      "Canada"
-    ]
-  },
-  "Mainland China": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand"
-    ],
-    "Europe": [],
-    "Americas": []
   },
   "Austria": {
     "Asia-Pacific": [
       "Australia",
-      "New Zealand",
+      "Hong Kong",
       "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina"
-    ]
-  },
-  "Netherlands": {
-    "Asia-Pacific": [
-      "Australia",
+      "Mainland China",
       "New Zealand",
       "South Korea",
-      "Taiwan",
-      "Hong Kong"
+      "Taiwan"
+    ],
+    "Europe": [
+      "Germany",
+      "United Kingdom"
     ],
     "Americas": [
-      "Canada",
       "Argentina",
-      "Uruguay"
-    ]
-  },
-  "Sweden": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "South Korea",
-      "Hong Kong"
-    ],
-    "Americas": [
       "Canada",
       "Chile",
-      "Argentina",
-      "Uruguay"
-    ]
-  },
-  "Denmark": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea"
+      "United States"
     ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina"
-    ]
-  },
-  "Norway": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan"
-    ],
-    "Americas": [
-      "Canada",
-      "Argentina"
-    ]
-  },
-  "Finland": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile"
-    ]
-  },
-  "Czech Republic": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile"
-    ]
-  },
-  "Poland": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina"
-    ]
-  },
-  "Hungary": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "South Korea",
-      "Taiwan",
-      "Hong Kong"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina"
-    ]
-  },
-  "Slovakia": {
-    "Asia-Pacific": [
-      "Australia",
-      "New Zealand",
-      "Japan",
-      "Taiwan"
-    ],
-    "Americas": [
-      "Canada",
-      "Chile",
-      "Argentina"
+    "Middle East": [
+      "Israel"
     ]
   },
   "Belgium": {
@@ -535,38 +126,79 @@ const WHV_ELIGIBILITY = {
       "Canada"
     ]
   },
-  "Portugal": {
+  "Brazil": {
     "Asia-Pacific": [
       "Australia",
-      "New Zealand",
+      "New Zealand"
+    ],
+    "Europe": [
+      "France",
+      "Germany"
+    ]
+  },
+  "Canada": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
       "Japan",
-      "South Korea"
+      "Mainland China",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Belgium",
+      "Croatia",
+      "Czech Republic",
+      "Denmark",
+      "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Hungary",
+      "Ireland",
+      "Italy",
+      "Latvia",
+      "Lithuania",
+      "Luxembourg",
+      "Netherlands",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Slovakia",
+      "Slovenia",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "United Kingdom"
     ],
     "Americas": [
-      "Canada",
-      "Argentina",
       "Chile",
-      "Peru"
+      "Costa Rica",
+      "Mexico",
+      "United States"
     ]
   },
   "Chile": {
     "Asia-Pacific": [
       "Australia",
-      "New Zealand",
       "Japan",
+      "New Zealand",
       "South Korea"
     ],
     "Europe": [
-      "Germany",
-      "France",
-      "Ireland",
-      "Sweden",
-      "Denmark",
       "Austria",
       "Czech Republic",
-      "Poland",
+      "Denmark",
+      "France",
+      "Germany",
       "Hungary",
+      "Ireland",
+      "Poland",
       "Portugal",
+      "Sweden",
       "Switzerland"
     ],
     "Americas": [
@@ -576,44 +208,729 @@ const WHV_ELIGIBILITY = {
       "Peru"
     ]
   },
-  "Argentina": {
+  "Colombia": {
+    "Europe": [
+      "France"
+    ],
+    "Americas": [
+      "Chile",
+      "Mexico",
+      "Peru"
+    ]
+  },
+  "Costa Rica": {
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Croatia": {
+    "Asia-Pacific": [
+      "New Zealand"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Cyprus": {
+    "Asia-Pacific": [
+      "Australia"
+    ]
+  },
+  "Czech Republic": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Canada",
+      "Chile"
+    ],
+    "Middle East": [
+      "Israel"
+    ]
+  },
+  "Denmark": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Ecuador": {
+    "Asia-Pacific": [
+      "Australia"
+    ],
+    "Europe": [
+      "France"
+    ]
+  },
+  "Estonia": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Finland": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand"
+    ],
+    "Americas": [
+      "Canada",
+      "Chile"
+    ]
+  },
+  "France": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Argentina",
+      "Brazil",
+      "Canada",
+      "Chile",
+      "Colombia",
+      "Mexico",
+      "Peru",
+      "Uruguay"
+    ]
+  },
+  "Germany": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "Mainland China",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Israel",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Argentina",
+      "Brazil",
+      "Canada",
+      "Chile",
+      "Mexico",
+      "United States",
+      "Uruguay"
+    ]
+  },
+  "Greece": {
+    "Asia-Pacific": [
+      "Australia"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Hong Kong": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "Mainland China",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "France",
+      "Germany",
+      "Hungary",
+      "Ireland",
+      "Italy",
+      "Netherlands",
+      "Sweden",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada",
+      "United States"
+    ]
+  },
+  "Hungary": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Iceland": {
+    "Asia-Pacific": [
+      "Japan"
+    ],
+    "Europe": [
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "India": {
+    "Europe": [
+      "United Kingdom"
+    ]
+  },
+  "Indonesia": {
+    "Asia-Pacific": [
+      "Australia"
+    ],
+    "Europe": [
+      "Switzerland"
+    ]
+  },
+  "Ireland": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile",
+      "United States"
+    ]
+  },
+  "Israel": {
     "Asia-Pacific": [
       "Australia",
       "New Zealand",
-      "Japan",
       "South Korea"
     ],
     "Europe": [
-      "Germany",
-      "France",
-      "Ireland",
-      "Sweden",
-      "Denmark",
-      "Norway",
       "Austria",
-      "Poland",
-      "Hungary",
-      "Portugal"
-    ],
-    "Americas": []
+      "Germany"
+    ]
   },
-  "Brazil": {
+  "Italy": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Japan": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Czech Republic",
+      "Denmark",
+      "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Hungary",
+      "Iceland",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Latvia",
+      "Lithuania",
+      "Luxembourg",
+      "Netherlands",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Singapore",
+      "Slovakia",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile",
+      "Uruguay"
+    ]
+  },
+  "Latvia": {
+    "Asia-Pacific": [
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Lithuania": {
+    "Asia-Pacific": [
+      "Japan",
+      "New Zealand"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Luxembourg": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Mainland China": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "New Zealand",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Germany",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada",
+      "United States"
+    ]
+  },
+  "Malaysia": {
+    "Asia-Pacific": [
+      "Australia",
+      "New Zealand"
+    ]
+  },
+  "Malta": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand"
+    ]
+  },
+  "Mexico": {
+    "Asia-Pacific": [
+      "New Zealand"
+    ],
+    "Europe": [
+      "France"
+    ],
+    "Americas": [
+      "Chile",
+      "Colombia",
+      "Peru"
+    ]
+  },
+  "Monaco": {
+    "Europe": [
+      "United Kingdom"
+    ]
+  },
+  "Mongolia": {
+    "Asia-Pacific": [
+      "Australia"
+    ]
+  },
+  "Netherlands": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Uruguay"
+    ]
+  },
+  "New Zealand": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "Mainland China",
+      "Malaysia",
+      "Philippines",
+      "Singapore",
+      "South Korea",
+      "Taiwan",
+      "Thailand",
+      "Vietnam"
+    ],
+    "Europe": [
+      "Austria",
+      "Belgium",
+      "Croatia",
+      "Czech Republic",
+      "Denmark",
+      "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Hungary",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Latvia",
+      "Lithuania",
+      "Luxembourg",
+      "Malta",
+      "Netherlands",
+      "Norway",
+      "Poland",
+      "Portugal",
+      "Slovakia",
+      "Slovenia",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Argentina",
+      "Brazil",
+      "Canada",
+      "Chile",
+      "Colombia",
+      "Mexico",
+      "Peru",
+      "United States",
+      "Uruguay"
+    ]
+  },
+  "Norway": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada"
+    ]
+  },
+  "Peru": {
     "Asia-Pacific": [
       "Australia",
       "New Zealand"
     ],
     "Europe": [
-      "Germany",
-      "France"
+      "Czech Republic",
+      "France",
+      "Poland",
+      "Portugal"
     ],
-    "Americas": []
+    "Americas": [
+      "Chile",
+      "Colombia",
+      "Mexico"
+    ]
+  },
+  "Philippines": {
+    "Asia-Pacific": [
+      "New Zealand"
+    ],
+    "Europe": [
+      "Switzerland"
+    ]
+  },
+  "Poland": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Portugal": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile",
+      "Peru"
+    ]
+  },
+  "San Marino": {
+    "Europe": [
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada"
+    ]
   },
   "Singapore": {
     "Asia-Pacific": [
       "Australia",
       "New Zealand"
+    ]
+  },
+  "Slovakia": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "Taiwan"
     ],
-    "Europe": [],
-    "Americas": []
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Slovenia": {
+    "Asia-Pacific": [
+      "Australia",
+      "New Zealand"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "South Korea": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Belgium",
+      "Czech Republic",
+      "Denmark",
+      "France",
+      "Germany",
+      "Hungary",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Luxembourg",
+      "Netherlands",
+      "Poland",
+      "Portugal",
+      "Spain",
+      "Sweden",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Argentina",
+      "Brazil",
+      "Canada",
+      "Chile",
+      "Mexico",
+      "United States"
+    ]
+  },
+  "Spain": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand",
+      "Philippines",
+      "South Korea"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Sweden": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Americas": [
+      "Argentina",
+      "Canada",
+      "Chile",
+      "Uruguay"
+    ]
+  },
+  "Switzerland": {
+    "Asia-Pacific": [
+      "Australia",
+      "Singapore"
+    ],
+    "Americas": [
+      "Canada",
+      "Chile"
+    ]
+  },
+  "Taiwan": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Japan",
+      "Mainland China",
+      "New Zealand",
+      "South Korea"
+    ],
+    "Europe": [
+      "Austria",
+      "Belgium",
+      "Czech Republic",
+      "France",
+      "Germany",
+      "Hungary",
+      "Ireland",
+      "Luxembourg",
+      "Netherlands",
+      "Poland",
+      "Slovakia",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada",
+      "United States"
+    ]
+  },
+  "Thailand": {
+    "Asia-Pacific": [
+      "Australia",
+      "New Zealand"
+    ]
+  },
+  "Turkey": {
+    "Asia-Pacific": [
+      "Australia"
+    ]
+  },
+  "United Kingdom": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "India",
+      "Japan",
+      "Mainland China",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Andorra",
+      "Austria",
+      "Germany",
+      "Iceland",
+      "Monaco",
+      "San Marino"
+    ],
+    "Americas": [
+      "Canada",
+      "United States",
+      "Uruguay"
+    ]
+  },
+  "United States": {
+    "Asia-Pacific": [
+      "Australia",
+      "Hong Kong",
+      "Mainland China",
+      "New Zealand",
+      "Singapore",
+      "South Korea",
+      "Taiwan"
+    ],
+    "Europe": [
+      "Austria",
+      "Germany",
+      "Ireland",
+      "Portugal",
+      "Switzerland",
+      "United Kingdom"
+    ],
+    "Americas": [
+      "Canada"
+    ]
+  },
+  "Uruguay": {
+    "Asia-Pacific": [
+      "Australia",
+      "Japan",
+      "New Zealand"
+    ],
+    "Europe": [
+      "France",
+      "Germany",
+      "Netherlands",
+      "Portugal",
+      "Sweden",
+      "United Kingdom"
+    ]
+  },
+  "Vietnam": {
+    "Asia-Pacific": [
+      "Australia",
+      "New Zealand"
+    ]
   }
 };

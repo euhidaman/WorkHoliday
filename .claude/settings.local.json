@@ -6,7 +6,27 @@
       "Bash(python -c ' *)",
       "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Argentina-to-Australia.html\")",
       "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Australia-to-Germany.html\")",
-      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Mainland-China-to-Australia.html\")"
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/countries/Mainland-China-to-Australia.html\")",
+      "Bash(python -c \"import openpyxl; print\\('openpyxl available'\\)\")",
+      "Bash(python make_matrix.py)",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/whv_missing_matrix.xlsx\")",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/whv_real_matrix.xlsx\")",
+      "Bash(python make_report.py)",
+      "Bash(start \"c:/Users/User/Desktop/Freelancing/WorkHoliday/WHV_Coverage_Report.xlsx\")",
+      "Bash(Remove-Item \"c:/Users/User/Desktop/Freelancing/WorkHoliday/whv_missing_matrix.xlsx\" -Force)",
+      "Bash(Remove-Item \"c:/Users/User/Desktop/Freelancing/WorkHoliday/whv_real_matrix.xlsx\" -Force)",
+      "Bash(node -e \"const WHV_ELIGIBILITY = require\\('./js/whv-data.js'\\); console.log\\('Keys:', Object.keys\\(WHV_ELIGIBILITY\\).length\\);\")",
+      "Bash(node -e \"eval\\(require\\('fs'\\).readFileSync\\('./js/whv-data.js','utf8'\\)\\); console.log\\('Valid JS. Keys:', Object.keys\\(WHV_ELIGIBILITY\\).length\\);\" \"c:/Users/User/Desktop/Freelancing/WorkHoliday\")",
+      "Bash(node -e \"eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('Valid. Keys:', Object.keys\\(WHV_ELIGIBILITY\\).length, Object.keys\\(WHV_ELIGIBILITY\\).join\\(', '\\)\\)\")",
+      "Bash(node -e ' *)",
+      "WebFetch(domain:unsplash.com)",
+      "Bash(python apply_hero_photos.py)",
+      "Bash(python download_hero_photos.py)",
+      "Bash(python fix_failed_photos.py)",
+      "Bash(python generate_missing_pages.py)",
+      "Bash(node -e \"const WHV_ELIGIBILITY = require\\('./js/whv-data.js'\\)\")",
+      "Bash(node -e \"try { eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('OK'\\); } catch\\(e\\) { console.log\\('ERROR:', e.message\\); }\")",
+      "Bash(node -e \"try { eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('Syntax OK'\\); } catch\\(e\\) { console.log\\('ERROR line', e.message\\); }\")"
     ]
   }
 }

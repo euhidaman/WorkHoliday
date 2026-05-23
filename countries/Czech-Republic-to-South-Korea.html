@@ -181,7 +181,7 @@
     <!-- Navbar End -->
 
     <!-- Header Start -->
-    <div class="container-fluid visa-hero py-5">
+    <div class="container-fluid visa-hero py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/heroes/South-Korea.jpg'); background-size: cover; background-position: center;">
         <div class="container py-5">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
                 <nav aria-label="breadcrumb">
@@ -480,15 +480,12 @@
     (function () {
         var ORIGIN   = 'Czech Republic';
         var CURRENT  = 'South Korea';
-        var EXISTING = ['Czech-Republic-to-Australia', 'Czech-Republic-to-Canada', 'Czech-Republic-to-Chile', 'Czech-Republic-to-Japan', 'Czech-Republic-to-New-Zealand', 'Czech-Republic-to-South-Korea', 'Czech-Republic-to-Taiwan'];
+        var EXISTING = ['Czech-Republic-to-Australia', 'Czech-Republic-to-Canada', 'Czech-Republic-to-Chile', 'Czech-Republic-to-Israel', 'Czech-Republic-to-Japan', 'Czech-Republic-to-New-Zealand', 'Czech-Republic-to-South-Korea', 'Czech-Republic-to-Taiwan'];
         var REGION_ORDER = ['Asia-Pacific','Europe','Americas'];
         var REGION_LABEL = {'Asia-Pacific':'Asia-Pacific','Europe':'Europe','Americas':'Americas'};
-
         function slug(n) { return n === 'United States' ? 'USA' : n.replace(/ /g, '-'); }
-
         var eligibility = (typeof WHV_ELIGIBILITY !== 'undefined') ? WHV_ELIGIBILITY[ORIGIN] : null;
         if (!eligibility) return;
-
         var regions = {}, total = 0;
         REGION_ORDER.forEach(function (r) {
             var list = (eligibility[r] || []).filter(function (d) {
@@ -497,156 +494,92 @@
             if (list.length) { regions[r] = list; total += list.length; }
         });
         if (total <= 1) return;
-
         var useGroups = total > 10 && Object.keys(regions).length > 1;
-
-        var wrap = document.createElement('div');
-        wrap.className = 'wh-nav-wrap';
-
-        var lbl = document.createElement('div');
-        lbl.className = 'wh-nav-label';
-        lbl.textContent = 'Where can ' + ORIGIN + ' citizens go?';
-        wrap.appendChild(lbl);
-
+        var wrap = document.createElement('div'); wrap.className = 'wh-nav-wrap';
+        var lbl = document.createElement('div'); lbl.className = 'wh-nav-label';
+        lbl.textContent = 'Where can ' + ORIGIN + ' citizens go?'; wrap.appendChild(lbl);
         var allPills = [];
-
         if (useGroups) {
-            /* ── GROUPED MODE: continent tabs, country pills hidden until clicked ── */
-            var contRow = document.createElement('div');
-            contRow.className = 'wh-cont-row';
-
-            var countryPanel = document.createElement('div');
-            countryPanel.className = 'wh-country-panel';
-            countryPanel.style.display = 'none';   /* hidden by default */
-
+            var contRow = document.createElement('div'); contRow.className = 'wh-cont-row';
+            var countryPanel = document.createElement('div'); countryPanel.className = 'wh-country-panel'; countryPanel.style.display = 'none';
             var openRegion = null;
-
-            /* build pills per region */
             var regionPills = {};
             REGION_ORDER.forEach(function (r) {
                 if (!regions[r]) return;
                 regionPills[r] = regions[r].map(function (dest) {
                     var btn = document.createElement('button');
                     btn.className = 'wh-pill' + (dest === CURRENT ? ' wh-active' : '');
-                    btn.textContent = dest;
-                    btn.dataset.dest = dest;
+                    btn.textContent = dest; btn.dataset.dest = dest;
                     btn.addEventListener('click', function () { loadDest(dest, btn); });
-                    allPills.push(btn);
-                    return btn;
+                    allPills.push(btn); return btn;
                 });
             });
-
             function showRegion(r) {
                 if (openRegion === r) {
-                    /* clicking active continent again collapses it */
-                    contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) {
-                        b.classList.remove('wh-cont-active');
-                    });
-                    countryPanel.style.display = 'none';
-                    openRegion = null;
-                    return;
+                    contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) { b.classList.remove('wh-cont-active'); });
+                    countryPanel.style.display = 'none'; openRegion = null; return;
                 }
                 openRegion = r;
-                contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) {
-                    b.classList.toggle('wh-cont-active', b.dataset.region === r);
-                });
+                contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) { b.classList.toggle('wh-cont-active', b.dataset.region === r); });
                 countryPanel.innerHTML = '';
-                (regionPills[r] || []).forEach(function (pill) {
-                    countryPanel.appendChild(pill);
-                });
+                (regionPills[r] || []).forEach(function (pill) { countryPanel.appendChild(pill); });
                 countryPanel.style.display = 'flex';
             }
-
-            /* find which region the current destination belongs to */
-            var currentRegion = REGION_ORDER.find(function (r) {
-                return regions[r] && regions[r].indexOf(CURRENT) !== -1;
-            });
-
+            var currentRegion = REGION_ORDER.find(function (r) { return regions[r] && regions[r].indexOf(CURRENT) !== -1; });
             REGION_ORDER.forEach(function (r) {
                 if (!regions[r]) return;
-                var btn = document.createElement('button');
-                btn.className = 'wh-cont-btn';
-                btn.dataset.region = r;
-                btn.innerHTML = REGION_LABEL[r] +
-                    ' <span class="wh-cont-count">' + regions[r].length + '</span>';
-                btn.addEventListener('click', function () { showRegion(r); });
-                contRow.appendChild(btn);
+                var btn = document.createElement('button'); btn.className = 'wh-cont-btn'; btn.dataset.region = r;
+                btn.innerHTML = REGION_LABEL[r] + ' <span class="wh-cont-count">' + regions[r].length + '</span>';
+                btn.addEventListener('click', function () { showRegion(r); }); contRow.appendChild(btn);
             });
-
-            wrap.appendChild(contRow);
-            wrap.appendChild(countryPanel);
-
-            /* highlight the current destination's continent but keep pills hidden */
+            wrap.appendChild(contRow); wrap.appendChild(countryPanel);
             if (currentRegion) {
                 var activeContinentBtn = contRow.querySelector('[data-region="' + currentRegion + '"]');
                 if (activeContinentBtn) activeContinentBtn.classList.add('wh-cont-active');
             }
-
         } else {
-            /* ── FLAT MODE: just pills ── */
-            var row = document.createElement('div');
-            row.className = 'wh-pills';
+            var row = document.createElement('div'); row.className = 'wh-pills';
             REGION_ORDER.forEach(function (r) {
                 if (!regions[r]) return;
                 regions[r].forEach(function (dest) {
                     var btn = document.createElement('button');
                     btn.className = 'wh-pill' + (dest === CURRENT ? ' wh-active' : '');
-                    btn.textContent = dest;
-                    btn.dataset.dest = dest;
+                    btn.textContent = dest; btn.dataset.dest = dest;
                     btn.addEventListener('click', function () { loadDest(dest, btn); });
-                    allPills.push(btn);
-                    row.appendChild(btn);
+                    allPills.push(btn); row.appendChild(btn);
                 });
             });
             wrap.appendChild(row);
         }
-
         var placeholder = document.getElementById('wh-tabs-placeholder');
         if (placeholder) placeholder.replaceWith(wrap);
-
-        /* ── content swapping ── */
         var panel = document.getElementById('wh-content-panel');
         var cache = {};
         if (panel) cache[CURRENT] = panel.innerHTML;
-
         function loadDest(dest, btn) {
             if (btn.classList.contains('wh-active')) return;
-            allPills.forEach(function (p) { p.classList.remove('wh-active'); });
-            btn.classList.add('wh-active');
-
-            if (history.pushState)
-                history.pushState({ dest: dest }, '', slug(ORIGIN) + '-to-' + slug(dest) + '.html');
+            allPills.forEach(function (p) { p.classList.remove('wh-active'); }); btn.classList.add('wh-active');
+            if (history.pushState) history.pushState({ dest: dest }, '', slug(ORIGIN) + '-to-' + slug(dest) + '.html');
             document.title = 'TRAVELER - ' + dest + ' Work Holiday Visa for ' + ORIGIN + ' Citizens';
-            var h1 = document.querySelector('.visa-hero h1');
-            if (h1) h1.textContent = dest.toUpperCase() + ' WORK GUIDE';
-            var p  = document.querySelector('.visa-hero .lead');
-            if (p)  p.textContent  = 'Work & Residency Pathways for ' + ORIGIN + ' Citizens';
-            var bc = document.querySelector('.breadcrumb-item.active');
-            if (bc) bc.textContent = ORIGIN + ' to ' + dest;
-
+            var h1 = document.querySelector('.visa-hero h1'); if (h1) h1.textContent = dest.toUpperCase() + ' WORK GUIDE';
+            var p  = document.querySelector('.visa-hero .lead'); if (p)  p.textContent  = 'Work & Residency Pathways for ' + ORIGIN + ' Citizens';
+            var bc = document.querySelector('.breadcrumb-item.active'); if (bc) bc.textContent = ORIGIN + ' to ' + dest;
+            var _hero = document.querySelector('.visa-hero'); if (_hero) { var _img = new Image(); var _url = '../img/heroes/' + dest.replace(/ /g, '-') + '.jpg'; _img.onload = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('" + _url + "')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.onerror = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('../img/carousel-2.jpg')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.src = _url; }
             if (!panel) return;
             if (cache[dest]) { panel.innerHTML = cache[dest]; return; }
-
-            panel.classList.add('wh-loading');
-            panel.innerHTML = '<div class="wh-spinner"></div>';
-
+            panel.classList.add('wh-loading'); panel.innerHTML = '<div class="wh-spinner"></div>';
             fetch(slug(ORIGIN) + '-to-' + slug(dest) + '.html')
                 .then(function (r) { return r.text(); })
                 .then(function (html) {
                     var doc = new DOMParser().parseFromString(html, 'text/html');
                     var src = doc.getElementById('wh-content-panel');
-                    var out = src ? src.innerHTML
-                                  : '<p class="text-muted text-center py-4">Content unavailable.</p>';
-                    cache[dest] = out;
-                    panel.innerHTML = out;
-                    panel.classList.remove('wh-loading');
-                })
-                .catch(function () {
+                    var out = src ? src.innerHTML : '<p class="text-muted text-center py-4">Content unavailable.</p>';
+                    cache[dest] = out; panel.innerHTML = out; panel.classList.remove('wh-loading');
+                }).catch(function () {
                     panel.innerHTML = '<p class="text-muted text-center py-4">Could not load content.</p>';
                     panel.classList.remove('wh-loading');
                 });
         }
-
         window.addEventListener('popstate', function (e) {
             if (e.state && e.state.dest) {
                 var b = allPills.find(function (p) { return p.dataset.dest === e.state.dest; });

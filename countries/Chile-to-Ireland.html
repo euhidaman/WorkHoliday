@@ -181,7 +181,7 @@
     <!-- Navbar End -->
 
     <!-- Header Start -->
-    <div class="container-fluid visa-hero py-5">
+    <div class="container-fluid visa-hero py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/heroes/Ireland.jpg'); background-size: cover; background-position: center;">
         <div class="container py-5">
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
                 <nav aria-label="breadcrumb">
@@ -623,6 +623,7 @@
             if (p)  p.textContent  = 'Work & Residency Pathways for ' + ORIGIN + ' Citizens';
             var bc = document.querySelector('.breadcrumb-item.active');
             if (bc) bc.textContent = ORIGIN + ' to ' + dest;
+            var _hero = document.querySelector('.visa-hero'); if (_hero) { var _img = new Image(); var _url = '../img/heroes/' + dest.replace(/ /g, '-') + '.jpg'; _img.onload = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('" + _url + "')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.onerror = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('../img/carousel-2.jpg')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.src = _url; }
 
             if (!panel) return;
             if (cache[dest]) { panel.innerHTML = cache[dest]; return; }

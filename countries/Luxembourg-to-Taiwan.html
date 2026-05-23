@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>TRAVELER - Taiwan Work Holiday Visa for Luxembourg Citizens</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Taiwan Working Holiday Visa, Luxembourg to Taiwan, Youth Mobility" name="keywords">
+    <meta content="Official Working Holiday Visa information for Luxembourg citizens traveling to Taiwan. Learn about eligibility, requirements, and how to apply." name="description">
+    <link href="../img/favicon.ico" rel="icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style id="dest-tabs-css">
+    .wh-nav-wrap { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1.5px solid #eef1f5; }
+    .wh-nav-label { font-size: .68rem; font-weight: 700; color: #bbb; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .8rem; }
+    .wh-pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .wh-cont-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
+    .wh-cont-btn { display: inline-flex; align-items: center; gap: .45rem; padding: .48rem 1.2rem; border-radius: 8px; font-size: .78rem; font-weight: 600; color: #3d4f6e; background: #eef1f8; border: 1.5px solid #c8d3e8; cursor: pointer; transition: background .13s,color .13s,border-color .13s,box-shadow .13s; white-space: nowrap; letter-spacing: .01em; }
+    .wh-cont-btn:hover { background: #dde4f5; border-color: #9aadd4; color: #1f3361; }
+    .wh-cont-btn.wh-cont-active { background: #2d4fa3; color: #fff; border-color: #2d4fa3; box-shadow: 0 3px 12px rgba(45,79,163,.25); }
+    .wh-cont-count { font-size: .67rem; font-weight: 600; background: rgba(0,0,0,.1); border-radius: 99px; padding: .05rem .45rem; line-height: 1.5; }
+    .wh-cont-btn.wh-cont-active .wh-cont-count { background: rgba(255,255,255,.22); }
+    .wh-country-panel { display: none; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; padding-top: .65rem; border-top: 1px solid #eef1f5; animation: wh-fade-in .18s ease; }
+    @keyframes wh-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+    .wh-pill { display: inline-flex; align-items: center; padding: .35rem .95rem; border-radius: 8px; font-size: .79rem; font-weight: 500; color: #2e6065; background: #eef8f8; border: 1.5px solid #b8dde0; cursor: pointer; white-space: nowrap; transition: background .13s,color .13s,border-color .13s,box-shadow .13s; text-decoration: none; line-height: 1.4; }
+    .wh-pill:hover { background: #d6f0f2; color: #1a484c; border-color: #7fc5cb; box-shadow: 0 2px 6px rgba(30,120,130,.12); text-decoration: none; }
+    .wh-pill.wh-active { background: #1a7a82; color: #fff; border-color: #1a7a82; font-weight: 600; box-shadow: 0 3px 10px rgba(26,122,130,.28); }
+    #wh-content-panel { transition: opacity .18s; }
+    #wh-content-panel.wh-loading { opacity: .3; pointer-events: none; }
+    .wh-spinner { display: flex; justify-content: center; align-items: center; min-height: 180px; }
+    .wh-spinner::after { content: ''; width: 32px; height: 32px; border: 3px solid #e0e0e0; border-top-color: #1a7a82; border-radius: 50%; animation: wh-spin .65s linear infinite; }
+    @keyframes wh-spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="../index.html" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">TRAVEL</span>ER</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-search">
+                        <span class="nav-label">From:</span>
+                        <div class="cs-wrapper" id="originWrapper">
+                            <select id="originSelect" style="display:none"></select>
+                            <div class="cs-display" id="originDisplay" tabindex="0">Select country</div>
+                            <div class="cs-panel" id="originPanel">
+                                <div class="cs-search-wrap"><input class="cs-search" id="originSearch" type="text" placeholder="Search country..." autocomplete="off"></div>
+                                <div class="cs-list" id="originList"></div>
+                            </div>
+                        </div>
+                        <span class="nav-label">To:</span>
+                        <div class="select-wrapper">
+                            <select id="destinationSelect" class="custom-select custom-select-premium px-4">
+                                <option value="">Select destination</option>
+                            </select>
+                        </div>
+                        <button id="submitBtn" class="btn btn-nav-go" type="button">Go <i class="fa fa-arrow-right ml-1"></i></button>
+                    </div>
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="../index.html" class="nav-item nav-link">Home</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid visa-hero py-5" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../img/heroes/Taiwan.jpg'); background-size: cover; background-position: center;">
+        <div class="container py-5">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent p-0 mb-3">
+                        <li class="breadcrumb-item"><a href="../index.html" class="text-white opacity-75">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="text-white opacity-75">Work Visa</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Luxembourg to Taiwan</li>
+                    </ol>
+                </nav>
+                <h1 class="display-4 text-white text-uppercase font-weight-bold text-center">Taiwan Work Guide</h1>
+                <p class="text-white lead text-center">Work &amp; Residency Pathways for Luxembourg Citizens</p>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Main Content Start -->
+    <div class="container guide-container pb-5">
+        <div class="bg-white rounded-30 shadow-lg p-4 p-md-5">
+    <div id="wh-tabs-placeholder"></div>
+            <div id="wh-content-panel">
+            <div class="text-center mb-5">
+                <h2 class="section-title px-4">Relocating to Taiwan</h2>
+                <p class="text-muted">Official Working Holiday Visa information for Luxembourg citizens wishing to live and work in Taiwan.</p>
+            </div>
+
+            <!-- Visa Summary -->
+            <div class="alert alert-soft-primary d-flex align-items-center mb-5 p-4 border-0 rounded-20"
+                style="background-color: #f0f7ff; border-left: 5px solid #007bff !important;">
+                <div class="mr-4"><i class="fa fa-circle-info fa-3x text-primary"></i></div>
+                <div>
+                    <h5 class="text-primary font-weight-bold mb-1">Application Portal</h5>
+                    <p class="mb-0 text-dark">Apply via <strong>Local Embassy / Consulate of Taiwan</strong>. As a citizen of <strong>Luxembourg</strong>, you may be eligible for the <strong>Working Holiday Visa</strong> to Taiwan.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Requirements Column -->
+                <div class="col-lg-6 mb-5">
+                    <h4 class="mb-4 font-weight-bold"><i class="fa fa-file-circle-check text-primary mr-2"></i>Official Requirements</h4>
+                    <div class="requirement-item d-flex align-items-center mb-3"><i class="fa fa-check-circle mr-3 text-primary" style="width:20px;"></i><span>Valid passport (min. 12 months validity)</span></div>
+                    <div class="requirement-item d-flex align-items-center mb-3"><i class="fa fa-check-circle mr-3 text-primary" style="width:20px;"></i><span>Age 18–30</span></div>
+                    <div class="requirement-item d-flex align-items-center mb-3"><i class="fa fa-check-circle mr-3 text-primary" style="width:20px;"></i><span>Proof of sufficient funds</span></div>
+                    <div class="requirement-item d-flex align-items-center mb-3"><i class="fa fa-check-circle mr-3 text-primary" style="width:20px;"></i><span>Comprehensive health insurance</span></div>
+                    <div class="requirement-item d-flex align-items-center mb-3"><i class="fa fa-check-circle mr-3 text-primary" style="width:20px;"></i><span>Police clearance certificate</span></div>
+                </div>
+
+                <!-- Process Column -->
+                <div class="col-lg-6 mb-5">
+                    <h4 class="mb-4 font-weight-bold"><i class="fa fa-list-ol text-primary mr-2"></i>How to Apply</h4>
+                    <div class="process-step mb-3"><h6 class="font-weight-bold mb-1">1. Visit the official website of the destination country's Embassy or Consulate in your home country.</h6></div>
+                    <div class="process-step mb-3"><h6 class="font-weight-bold mb-1">2. Locate the 'Working Holiday' or 'National Visa D' visa section and download the application form.</h6></div>
+                    <div class="process-step mb-3"><h6 class="font-weight-bold mb-1">3. Schedule an interview or appointment at the Embassy/Consulate.</h6></div>
+                    <div class="process-step mb-3"><h6 class="font-weight-bold mb-1">4. Attend the appointment with your completed form, passport, proof of funds, and travel insurance documentation.</h6></div>
+                </div>
+            </div>
+
+            <!-- Pitfalls -->
+            <div class="alert mb-5 p-4 border-0 rounded-20"
+                style="background-color: #fff8f0; border-left: 5px solid #fd7e14 !important;">
+                <h5 class="font-weight-bold mb-2" style="color:#c85a00;"><i class="fa fa-triangle-exclamation mr-2"></i>Common Pitfalls &amp; Expert Advice</h5>
+                <p class="mb-0 text-dark">Incomplete insurance coverage — most countries require a minimum of €30,000 in medical coverage. Outdated police clearance certificates (must usually be issued within 3–6 months). Failing to book a consulate appointment well in advance — wait times can be several months in peak periods.</p>
+            </div>
+
+            <!-- Authority Contact -->
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="embassy-card p-4 rounded bg-light border">
+                        <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>Taipei Economic and Cultural Office (TECO)</h5>
+                        <p class="mb-2"><strong>Official Website:</strong> <a href="https://www.immigration.gov.tw" target="_blank" rel="noopener">https://www.immigration.gov.tw</a></p>
+                        <p class="small mb-0 text-muted"><strong>Application Note:</strong> Apply through the nearest TECO or representative office. Taiwan has bilateral WHV agreements with many countries.</p>
+                    </div>
+                </div>
+            </div>
+            </div><!-- /wh-content-panel -->
+        </div>
+    </div>
+    <!-- Main Content End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-6 col-md-6 mb-5">
+                <a href="../index.html" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">TRAVEL</span>ER</h1>
+                </a>
+                <p>The definitive guide to Working Holiday Visas across the globe.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Useful Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="../index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; TRAVELER. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+        <script src="../js/whv-data.js"></script>
+    <script>
+        const ALL_COUNTRIES = [
+            "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
+            "Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium",
+            "Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria",
+            "Cambodia","Cameroon","Canada","Cape Verde","Chile","Colombia","Costa Rica","Croatia","Cuba","Cyprus",
+            "Czech Republic","Denmark","Djibouti","Dominican Republic","Ecuador","Egypt","El Salvador","Estonia",
+            "Ethiopia","Finland","France","Georgia","Germany","Ghana","Greece","Guatemala","Honduras","Hong Kong",
+            "Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan",
+            "Jordan","Kazakhstan","Kenya","Kuwait","Latvia","Lebanon","Libya","Lithuania","Luxembourg","Macau",
+            "Madagascar","Malaysia","Maldives","Malta","Mexico","Moldova","Monaco","Mongolia","Morocco",
+            "Mozambique","Myanmar","Nepal","Netherlands","New Zealand","Nicaragua","Nigeria","North Korea",
+            "Norway","Oman","Pakistan","Panama","Paraguay","Peru","Philippines","Poland","Portugal","Qatar",
+            "Romania","Russia","Rwanda","San Marino","Saudi Arabia","Senegal","Serbia","Singapore","Slovakia",
+            "Slovenia","Somalia","South Africa","South Korea","Spain","Sri Lanka","Sudan","Sweden","Switzerland",
+            "Syria","Taiwan","Tanzania","Thailand","Trinidad and Tobago","Tunisia","Turkey","Uganda","Ukraine",
+            "United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Zambia","Zimbabwe"
+        ].sort((a, b) => a.localeCompare(b));
+        const LANG_COUNTRY_MAP = {
+            'de':['Germany','Austria','Switzerland','Luxembourg'],'fr':['France','Belgium','Switzerland','Luxembourg','Canada'],
+            'es':['Spain','Mexico','Argentina','Colombia','Chile','Peru','Uruguay','Costa Rica'],
+            'pt':['Portugal','Brazil'],'it':['Italy','Switzerland'],'nl':['Netherlands','Belgium'],
+            'zh':['Mainland China','Taiwan','Hong Kong','Singapore'],'ja':['Japan'],'ko':['South Korea'],
+            'pl':['Poland'],'sv':['Sweden'],'da':['Denmark'],'fi':['Finland'],'nb':['Norway'],'no':['Norway'],
+            'el':['Greece'],'cs':['Czech Republic'],'sk':['Slovakia'],'hu':['Hungary'],'ro':['Romania'],
+            'id':['Indonesia'],'ms':['Malaysia'],'th':['Thailand'],'vi':['Vietnam'],'hi':['India'],
+        };
+        function getLanguageHints() { const lang = (navigator.language || '').toLowerCase().split('-')[0]; return LANG_COUNTRY_MAP[lang] || []; }
+        const originSelect = document.getElementById('originSelect');
+        const originDisplay = document.getElementById('originDisplay');
+        const originPanel = document.getElementById('originPanel');
+        const originSearch = document.getElementById('originSearch');
+        const originList = document.getElementById('originList');
+        const destinationSelect = document.getElementById('destinationSelect');
+        let currentOrigin = '';
+        function buildOriginList(filter) {
+            originList.innerHTML = '';
+            const q = (filter || '').trim().toLowerCase();
+            const hints = getLanguageHints();
+            if (!q && hints.length) {
+                const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
+                if (pinned.length) {
+                    const grp = document.createElement('div'); grp.className = 'cs-group-label'; grp.textContent = '\uD83C\uDF10 Suggested for you'; originList.appendChild(grp);
+                    pinned.forEach(c => appendOriginOption(c));
+                    const all = document.createElement('div'); all.className = 'cs-group-label'; all.textContent = 'All Countries'; originList.appendChild(all);
+                }
+            }
+            const filtered = q ? ALL_COUNTRIES.filter(c => c.toLowerCase().includes(q)) : ALL_COUNTRIES;
+            if (!filtered.length) { const d = document.createElement('div'); d.className = 'cs-no-result'; d.textContent = 'No country found'; originList.appendChild(d); return; }
+            filtered.forEach(c => appendOriginOption(c));
+        }
+        function appendOriginOption(country) {
+            const item = document.createElement('div');
+            item.className = 'cs-option' + (country === currentOrigin ? ' active' : '');
+            item.textContent = country; item.dataset.value = country;
+            item.addEventListener('mousedown', e => { e.preventDefault(); selectOrigin(country); });
+            originList.appendChild(item);
+        }
+        function selectOrigin(country) { currentOrigin = country; originDisplay.textContent = country; originSelect.value = country; closeOriginPanel(); updateDestinationOptions(); }
+        function openOriginPanel() { originDisplay.classList.add('open'); originPanel.classList.add('open'); originSearch.value = ''; buildOriginList(''); originSearch.focus(); const active = originList.querySelector('.active'); if (active) active.scrollIntoView({ block: 'center' }); }
+        function closeOriginPanel() { originDisplay.classList.remove('open'); originPanel.classList.remove('open'); }
+        originDisplay.addEventListener('click', () => originPanel.classList.contains('open') ? closeOriginPanel() : openOriginPanel());
+        originDisplay.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') openOriginPanel(); if (e.key === 'Escape') closeOriginPanel(); });
+        originSearch.addEventListener('input', () => buildOriginList(originSearch.value));
+        document.addEventListener('click', e => { if (!document.getElementById('originWrapper').contains(e.target)) closeOriginPanel(); });
+        function getCountryCode(name) { if (!name) return ''; if (name === 'United States') return 'USA'; return name.replace(/ /g, '-'); }
+        function navigate(origin, dest) { if (!origin || !dest) return; window.location.href = `../countries/${getCountryCode(origin)}-to-${getCountryCode(dest)}.html`; }
+        function updateDestinationOptions() {
+            destinationSelect.innerHTML = '<option value="">Select destination...</option>';
+            const eligibility = WHV_ELIGIBILITY[currentOrigin];
+            if (!eligibility || !Object.keys(eligibility).length) { const opt = document.createElement('option'); opt.value = ''; opt.textContent = 'No eligible destinations'; opt.disabled = true; destinationSelect.appendChild(opt); return; }
+            let total = 0, singleDest = null;
+            Object.keys(eligibility).sort().forEach(continent => {
+                const countries = [...(eligibility[continent] || [])].sort((a,b) => a.localeCompare(b));
+                if (!countries.length) return;
+                const optgroup = document.createElement('optgroup'); optgroup.label = continent;
+                countries.forEach(country => { const opt = document.createElement('option'); opt.value = country; opt.textContent = country; optgroup.appendChild(opt); total++; singleDest = country; });
+                destinationSelect.appendChild(optgroup);
+            });
+            if (total === 1) navigate(currentOrigin, singleDest);
+        }
+        destinationSelect.addEventListener('change', () => { const dest = destinationSelect.value; if (dest) navigate(currentOrigin, dest); });
+        document.getElementById('submitBtn').addEventListener('click', () => {
+            if (!currentOrigin) { alert('Please select your citizenship country.'); return; }
+            const dest = destinationSelect.value; if (!dest) { alert('Please select a destination country.'); return; }
+            navigate(currentOrigin, dest);
+        });
+        async function autoDetectLocation() { try { const res = await fetch('https://ipapi.co/json/'); const data = await res.json(); if (data && data.country_name && ALL_COUNTRIES.includes(data.country_name)) { selectOrigin(data.country_name); } } catch(e) {} }
+        window.addEventListener('load', () => setTimeout(autoDetectLocation, 800));
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script id="dest-tabs-js">
+    (function () {
+        var ORIGIN   = 'Luxembourg';
+        var CURRENT  = 'Taiwan';
+        var EXISTING = ['Luxembourg-to-Australia', 'Luxembourg-to-Canada', 'Luxembourg-to-Chile', 'Luxembourg-to-Japan', 'Luxembourg-to-New-Zealand', 'Luxembourg-to-South-Korea', 'Luxembourg-to-Taiwan'];
+        var REGION_ORDER = ['Asia-Pacific','Europe','Americas'];
+        var REGION_LABEL = {'Asia-Pacific':'Asia-Pacific','Europe':'Europe','Americas':'Americas'};
+        function slug(n) { return n === 'United States' ? 'USA' : n.replace(/ /g, '-'); }
+        var eligibility = (typeof WHV_ELIGIBILITY !== 'undefined') ? WHV_ELIGIBILITY[ORIGIN] : null;
+        if (!eligibility) return;
+        var regions = {}, total = 0;
+        REGION_ORDER.forEach(function (r) {
+            var list = (eligibility[r] || []).filter(function (d) {
+                return EXISTING.indexOf(slug(ORIGIN) + '-to-' + slug(d)) !== -1;
+            }).sort(function (a, b) { return a.localeCompare(b); });
+            if (list.length) { regions[r] = list; total += list.length; }
+        });
+        if (total <= 1) return;
+        var useGroups = total > 10 && Object.keys(regions).length > 1;
+        var wrap = document.createElement('div'); wrap.className = 'wh-nav-wrap';
+        var lbl = document.createElement('div'); lbl.className = 'wh-nav-label';
+        lbl.textContent = 'Where can ' + ORIGIN + ' citizens go?'; wrap.appendChild(lbl);
+        var allPills = [];
+        if (useGroups) {
+            var contRow = document.createElement('div'); contRow.className = 'wh-cont-row';
+            var countryPanel = document.createElement('div'); countryPanel.className = 'wh-country-panel'; countryPanel.style.display = 'none';
+            var openRegion = null;
+            var regionPills = {};
+            REGION_ORDER.forEach(function (r) {
+                if (!regions[r]) return;
+                regionPills[r] = regions[r].map(function (dest) {
+                    var btn = document.createElement('button');
+                    btn.className = 'wh-pill' + (dest === CURRENT ? ' wh-active' : '');
+                    btn.textContent = dest; btn.dataset.dest = dest;
+                    btn.addEventListener('click', function () { loadDest(dest, btn); });
+                    allPills.push(btn); return btn;
+                });
+            });
+            function showRegion(r) {
+                if (openRegion === r) {
+                    contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) { b.classList.remove('wh-cont-active'); });
+                    countryPanel.style.display = 'none'; openRegion = null; return;
+                }
+                openRegion = r;
+                contRow.querySelectorAll('.wh-cont-btn').forEach(function (b) { b.classList.toggle('wh-cont-active', b.dataset.region === r); });
+                countryPanel.innerHTML = '';
+                (regionPills[r] || []).forEach(function (pill) { countryPanel.appendChild(pill); });
+                countryPanel.style.display = 'flex';
+            }
+            var currentRegion = REGION_ORDER.find(function (r) { return regions[r] && regions[r].indexOf(CURRENT) !== -1; });
+            REGION_ORDER.forEach(function (r) {
+                if (!regions[r]) return;
+                var btn = document.createElement('button'); btn.className = 'wh-cont-btn'; btn.dataset.region = r;
+                btn.innerHTML = REGION_LABEL[r] + ' <span class="wh-cont-count">' + regions[r].length + '</span>';
+                btn.addEventListener('click', function () { showRegion(r); }); contRow.appendChild(btn);
+            });
+            wrap.appendChild(contRow); wrap.appendChild(countryPanel);
+            if (currentRegion) {
+                var activeContinentBtn = contRow.querySelector('[data-region="' + currentRegion + '"]');
+                if (activeContinentBtn) activeContinentBtn.classList.add('wh-cont-active');
+            }
+        } else {
+            var row = document.createElement('div'); row.className = 'wh-pills';
+            REGION_ORDER.forEach(function (r) {
+                if (!regions[r]) return;
+                regions[r].forEach(function (dest) {
+                    var btn = document.createElement('button');
+                    btn.className = 'wh-pill' + (dest === CURRENT ? ' wh-active' : '');
+                    btn.textContent = dest; btn.dataset.dest = dest;
+                    btn.addEventListener('click', function () { loadDest(dest, btn); });
+                    allPills.push(btn); row.appendChild(btn);
+                });
+            });
+            wrap.appendChild(row);
+        }
+        var placeholder = document.getElementById('wh-tabs-placeholder');
+        if (placeholder) placeholder.replaceWith(wrap);
+        var panel = document.getElementById('wh-content-panel');
+        var cache = {};
+        if (panel) cache[CURRENT] = panel.innerHTML;
+        function loadDest(dest, btn) {
+            if (btn.classList.contains('wh-active')) return;
+            allPills.forEach(function (p) { p.classList.remove('wh-active'); }); btn.classList.add('wh-active');
+            if (history.pushState) history.pushState({ dest: dest }, '', slug(ORIGIN) + '-to-' + slug(dest) + '.html');
+            document.title = 'TRAVELER - ' + dest + ' Work Holiday Visa for ' + ORIGIN + ' Citizens';
+            var h1 = document.querySelector('.visa-hero h1'); if (h1) h1.textContent = dest.toUpperCase() + ' WORK GUIDE';
+            var p  = document.querySelector('.visa-hero .lead'); if (p)  p.textContent  = 'Work & Residency Pathways for ' + ORIGIN + ' Citizens';
+            var bc = document.querySelector('.breadcrumb-item.active'); if (bc) bc.textContent = ORIGIN + ' to ' + dest;
+            var _hero = document.querySelector('.visa-hero'); if (_hero) { var _img = new Image(); var _url = '../img/heroes/' + dest.replace(/ /g, '-') + '.jpg'; _img.onload = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('" + _url + "')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.onerror = function() { _hero.style.background = "linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('../img/carousel-2.jpg')"; _hero.style.backgroundSize='cover'; _hero.style.backgroundPosition='center'; }; _img.src = _url; }
+            if (!panel) return;
+            if (cache[dest]) { panel.innerHTML = cache[dest]; return; }
+            panel.classList.add('wh-loading'); panel.innerHTML = '<div class="wh-spinner"></div>';
+            fetch(slug(ORIGIN) + '-to-' + slug(dest) + '.html')
+                .then(function (r) { return r.text(); })
+                .then(function (html) {
+                    var doc = new DOMParser().parseFromString(html, 'text/html');
+                    var src = doc.getElementById('wh-content-panel');
+                    var out = src ? src.innerHTML : '<p class="text-muted text-center py-4">Content unavailable.</p>';
+                    cache[dest] = out; panel.innerHTML = out; panel.classList.remove('wh-loading');
+                }).catch(function () {
+                    panel.innerHTML = '<p class="text-muted text-center py-4">Could not load content.</p>';
+                    panel.classList.remove('wh-loading');
+                });
+        }
+        window.addEventListener('popstate', function (e) {
+            if (e.state && e.state.dest) {
+                var b = allPills.find(function (p) { return p.dataset.dest === e.state.dest; });
+                if (b) loadDest(e.state.dest, b);
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

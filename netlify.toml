@@ -16,22 +16,27 @@
 [[headers]]
   for = "*.css"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"
 
 [[headers]]
   for = "*.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, no-cache, must-revalidate"
 
 [[headers]]
   for = "*.jpg"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "*.png"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=2592000"
 
 # Redirect rules (if needed in the future)
 # [[redirects]]

@@ -35,7 +35,6 @@ const WHV_ELIGIBILITY = {
       "Hong Kong",
       "Indonesia",
       "Japan",
-      "Mainland China",
       "Malaysia",
       "New Zealand",
       "Philippines",
@@ -50,7 +49,6 @@ const WHV_ELIGIBILITY = {
       "Belgium",
       "Bulgaria",
       "Croatia",
-      "Cyprus",
       "Czech Republic",
       "Denmark",
       "Estonia",
@@ -87,7 +85,6 @@ const WHV_ELIGIBILITY = {
       "Costa Rica",
       "Mexico",
       "Peru",
-      "United States",
       "Uruguay"
     ]
   },
@@ -96,7 +93,6 @@ const WHV_ELIGIBILITY = {
       "Australia",
       "Hong Kong",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "South Korea",
       "Taiwan"
@@ -108,8 +104,7 @@ const WHV_ELIGIBILITY = {
     "Americas": [
       "Argentina",
       "Canada",
-      "Chile",
-      "United States"
+      "Chile"
     ],
     "Middle East": [
       "Israel"
@@ -141,7 +136,6 @@ const WHV_ELIGIBILITY = {
       "Australia",
       "Hong Kong",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "South Korea",
       "Taiwan"
@@ -177,8 +171,7 @@ const WHV_ELIGIBILITY = {
     "Americas": [
       "Chile",
       "Costa Rica",
-      "Mexico",
-      "United States"
+      "Mexico"
     ]
   },
   "Chile": {
@@ -320,7 +313,6 @@ const WHV_ELIGIBILITY = {
       "Australia",
       "Hong Kong",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "Singapore",
       "South Korea",
@@ -337,7 +329,6 @@ const WHV_ELIGIBILITY = {
       "Canada",
       "Chile",
       "Mexico",
-      "United States",
       "Uruguay"
     ]
   },
@@ -353,7 +344,6 @@ const WHV_ELIGIBILITY = {
     "Asia-Pacific": [
       "Australia",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "Singapore",
       "South Korea",
@@ -371,8 +361,7 @@ const WHV_ELIGIBILITY = {
       "United Kingdom"
     ],
     "Americas": [
-      "Canada",
-      "United States"
+      "Canada"
     ]
   },
   "Hungary": {
@@ -426,8 +415,7 @@ const WHV_ELIGIBILITY = {
     "Americas": [
       "Argentina",
       "Canada",
-      "Chile",
-      "United States"
+      "Chile"
     ]
   },
   "Israel": {
@@ -540,8 +528,7 @@ const WHV_ELIGIBILITY = {
       "United Kingdom"
     ],
     "Americas": [
-      "Canada",
-      "United States"
+      "Canada"
     ]
   },
   "Malaysia": {
@@ -601,7 +588,6 @@ const WHV_ELIGIBILITY = {
       "Australia",
       "Hong Kong",
       "Japan",
-      "Mainland China",
       "Malaysia",
       "Philippines",
       "Singapore",
@@ -648,7 +634,6 @@ const WHV_ELIGIBILITY = {
       "Colombia",
       "Mexico",
       "Peru",
-      "United States",
       "Uruguay"
     ]
   },
@@ -784,8 +769,7 @@ const WHV_ELIGIBILITY = {
       "Brazil",
       "Canada",
       "Chile",
-      "Mexico",
-      "United States"
+      "Mexico"
     ]
   },
   "Spain": {
@@ -830,7 +814,6 @@ const WHV_ELIGIBILITY = {
       "Australia",
       "Hong Kong",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "South Korea"
     ],
@@ -849,8 +832,7 @@ const WHV_ELIGIBILITY = {
       "United Kingdom"
     ],
     "Americas": [
-      "Canada",
-      "United States"
+      "Canada"
     ]
   },
   "Thailand": {
@@ -870,7 +852,6 @@ const WHV_ELIGIBILITY = {
       "Hong Kong",
       "India",
       "Japan",
-      "Mainland China",
       "New Zealand",
       "Singapore",
       "South Korea",
@@ -886,7 +867,6 @@ const WHV_ELIGIBILITY = {
     ],
     "Americas": [
       "Canada",
-      "United States",
       "Uruguay"
     ]
   },
@@ -894,7 +874,6 @@ const WHV_ELIGIBILITY = {
     "Asia-Pacific": [
       "Australia",
       "Hong Kong",
-      "Mainland China",
       "New Zealand",
       "Singapore",
       "South Korea",

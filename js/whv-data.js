@@ -1115,6 +1115,131 @@ const COL_DATA = {
     "Vietnam":        "Passport, WHV Grant/Visa, Local Address Proof, Local Phone Number, and Home Country Tax ID (TIN)."
   };
 
+  // ─────────────────────────────────────────────────────────────────────────────
+  //  OFFICIAL PORTAL DATA 2026
+  // ─────────────────────────────────────────────────────────────────────────────
+  var PORTAL_DATA = {
+    "Andorra":        { url: "https://cibtvisas.com.mx/destination/and/andorra-visa",                                                                          steps: "Download forms from the Servei d'Immigració portal.",                                              pitfalls: "Apply in person in Andorra; limited quotas." },
+    "Argentina":      { url: "https://cancilleria.gob.ar/en/service/work-holiday-programme/foreign",                                                           steps: "Contact local consulate -> Book interview via the portal.",                                       pitfalls: "Police records must be apostilled." },
+    "Australia":      { url: "https://online.immi.gov.au/lusc/login",                                                                                          steps: "Create ImmiAccount -> New Application -> Working Holiday Visa.",                                 pitfalls: "Wrong passport number leads to immediate rejection." },
+    "Austria":        { url: "https://www.bmeia.gv.at/en/travel-stay/entrance-and-residence-in-austria/working-holiday-programmes/working-holiday-application", steps: "Check country-specific requirements on BMEIA portal.",                                         pitfalls: "Insurance must cover full stay without waiting periods." },
+    "Belgium":        { url: "https://dofi.ibz.be/en/themes/ressortissants-dun-pays-tiers/travail/working-holiday-programme",                                  steps: "Follow the Belgian Immigration Office (FPS) guidelines.",                                        pitfalls: "Medical certificate must be from an embassy-approved doctor." },
+    "Brazil":         { url: "https://www.gov.br/mre/pt-br/assuntos/portal-consular/vistos",                                                                   steps: "Navigate to the VITEM VI (Working Holiday) section.",                                            pitfalls: "Varies greatly by consulate; documentation must be in Portuguese/English." },
+    "Canada":         { url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",                                        steps: "Create GCKey -> Submit Profile to Pool -> Wait for ITA.",                                        pitfalls: "Do not book flights until you receive the POE letter." },
+    "Chile":          { url: "https://serviciomigraciones.cl/",                                                                                                steps: "Access the Trámites Digitales section of the Migration Service.",                                pitfalls: "Ensure all documents are in PDF format under 2MB." },
+    "Colombia":       { url: "https://www.cancilleria.gov.co/en/temporary-workers-visa",                                                                       steps: "Visit the Cancillería portal -> Select the Visa section.",                                       pitfalls: "Usually requires proof of a return ticket or sufficient funds." },
+    "Croatia":        { url: "https://crovisa.mvep.hr/?lang=en",                                                                                               steps: "Consult the MVEP portal for bilateral WHV agreements.",                                          pitfalls: "Apply at the Croatian embassy in your home country." },
+    "Czech Republic": { url: "https://www.mzv.cz/jnp/en/information_for_aliens/visa_form/index.html",                                                         steps: "Download the long-stay visa form from the MOFA portal.",                                         pitfalls: "Requires a clean criminal record from home country AND any country lived in for 6+ months." },
+    "Denmark":        { url: "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Working-Holiday",                                                              steps: "Create Case Order ID -> Pay Fee -> Submit online application.",                                  pitfalls: "Biometrics must be recorded within 14 days of submission." },
+    "Ecuador":        { url: "https://www.cancilleria.gob.ec/",                                                                                                steps: "Search for Visa de Vacaciones y Trabajo on the MOFA site.",                                     pitfalls: "Often requires a personal appearance at the consulate." },
+    "Estonia":        { url: "https://www.vm.ee/en/consular-visa-and-travel-information/visa-information/application-schengen-visa",                           steps: "Apply for a long-stay (D) visa via the MOFA portal.",                                            pitfalls: "Requires travel insurance with at least €30,000 coverage." },
+    "Finland":        { url: "https://migri.fi/en/i-want-to-apply",                                                                                            steps: "Use the Enter Finland online service to submit your application.",                               pitfalls: "ID verification must be done at a Finnish mission afterward." },
+    "France":         { url: "https://france-visas.gouv.fr/demande-de-visa",                                                                                   steps: "Use the Visa Wizard -> Apply online -> Book VFS appointment.",                                   pitfalls: "Insurance must cover repatriation for the full 365 days." },
+    "Germany":        { url: "https://videx.diplo.de/videx/visum-erfassung/de/videx-kurzfristiger-aufenthalt",                                                 steps: "Visit the local German Mission website for the booking system.",                                 pitfalls: "N26 or digital banks are often accepted for proof of funds." },
+    "Greece":         { url: "https://www.mfa.gr/en/visas/",                                                                                                   steps: "Search for National Visas -> Working Holiday section.",                                          pitfalls: "Requires a formal health certificate from a licensed physician." },
+    "Hong Kong":      { url: "https://www.immd.gov.hk/eng/services/visas/working_holiday_scheme.html",                                                        steps: "Download ID(E) 940 from the Immigration Department portal.",                                     pitfalls: "Financial proof must be HK$20,000 or equivalent." },
+    "Hungary":        { url: "https://konzinfo.mfa.gov.hu/en/how-apply-visa",                                                                                  steps: "Select National Visa for Working Holiday purposes.",                                             pitfalls: "Proof of accommodation for the first few weeks is usually mandatory." },
+    "Iceland":        { url: "https://island.is/en/permit-for-working-holiday",                                                                                steps: "Follow the Directorate of Immigration (Útlendingastofnun) guide.",                               pitfalls: "Limited to a few countries; application is often paper-based." },
+    "Ireland":        { url: "https://www.irishimmigration.ie/coming-to-visit-ireland/",                                                                       steps: "Find the specific Working Holiday Authorisation (WHA) page.",                                    pitfalls: "Apply early; quotas for some countries (e.g. Taiwan) open in specific windows." },
+    "Israel":         { url: "https://embassies.gov.il/taipei/en/services/foreign-citizens/application-working-holiday-visa-israel",                          steps: "Navigate to your local Israeli embassy's Consular Services page.",                               pitfalls: "Strict security interview might be part of the process." },
+    "Italy":          { url: "https://constoronto.esteri.it/en/servizi-consolari-e-visti/servizi-per-il-cittadino-straniero/visti/visti-nazionali/vacanze-lavoro/", steps: "Use the Visa for Italy tool to find the correct application form.",                          pitfalls: "Apply at the Italian Consulate with jurisdiction over your residence." },
+    "Japan":          { url: "https://www.mofa.go.jp/j_info/visit/w_holiday/index.html",                                                                       steps: "Download MOFA forms -> Prepare a detailed weekly itinerary.",                                    pitfalls: "Applying while on a tourist visa in Japan is strictly forbidden." },
+    "Latvia":         { url: "https://www.mfa.gov.lv/en/applying-visa",                                                                                        steps: "Consult the PMLP (Office of Citizenship and Migration Affairs).",                                pitfalls: "Requires proof of health insurance and sufficient financial means." },
+    "Lithuania":      { url: "https://visa.vfsglobal.com/arm/en/ltu/apply-visa",                                                                               steps: "Search Working Holiday on the Migration Department portal.",                                     pitfalls: "Usually requires a personal visit to a Lithuanian mission." },
+    "Luxembourg":     { url: "https://mae.gouvernement.lu/en/services-aux-citoyens/visa-immigration.html",                                                     steps: "Follow the Guichet.lu official government guide.",                                               pitfalls: "Requires a written request sent to the Ministry of Foreign Affairs." },
+    "Mexico":         { url: "https://embamex.sre.gob.mx/nuevazelandia/index.php/consularservices/visasextranjeros?id=165",                                    steps: "Search for Visa de Vacaciones y Trabajo under SRE services.",                                   pitfalls: "Proof of funds must show consistency over the last 6 months." },
+    "Netherlands":    { url: "https://ind.nl/en/residence-permits/au-pair-and-exchange/residence-permit-working-holiday",                                      steps: "Check eligibility on the IND portal -> Book embassy appointment.",                               pitfalls: "Quotas open on Jan 1st and fill up extremely fast for some nations." },
+    "New Zealand":    { url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa",                                                             steps: "Register for an Online Account -> Select your country scheme.",                                  pitfalls: "Keep the portal open but don't refresh during quota launches." },
+    "Norway":         { url: "https://www.udi.no/en/want-to-apply/",                                                                                           steps: "Use the UDI portal to fill out the application and pay the fee.",                                pitfalls: "Financial proof: Approx. NOK 30,000 required in your account." },
+    "Peru":           { url: "https://www.gob.pe/rree",                                                                                                        steps: "Search for Visa de Intercambio Vacaciones y Trabajo on the RREE portal.",                        pitfalls: "Requirements vary by bilateral agreement (e.g. with Australia/Chile)." },
+    "Philippines":    { url: "https://www.dfa.gov.ph/",                                                                                                        steps: "Check the Visa Information section of the DFA portal.",                                          pitfalls: "Currently very limited bilateral agreements for WHV." },
+    "Poland":         { url: "https://e-services.immigration.gov.ph/",                                                                                         steps: "Search for Working Holiday under the National Visa tab.",                                        pitfalls: "Requires proof of a return ticket or funds to purchase one." },
+    "Portugal":       { url: "https://vistos.mne.gov.pt/en/national-visas/general-information/working-holiday",                                                steps: "Use the E-Visto portal to start your application.",                                              pitfalls: "Requires a criminal record certificate and travel insurance." },
+    "Singapore":      { url: "https://www.mom.gov.sg/passes-and-permits/work-holiday-programme",                                                               steps: "Apply via the Ministry of Manpower (MOM) portal.",                                               pitfalls: "Limited to students or graduates of top 200 universities." },
+    "Slovakia":       { url: "https://www.mzv.sk/en/web/taipei-en/visa-and-services/working-holiday-program",                                                  steps: "Check the Working Holiday section on the MOFA portal.",                                          pitfalls: "Requires a personal appearance and a clean criminal record." },
+    "Slovenia":       { url: "https://www.gov.si/en/registries/services/electronic-visa-application-form/",                                                    steps: "Consult the official GOV.SI portal for long-stay visas.",                                        pitfalls: "Only available for specific partner countries (e.g. New Zealand)." },
+    "South Korea":    { url: "https://www.visa.go.kr/",                                                                                                        steps: "Search for H-1 visa status and requirements.",                                                   pitfalls: "Activity Plan is crucial: Focus on travel, not just work." },
+    "Spain":          { url: "https://nigeria.blsspainvisa.com/",                                                                                              steps: "Find the Working Holiday section on the MOFA site.",                                             pitfalls: "Requires a NIE (Foreigner Identity Number) as part of the process." },
+    "Sweden":         { url: "https://www.migrationsverket.se/",                                                                                               steps: "Apply online directly via the Swedish Migration Agency portal.",                                 pitfalls: "Decision is sent via email; no stamp in passport usually required." },
+    "Switzerland":    { url: "https://www.sem.admin.ch/sem/en/home/themen/arbeit/berufspraktikum.html",                                                        steps: "Search for Trainees or Young Professionals (Swiss version of WHV).",                             pitfalls: "Requires a signed employment contract in a field related to your studies." },
+    "Taiwan":         { url: "https://visawebapp.boca.gov.tw/",                                                                                                steps: "Fill out the online form -> Print -> Submit to TECO office.",                                    pitfalls: "Health check (X-ray/MMR) is a mandatory hard requirement." },
+    "Thailand":       { url: "https://www.thaievisa.go.th/",                                                                                                   steps: "Search for Working Holiday under the Consular section.",                                         pitfalls: "Available for Australians and New Zealanders via specific quotas." },
+    "Turkey":         { url: "https://www.mfa.gov.tr/visa-information-for-foreigners.en.mfa",                                                                  steps: "Use the Pre-Application System for Turkish visas.",                                              pitfalls: "Requires a residence permit application upon arrival." },
+    "United Kingdom": { url: "https://www.gov.uk/apply-to-come-to-the-uk",                                                                                     steps: "Official GOV.UK portal -> Apply -> Pay IHS -> Book biometrics.",                                 pitfalls: "Bank balance must not drop below £2,530 for 28 consecutive days." },
+    "Uruguay":        { url: "https://www.gub.uy/tramites/vacaciones-trabajo-working-holiday-vacaciones-trabajo-working-holiday-uruguayos",                    steps: "Search for Visa de Vacaciones y Trabajo on the portal.",                                        pitfalls: "Requirements usually include insurance and a clean criminal record." },
+    "Vietnam":        { url: "https://evisa.xuatnhapcanh.gov.vn/",                                                                                             steps: "Check the E-visa portal or the specific bilateral MOFA page.",                                   pitfalls: "Working Holiday agreements are limited and often industry-specific." }
+  };
+
+  function buildPortalHtml(dest) {
+    var d = PORTAL_DATA[dest];
+    if (!d) return '';
+    var h = '';
+    h += '<div data-portal-section style="margin-bottom:2rem;">';
+
+    // Header
+    h += '<div style="display:flex;align-items:center;margin-bottom:.55rem;">';
+    h += '<i class="fa fa-compass" style="font-size:1.2rem;color:#0d6efd;margin-right:.7rem;flex-shrink:0;"></i>';
+    h += '<h4 style="font-weight:700;margin:0;font-size:1.1rem;">Official Application Portal</h4>';
+    h += '</div>';
+    h += '<p style="color:#6c757d;font-size:.875rem;margin-bottom:1.3rem;">';
+    h += 'How to apply for your WHV in <strong>' + dest + '</strong>. 2026 guide.';
+    h += '</p>';
+
+    // Row: Portal link card + Steps card
+    h += '<div class="row mb-3">';
+
+    // Portal link card — green
+    h += '<div class="col-sm-5 mb-3">';
+    h += '<div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:14px;padding:1.2rem 1.4rem;height:100%;display:flex;flex-direction:column;justify-content:space-between;">';
+    h += '<div>';
+    h += '<div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#15803d;margin-bottom:.65rem;">Official Portal</div>';
+    h += '<p style="font-size:.82rem;color:#166534;margin-bottom:1rem;line-height:1.55;">Access the official government application system for ' + dest + '.</p>';
+    h += '</div>';
+    h += '<a href="' + d.url + '" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:.5rem;background:#16a34a;color:#fff;border-radius:9px;padding:.55rem 1.1rem;font-size:.82rem;font-weight:600;text-decoration:none;width:fit-content;">';
+    h += '<i class="fa fa-arrow-up-right-from-square" style="font-size:.7rem;"></i>Open Portal</a>';
+    h += '</div></div>';
+
+    // Steps card — blue
+    var stepItems = d.steps.split('->').map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; });
+    h += '<div class="col-sm-7 mb-3">';
+    h += '<div style="background:#eff6ff;border:1.5px solid #bfdbfe;border-radius:14px;padding:1.2rem 1.4rem;height:100%;">';
+    h += '<div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#1d4ed8;margin-bottom:.85rem;">Step-by-Step Navigation</div>';
+    stepItems.forEach(function(step, i) {
+      h += '<div style="display:flex;align-items:flex-start;margin-bottom:.55rem;">';
+      h += '<span style="min-width:22px;height:22px;border-radius:50%;background:#3b82f6;display:flex;align-items:center;justify-content:center;margin-right:.65rem;flex-shrink:0;margin-top:.08rem;font-size:.65rem;font-weight:700;color:#fff;">' + (i + 1) + '</span>';
+      h += '<span style="font-size:.85rem;color:#1e3a8a;line-height:1.55;">' + step + '</span>';
+      h += '</div>';
+    });
+    h += '</div></div>';
+
+    h += '</div>'; // .row
+
+    // Pitfalls — full-width red warning card
+    var pitfallItems = d.pitfalls.split(';').map(function(s) { return s.trim().replace(/\.$/, ''); }).filter(function(s) { return s.length > 0; });
+    h += '<div style="background:#fff5f5;border:1.5px solid #fca5a5;border-radius:14px;padding:1.1rem 1.4rem;">';
+    h += '<div style="display:flex;align-items:center;margin-bottom:.75rem;">';
+    h += '<span style="width:30px;height:30px;border-radius:8px;background:#fee2e2;display:flex;align-items:center;justify-content:center;margin-right:.75rem;flex-shrink:0;">';
+    h += '<i class="fa fa-triangle-exclamation" style="color:#dc2626;font-size:.85rem;"></i></span>';
+    h += '<span style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#dc2626;">Common Pitfalls &amp; Tips</span>';
+    h += '</div>';
+    pitfallItems.forEach(function(item) {
+      h += '<div style="display:flex;align-items:flex-start;margin-bottom:.45rem;">';
+      h += '<i class="fa fa-circle-xmark" style="color:#ef4444;font-size:.8rem;margin-right:.65rem;margin-top:.22rem;flex-shrink:0;"></i>';
+      h += '<span style="font-size:.875rem;color:#7f1d1d;line-height:1.6;">' + item + '</span>';
+      h += '</div>';
+    });
+    h += '</div>'; // pitfalls
+
+    // Footnote
+    h += '<p style="font-size:.74rem;color:#adb5bd;margin-top:.65rem;margin-bottom:0;">';
+    h += '<i class="fa fa-circle-info" style="margin-right:4px;"></i>';
+    h += 'Portal links are official government sources. Requirements may change — always verify before applying.';
+    h += '</p>';
+
+    h += '</div>'; // [data-portal-section]
+    return h;
+  }
+
   function buildBankHtml(dest) {
     var specifics = BANK_DATA[dest];
     if (!specifics) return '';
@@ -1195,13 +1320,13 @@ const COL_DATA = {
     if (_obs) _obs.disconnect();
 
     // Remove any previously injected sections
-    ['[data-col-section]', '[data-bank-section]'].forEach(function(sel) {
+    ['[data-portal-section]', '[data-col-section]', '[data-bank-section]'].forEach(function(sel) {
       var el = panel.querySelector(sel);
       if (el) el.remove();
     });
 
-    // Build combined HTML: CoL section then Bank section
-    var html = buildColHtml(dest) + buildBankHtml(dest);
+    // Build combined HTML: Portal → CoL → Bank
+    var html = buildPortalHtml(dest) + buildColHtml(dest) + buildBankHtml(dest);
 
     // Insert before the embassy card row; fall back to end of panel
     var embassyCard = panel.querySelector('.embassy-card');

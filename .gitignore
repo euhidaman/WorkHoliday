@@ -34,9 +34,3 @@ backend/
 
 # PowerShell scripts
 *.ps1
-
-# Development/Documentation files
-NAVIGATION_FIX_REPORT.md
-VISA_COMPLETION_STATUS.md
-VISA_UPDATE_PROGRESS.md
-ResearchInfo.pdf

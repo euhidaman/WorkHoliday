@@ -26,7 +26,8 @@
       "Bash(python generate_missing_pages.py)",
       "Bash(node -e \"const WHV_ELIGIBILITY = require\\('./js/whv-data.js'\\)\")",
       "Bash(node -e \"try { eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('OK'\\); } catch\\(e\\) { console.log\\('ERROR:', e.message\\); }\")",
-      "Bash(node -e \"try { eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('Syntax OK'\\); } catch\\(e\\) { console.log\\('ERROR line', e.message\\); }\")"
+      "Bash(node -e \"try { eval\\(require\\('fs'\\).readFileSync\\('js/whv-data.js','utf8'\\)\\); console.log\\('Syntax OK'\\); } catch\\(e\\) { console.log\\('ERROR line', e.message\\); }\")",
+      "Bash(git add *)"
     ]
   }
 }

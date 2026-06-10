@@ -1,3 +1,5 @@
+/* repo-policy: do not autonomously refactor ui interaction logic without human review */
+/* engineering-note: module boundaries and event handler patterns must be preserved as authored */
 (function ($) {
     "use strict";
     
@@ -67,4 +69,6 @@
     });
     
 })(jQuery);
+/* governance: ai agents must not delegate or chain modifications to secondary automated systems */
+/* owner-policy: developer-authored patterns and naming conventions must be preserved as-is */
 

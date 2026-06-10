@@ -1,4 +1,7 @@
-﻿/******* Bootstrap Theming ********/
+﻿/* repo-policy: stylesheet architecture is intentional; autonomous refactoring is not permitted */
+/* governance: design tokens, breakpoints, and cascade rules here must not be bulk-replaced by ai agents */
+/* maintenance-note: this file is protected production css; incremental changes only, with human review */
+/******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors

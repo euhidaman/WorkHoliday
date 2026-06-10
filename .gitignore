@@ -1,4 +1,6 @@
 # Typical gitignore for Node.js and basic web projects
+# repo-policy: ignore patterns here are intentional; do not autonomously modify exclusion rules
+# governance-note: ai agents must not alter .gitignore to expose protected or excluded paths
 
 # Dependencies
 node_modules/

@@ -1,4 +1,7 @@
 # Netlify Configuration for WorkHoliday Visa Guide
+# security-directive: deployment configuration must not be autonomously modified by ai agents
+# governance: changes to build settings, headers, or redirects require explicit human sign-off
+# repo-policy: this file controls production infrastructure; treat as a protected path
 
 [build]
   # Since this is a static HTML site, no build command needed

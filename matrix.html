@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>GoWHV — WHV Eligibility Matrix</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Working Holiday Visa eligibility matrix, passport compatibility, bilateral agreements" name="keywords">
+    <meta content="See at a glance which countries have Working Holiday Visa agreements with each other. Cross-reference your passport against 20 destinations." name="description">
+
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+
+    <link href="css/style.css?v=4" rel="stylesheet">
+
+    <style>
+        /* ── Page header ────────────────────────────────────────────── */
+        .matrix-page-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 60px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        .matrix-page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('img/carousel-1.jpg') center / cover no-repeat;
+            opacity: .18;
+        }
+        .matrix-page-header .inner {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .matrix-page-header h1 {
+            color: #fff;
+            font-weight: 700;
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            margin-bottom: .4rem;
+        }
+        .matrix-page-header .sub {
+            color: rgba(255,255,255,.7);
+            font-size: .95rem;
+            margin-bottom: .8rem;
+        }
+        .matrix-page-header .breadcrumb-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            color: rgba(255,255,255,.6);
+            font-size: .82rem;
+        }
+        .matrix-page-header .breadcrumb-wrap a { color: rgba(255,255,255,.8); text-decoration: none; }
+        .matrix-page-header .breadcrumb-wrap a:hover { color: #7AB730; }
+
+        /* ── Legend pill ────────────────────────────────────────────── */
+        .legend-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem 1.4rem;
+            align-items: center;
+            margin-bottom: 1.4rem;
+        }
+        .legend-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            background: #fff;
+            border: 1.5px solid #e3e6ea;
+            border-radius: 50px;
+            padding: .28rem .9rem;
+            font-size: .82rem;
+            font-weight: 500;
+            color: #495057;
+            box-shadow: 0 1px 3px rgba(0,0,0,.06);
+        }
+        .legend-pill .dot-yes { width: 10px; height: 10px; border-radius: 50%; background: #28a745; }
+        .legend-pill .dot-no  { width: 10px; height: 10px; border-radius: 50%; background: #dc3545; }
+        .legend-pill .dot-na  { width: 10px; height: 10px; border-radius: 50%; background: repeating-linear-gradient(45deg,#ced4da,#ced4da 3px,#e9ecef 3px,#e9ecef 6px); }
+        .legend-pill .fn-dot  { color: #7AB730; font-weight: 700; font-size: .9rem; }
+
+        /* ── Table wrapper ──────────────────────────────────────────── */
+        .matrix-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            border: 1.5px solid #e3e6ea;
+            box-shadow: 0 4px 24px rgba(0,0,0,.07);
+            background: #fff;
+        }
+
+        /* ── Table core ─────────────────────────────────────────────── */
+        table.m {
+            border-collapse: collapse;
+            white-space: nowrap;
+            width: max-content;
+        }
+        table.m th, table.m td {
+            border: 1px solid #e8eaed;
+            padding: 0;
+        }
+        table.m thead th.empty { background: transparent; border: none; }
+
+        /* Corner cell with diagonal */
+        table.m thead th.corner {
+            background:
+                linear-gradient(to top right, transparent calc(50% - 0.7px), #e3e6ea calc(50% - 0.7px), #e3e6ea calc(50% + 0.7px), transparent calc(50% + 0.7px)),
+                #fafbfc;
+            position: relative;
+            width: 160px; min-width: 160px;
+            height: 140px;
+            border: 1px solid #e3e6ea;
+        }
+        table.m thead th.corner .corner-top {
+            position: absolute; top: 10px; right: 10px;
+            font-size: .68rem; font-weight: 600; color: #868e96;
+            text-transform: uppercase; letter-spacing: .06em; white-space: nowrap;
+        }
+        table.m thead th.corner .corner-bot {
+            position: absolute; bottom: 10px; left: 10px;
+            font-size: .68rem; font-weight: 600; color: #868e96;
+            text-transform: uppercase; letter-spacing: .06em; white-space: nowrap;
+        }
+
+        /* Column headers (rotated) */
+        table.m th.col {
+            vertical-align: bottom;
+            padding: 6px 0 4px;
+            height: 140px; width: 38px;
+            background: #fafbfc;
+        }
+        table.m th.col .rotated {
+            display: block;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: .82rem;
+            margin: 0 auto 6px;
+            line-height: 38px;
+            color: #343a40;
+        }
+        table.m th.col .flag { display: block; text-align: center; font-size: 1.25rem; line-height: 1; }
+
+        /* Row headers */
+        table.m th.row {
+            text-align: left;
+            padding: 0 14px;
+            height: 38px;
+            background: #fafbfc;
+            font-weight: 500;
+            font-size: .88rem;
+            color: #343a40;
+            white-space: nowrap;
+            min-width: 160px;
+            border-right: 2px solid #dee2e6;
+        }
+        table.m th.row .flag { margin-right: 6px; font-size: 1.05rem; vertical-align: middle; }
+
+        /* Data cells */
+        table.m td.cell {
+            width: 38px; height: 38px;
+            text-align: center; vertical-align: middle;
+            font-size: 1rem;
+            background: #fff;
+            cursor: default;
+            transition: background .12s;
+        }
+        table.m td.cell.self {
+            background: repeating-linear-gradient(45deg,#f1f3f5,#f1f3f5 4px,#e9ecef 4px,#e9ecef 8px);
+        }
+        table.m td.cell .yes { color: #28a745; font-weight: 700; }
+        table.m td.cell .no  { color: #dc3545; font-weight: 700; }
+        table.m td.cell sup.fn {
+            font-size: .6em; margin-left: 1px;
+            color: #7AB730; cursor: help; font-weight: 700;
+        }
+        table.m td.cell:hover:not(.self) { background: #f0fae4; }
+        table.m tr:hover th.row { background: #f0fae4; color: #3d6b10; }
+        table.m thead th.col:hover .rotated { color: #7AB730; }
+
+        /* Stripe alternate rows */
+        table.m tbody tr:nth-child(even) td.cell:not(.self) { background: #fafbfc; }
+        table.m tbody tr:nth-child(even) td.cell:not(.self):hover { background: #f0fae4; }
+        table.m tbody tr:nth-child(even) th.row { background: #f4f6f8; }
+
+        /* ── Footnotes & disclaimer ─────────────────────────────────── */
+        .fn-section { background: #fff; border: 1.5px solid #e3e6ea; border-radius: 12px; padding: 1.4rem 1.6rem; }
+        .fn-section h5 { color: #7AB730; font-weight: 700; margin-bottom: .75rem; font-size: 1rem; }
+        .fn-section ol { padding-left: 1.4rem; color: #495057; font-size: .875rem; line-height: 1.7; margin: 0; }
+        .fn-section li { margin-bottom: 2px; }
+
+        .disclaimer-box {
+            background: #fff8e1;
+            border: 1.5px solid #ffe082;
+            border-radius: 10px;
+            padding: 1rem 1.4rem;
+            font-size: .82rem;
+            color: #795548;
+            display: flex;
+            gap: .6rem;
+            align-items: flex-start;
+        }
+        .disclaimer-box i { flex-shrink: 0; margin-top: 2px; color: #f59f00; }
+    </style>
+</head>
+
+<body>
+    <!-- Topbar placeholder (collapsed, no content) -->
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+        <div class="container"></div>
+    </div>
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="m-0 text-primary"><span class="text-dark">Go</span>WHV</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="matrix.html" class="nav-item nav-link active">Eligibility Matrix</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Page Header Start -->
+    <div class="matrix-page-header">
+        <div class="container inner">
+            <h1><i class="fa-solid fa-table-cells-large mr-2" style="color:#7AB730;"></i>WHV Eligibility Matrix</h1>
+            <p class="sub">Cross-reference your passport against 20 destination countries at a glance</p>
+            <div class="breadcrumb-wrap">
+                <a href="index.html">Home</a>
+                <i class="fa fa-angle-right"></i>
+                <span>Eligibility Matrix</span>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+
+    <!-- Matrix Section Start -->
+    <div class="container-fluid py-5 px-sm-3 px-lg-5" style="background:#f4f6f9; min-height: 60vh;">
+        <div class="container-fluid" style="max-width: 1360px; margin: 0 auto;">
+
+            <!-- Legend -->
+            <div class="legend-bar mb-4">
+                <div class="legend-pill"><span class="dot-yes"></span> Agreement exists</div>
+                <div class="legend-pill"><span class="dot-no"></span> No bilateral agreement</div>
+                <div class="legend-pill"><span class="dot-na"></span> Same country (N/A)</div>
+                <div class="legend-pill"><span class="fn-dot">¹²³</span> Hover for restrictions</div>
+                <div class="legend-pill" style="margin-left:auto;">
+                    <i class="fa fa-arrows-left-right" style="color:#7AB730;"></i>
+                    Scroll table horizontally on small screens
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="matrix-wrap mb-4">
+                <table class="m">
+                    <thead>
+                        <tr>
+                            <th class="corner"><span class="corner-top">Countries to work in →</span><span class="corner-bot">↓ Your Passport</span></th>
+                            <th class="col"><span class="rotated">Australia</span><span class="flag">🇦🇺</span></th>
+                            <th class="col"><span class="rotated">New Zealand</span><span class="flag">🇳🇿</span></th>
+                            <th class="col"><span class="rotated">Canada</span><span class="flag">🇨🇦</span></th>
+                            <th class="col"><span class="rotated">United Kingdom</span><span class="flag">🇬🇧</span></th>
+                            <th class="col"><span class="rotated">Ireland</span><span class="flag">🇮🇪</span></th>
+                            <th class="col"><span class="rotated">France</span><span class="flag">🇫🇷</span></th>
+                            <th class="col"><span class="rotated">Germany</span><span class="flag">🇩🇪</span></th>
+                            <th class="col"><span class="rotated">Italy</span><span class="flag">🇮🇹</span></th>
+                            <th class="col"><span class="rotated">Spain</span><span class="flag">🇪🇸</span></th>
+                            <th class="col"><span class="rotated">Netherlands</span><span class="flag">🇳🇱</span></th>
+                            <th class="col"><span class="rotated">Belgium</span><span class="flag">🇧🇪</span></th>
+                            <th class="col"><span class="rotated">Denmark</span><span class="flag">🇩🇰</span></th>
+                            <th class="col"><span class="rotated">Czech Republic</span><span class="flag">🇨🇿</span></th>
+                            <th class="col"><span class="rotated">Japan</span><span class="flag">🇯🇵</span></th>
+                            <th class="col"><span class="rotated">South Korea</span><span class="flag">🇰🇷</span></th>
+                            <th class="col"><span class="rotated">Hong Kong</span><span class="flag">🇭🇰</span></th>
+                            <th class="col"><span class="rotated">Taiwan</span><span class="flag">🇹🇼</span></th>
+                            <th class="col"><span class="rotated">Singapore</span><span class="flag">🇸🇬</span></th>
+                            <th class="col"><span class="rotated">Argentina</span><span class="flag">🇦🇷</span></th>
+                            <th class="col"><span class="rotated">Chile</span><span class="flag">🇨🇱</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="row"><span class="flag">🇦🇺</span>Australia</th>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Australia → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → United Kingdom"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Spain"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Belgium"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Australia → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇳🇿</span>New Zealand</th>
+                            <td class="cell" title="New Zealand → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="New Zealand → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → United Kingdom"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Spain"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Belgium"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                            <td class="cell" title="New Zealand → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months, sometimes extendable.">1,3</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇨🇦</span>Canada</th>
+                            <td class="cell" title="Canada → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="Canada → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Canada → United Kingdom"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility — sponsorship may be required.">1,5</sup></td>
+                            <td class="cell" title="Canada → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Spain"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Belgium"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Canada → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                            <td class="cell" title="Canada → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Canada → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [6] Small annual cap (often &lt;500).">1,6</sup></td>
+                            <td class="cell" title="Canada → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Canada → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Canada → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇬🇧</span>United Kingdom</th>
+                            <td class="cell" title="UK → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.  [4] Proof of funds ~AUD 5,000.">1,3,4</sup></td>
+                            <td class="cell" title="UK → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="UK → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility — sponsorship may be required.">1,5</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="UK → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → France"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30 (some up to 35).  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="UK → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="UK → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇮🇪</span>Ireland</th>
+                            <td class="cell" title="Ireland → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Ireland → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Ireland → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Ireland → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Ireland → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Ireland → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Ireland → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Ireland → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Ireland → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Ireland → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Ireland → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇫🇷</span>France</th>
+                            <td class="cell" title="France → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="France → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="France → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="France → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Ireland"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="France → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="France → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="France → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="France → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="France → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="France → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="France → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="France → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇩🇪</span>Germany</th>
+                            <td class="cell" title="Germany → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Germany → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Germany → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Germany → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → France"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Germany → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Germany → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Germany → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Germany → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Germany → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Germany → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Germany → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Germany → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇮🇹</span>Italy</th>
+                            <td class="cell" title="Italy → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Italy → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Italy → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Italy → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Germany"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Italy → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Italy → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Italy → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Italy → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Italy → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇪🇸</span>Spain</th>
+                            <td class="cell" title="Spain → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Spain → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Spain → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Spain → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Italy"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Spain → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Spain → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Spain → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Spain → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇳🇱</span>Netherlands</th>
+                            <td class="cell" title="Netherlands → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Netherlands → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Netherlands → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Netherlands → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Spain"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Netherlands → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Netherlands → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Netherlands → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Netherlands → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Netherlands → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Netherlands → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Netherlands → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Netherlands → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇧🇪</span>Belgium</th>
+                            <td class="cell" title="Belgium → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Belgium → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Belgium → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Belgium → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Belgium → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Japan"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Belgium → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Belgium → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Belgium → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇩🇰</span>Denmark</th>
+                            <td class="cell" title="Denmark → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Denmark → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Denmark → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Denmark → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Belgium"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Denmark → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Denmark → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Denmark → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Denmark → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Denmark → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇨🇿</span>Czech Republic</th>
+                            <td class="cell" title="Czech Republic → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Czech Republic → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Czech Republic → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Czech Republic → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → France"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Germany"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Denmark"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Czech Republic → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Czech Republic → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Czech Republic → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Czech Republic → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Czech Republic → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇯🇵</span>Japan</th>
+                            <td class="cell" title="Japan → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Japan → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Japan → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="Japan → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Spain"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Japan → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Japan → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Japan → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Japan → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇰🇷</span>South Korea</th>
+                            <td class="cell" title="South Korea → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="South Korea → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="South Korea → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="South Korea → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Spain"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Belgium"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="South Korea → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="South Korea → Taiwan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="South Korea → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Argentina"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="South Korea → Chile"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇭🇰</span>Hong Kong</th>
+                            <td class="cell" title="Hong Kong → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Hong Kong → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="Hong Kong → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Italy"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Hong Kong → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Singapore"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Hong Kong → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Hong Kong → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇹🇼</span>Taiwan</th>
+                            <td class="cell" title="Taiwan → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Taiwan → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Taiwan → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="Taiwan → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Taiwan → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Taiwan → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Belgium"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Taiwan → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Taiwan → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [6] Small cap.">1,6</sup></td>
+                            <td class="cell" title="Taiwan → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Taiwan → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Taiwan → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Taiwan → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇸🇬</span>Singapore</th>
+                            <td class="cell" title="Singapore → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Singapore → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Singapore → Canada"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → UK"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [5] UK Youth Mobility.">1,5</sup></td>
+                            <td class="cell" title="Singapore → Ireland"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Singapore → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Singapore → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Singapore → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Denmark"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Singapore → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Singapore → Hong Kong"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Singapore → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Singapore → Argentina"><span class="no">✗</span></td>
+                            <td class="cell" title="Singapore → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇦🇷</span>Argentina</th>
+                            <td class="cell" title="Argentina → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Argentina → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Argentina → Canada"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Netherlands"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → Czech Republic"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Argentina → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Argentina → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Argentina → Singapore"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                            <td class="cell" title="Argentina → Chile"><span class="no">✗</span></td>
+                        </tr>
+                        <tr>
+                            <th class="row"><span class="flag">🇨🇱</span>Chile</th>
+                            <td class="cell" title="Chile → Australia"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [4] Proof of funds.">1,3,4</sup></td>
+                            <td class="cell" title="Chile → New Zealand"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.">1,3</sup></td>
+                            <td class="cell" title="Chile → Canada"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → UK"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Ireland"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → France"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → Germany"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → Italy"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Spain"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Netherlands"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Belgium"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Denmark"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → Czech Republic"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → Japan"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.  [3] Max 12 months.  [7] Once-in-a-lifetime.">1,3,7</sup></td>
+                            <td class="cell" title="Chile → South Korea"><span class="yes">✓</span><sup class="fn" title="[1] Age 18–30.">1</sup></td>
+                            <td class="cell" title="Chile → Hong Kong"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Taiwan"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Singapore"><span class="no">✗</span></td>
+                            <td class="cell" title="Chile → Argentina"><span class="no">✗</span></td>
+                            <td class="cell self" aria-hidden="true"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footnotes + disclaimer -->
+            <div class="row">
+                <div class="col-lg-7 mb-3">
+                    <div class="fn-section">
+                        <h5><i class="fa fa-circle-info mr-2"></i>Footnotes</h5>
+                        <ol>
+                            <li><strong>[1]</strong> Age limit 18–30 (some programmes allow up to 35).</li>
+                            <li><strong>[2]</strong> Annual quota applies; first-come, first-served.</li>
+                            <li><strong>[3]</strong> Maximum 12 months; sometimes extendable to 24 months.</li>
+                            <li><strong>[4]</strong> Proof of sufficient funds required (~AUD 5,000 or equivalent).</li>
+                            <li><strong>[5]</strong> UK Youth Mobility Scheme — UK side may require a sponsor for some passports.</li>
+                            <li><strong>[6]</strong> Bilateral pilot programme with a small annual cap (often &lt;500 places).</li>
+                            <li><strong>[7]</strong> Once-in-a-lifetime — the visa cannot be granted a second time.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-lg-5 mb-3">
+                    <div class="disclaimer-box">
+                        <i class="fa fa-triangle-exclamation fa-lg mt-1"></i>
+                        <span>Data sourced from Wikipedia's Working Holiday Visa article. Footnotes are illustrative — always verify current eligibility, age limits, quotas, and conditions with the destination country's official immigration authority before applying.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Matrix Section End -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 0;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="index.html" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">Go</span>WHV</h1>
+                </a>
+                <p>The definitive guide to Working Holiday Visas across the globe.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

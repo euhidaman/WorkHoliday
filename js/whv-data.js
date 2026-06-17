@@ -1431,6 +1431,231 @@ const COL_DATA = {
     return h;
   }
 
+  // ─── NATIONAL HEALTH SCHEME DATA ────────────────────────────────────────────
+  var INSURANCE_DATA = {
+    "Australia": {
+      schemeName: "Medicare (Reciprocal Health Care Agreement)",
+      framework: "Available only to passport holders of specific agreement nations (e.g., UK, Belgium, Netherlands, Italy). Covers essential, medically necessary public hospital treatments. Excludes ambulance rides, private patient fees, and dental care completely.",
+      steps: [
+        "Arrive in Australia and secure a local residential address.",
+        "Submit an enrolment form online via the Services Australia portal or visit a physical Centrelink/Medicare service centre.",
+        "Provide your passport, valid WHV (Subclass 417/462), and proof of your home country’s public health enrolment (e.g., European Health Insurance Card)."
+      ]
+    },
+    "Austria": {
+      schemeName: "ÖGK (Österreichische Gesundheitskasse)",
+      framework: "Mandatory statutory health insurance once you obtain local employment under a standard contract. For periods of travel, self-employment, or before finding a job, you are completely uncovered locally.",
+      steps: [
+        "Secure a regular local employment contract exceeding the marginal earnings threshold (~€518/month).",
+        "Your employer is legally required to register you with the ÖGK before your first working day.",
+        "You will receive an Austrian Social Security Card (e-card) via mail to present at medical clinics."
+      ]
+    },
+    "Belgium": {
+      schemeName: "Mutualité / Ziekenfonds (State-Subsidized Funds)",
+      framework: "The public mutuality system provides partial reimbursements for general practitioner visits and prescription drugs. Requires active registration and a small monthly or quarterly contribution.",
+      steps: [
+        "Register your physical address at the local town hall (Commune) to obtain your Belgian National Number.",
+        "Choose a public insurance fund (e.g., Partenamut, CM) and complete an application online or in person.",
+        "Present your residency document, employment contract, and pay the baseline premium (~€10–15/month)."
+      ]
+    },
+    "Canada": {
+      schemeName: "Provincial Health Care (e.g., OHIP in Ontario, MSP in BC)",
+      framework: "Generally inaccessible to International Experience Canada (IEC) holders at entry. Some provinces allow access only after proving continuous full-time employment with a local contract of 6 months or longer.",
+      steps: [
+        "Arrive in Canada and clear border controls using an international private policy that covers your full stay.",
+        "Secure a full-time job and obtain a written contract confirming a duration of 6+ months.",
+        "Apply online at the respective provincial health authority portal with your employer’s letter, a lease agreement, and your work permit."
+      ]
+    },
+    "Denmark": {
+      schemeName: "Public Health Insurance (Sundhedskort / ‘Yellow Card’)",
+      framework: "Grants complete access to free primary and hospital care under general practitioners. Becomes active only after a formal residential address is registered and a personal identification number is issued.",
+      steps: [
+        "Secure a permanent room or apartment and book an appointment at the local Citizen Service (Borgerservice).",
+        "Apply for a CPR (Civil Registration) number by presenting your WHV, passport, and signed rental agreement.",
+        "The yellow card with your assigned doctor’s details will be mailed to you within 2–3 weeks."
+      ]
+    },
+    "France": {
+      schemeName: "Sécurité Sociale / Protection Universelle Maladie (PUMA)",
+      framework: "Grants state coverage for routine doctor visits and up to 70% of standard prescription costs. There is a mandatory 3-month continuous residency wait time for non-working long-stay visa holders.",
+      steps: [
+        "Arrive in France and complete 3 consecutive months of physical residence, or start working immediately.",
+        "Complete the formal application form ‘Demande d’ouverture des droits à l’assurance maladie’ (Form S1106).",
+        "Submit the form to the local CPAM office along with your passport, WHV, birth certificate, IBAN, and proof of address."
+      ]
+    },
+    "Germany": {
+      schemeName: "Gesetzliche Krankenversicherung (GKV — e.g., TK, AOK)",
+      framework: "Compulsory statutory insurance for any worker earning above the mini-job limit. Covers full medical treatment but requires premium splits with your employer. Unusable for the initial entry/visa application phase.",
+      steps: [
+        "Sign a local employment contract paying over €538 per month.",
+        "Select a statutory health fund provider (such as Techniker Krankenkasse or AOK) online or through your HR department.",
+        "Inform your employer of your chosen fund; they will process the monthly payroll deductions automatically."
+      ]
+    },
+    "Japan": {
+      schemeName: "National Health Insurance (Kokumin Kenko Hoken)",
+      framework: "A strict legal requirement for all mid-to-long-term residents. Covers 70% of all medical expenses, leaving a 30% co-payment. Does not cover medical repatriation of remains back to your home country.",
+      steps: [
+        "Go to the local Ward Office or City Hall (Kuyakusho) within 14 days of moving into stable accommodation.",
+        "Complete the resident registration form and explicitly ask to join the National Health Insurance division.",
+        "Present your passport and Residence Card (Zairyu Card) to receive your paper health insurance booklet."
+      ]
+    },
+    "Netherlands": {
+      schemeName: "Basisverzekering (Dutch Basic Health Insurance)",
+      framework: "Strict legal mandate: The moment you earn any income from temporary, seasonal, or part-time work in the Netherlands, you must buy a commercial Dutch basic health policy. Failing to enrol results in massive retrospective fines.",
+      steps: [
+        "Register at the local municipality (Gemeente) to obtain a Citizen Service Number (BSN).",
+        "Choose a commercial health insurer (e.g., Zilveren Kruis, VGZ) and purchase a ‘Basisverzekering’ plan.",
+        "Provide your BSN and Dutch bank account details. Apply for a healthcare allowance (Zorgtoeslag) if your income is low."
+      ]
+    },
+    "New Zealand": {
+      schemeName: "ACC (Accident Compensation Corporation)",
+      framework: "A universal, no-fault scheme covering accident-related injuries for anyone physically inside New Zealand. It is not an insurance policy and does not cover standard medical illnesses, doctor checkups, or clinical repatriation.",
+      steps: [
+        "No active registration or application is required.",
+        "If you suffer an accidental injury (e.g., sports, road, work), visit any local hospital emergency room or general clinic.",
+        "Fill out an injury claim form at the clinic. The medical provider submits it to ACC directly to subsidize your treatment costs."
+      ]
+    },
+    "South Korea": {
+      schemeName: "National Health Insurance (NHI)",
+      framework: "Mandatory statutory insurance for long-term foreign residents. Registration becomes automatic once you are registered as an alien and meet local employment conditions. Private cover remains a hard prerequisite for visa issuance.",
+      steps: [
+        "Obtain your official Alien Registration Card (ARC) from the local immigration office.",
+        "If employed, your workplace will enrol you automatically as an employee-insured member.",
+        "If self-employed or unemployed after a specific period, the NHI Service will mail an enrolment notice and monthly bill to your registered address."
+      ]
+    },
+    "Taiwan": {
+      schemeName: "National Health Insurance (NHI) — 6-Month Wait",
+      framework: "Strict 6-month wait: WHV holders are completely excluded from joining the NHI system during their initial stay unless they secure a continuous, formal employment contract exceeding 6 months.",
+      steps: [
+        "Enter Taiwan using a mandatory 12-month private multi-risk international policy.",
+        "Secure a formal job contract where the employer guarantees registration and local tax compliance for a period exceeding 6 continuous months.",
+        "Have your employer’s HR department submit an NHI enrolment application using your Alien Resident Certificate (ARC)."
+      ]
+    },
+    "United Kingdom": {
+      schemeName: "National Health Service (NHS)",
+      framework: "Grants complete access to state-run general practices, clinical consults, and public emergency hospitals. Requires a mandatory upfront financial surcharge paid during your initial online visa application.",
+      steps: [
+        "Pay the mandatory Immigration Health Surcharge (IHS) of £776 per year during your online Youth Mobility Scheme visa application.",
+        "Arrive in the UK and collect your physical Biometric Residence Permit (BRP).",
+        "Visit a local general practitioner (GP) clinic near your residential address with your BRP and proof of address to complete local registration."
+      ]
+    }
+  };
+
+  var _insuranceProviders = [
+    { name:'Chapka',       plan:'Cap Working Holiday',  price:'From €39 / month',   url:'chapkadirect.com', href:'https://www.chapkadirect.com' },
+    { name:'DR-Walter',    plan:'PROTRIP-WORLD',         price:'From €38 / month',   url:'dr-walter.com',    href:'https://www.dr-walter.com'    },
+    { name:'SafetyWing',   plan:'Nomad Insurance',       price:'~€50 / 4 weeks',     url:'safetywing.com',   href:'https://www.safetywing.com'   },
+    { name:'Genki',        plan:'World Explorer',        price:'From €48 / month',   url:'genki.world',      href:'https://www.genki.world'       },
+    { name:'World Nomads', plan:'Standard / Explorer',   price:'Activity Dependent', url:'worldnomads.com',  href:'https://www.worldnomads.com'  }
+  ];
+
+  function buildInsuranceHtml(dest) {
+    if (!dest) return '';
+    var scheme = INSURANCE_DATA[dest] || null;
+    var h = '';
+
+    h += '<div data-insurance-section style="margin-bottom:2rem;">';
+
+    // Section header
+    var headerColor = scheme ? '#059669' : '#dc2626';
+    var headerIcon  = scheme ? 'fa-shield-heart' : 'fa-shield-halved';
+    h += '<div style="display:flex;align-items:center;margin-bottom:.55rem;">';
+    h += '<i class="fa ' + headerIcon + '" style="font-size:1.2rem;color:' + headerColor + ';margin-right:.7rem;flex-shrink:0;"></i>';
+    h += '<h4 style="font-weight:700;margin:0;font-size:1.1rem;">Health Coverage &amp; Insurance</h4>';
+    h += '</div>';
+    h += '<p style="color:#6c757d;font-size:.875rem;margin-bottom:1.3rem;">';
+    if (scheme) {
+      h += 'National health scheme access and recommended international providers for WHV holders in <strong>' + dest + '</strong>. 2026 guide.';
+    } else {
+      h += 'Health insurance requirements and recommended international providers for WHV holders in <strong>' + dest + '</strong>. 2026 guide.';
+    }
+    h += '</p>';
+
+    if (scheme) {
+      // ── Green card: national scheme details ──
+      h += '<div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem;">';
+      h += '<div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.85rem;">';
+      h += '<span style="background:#059669;color:#fff;border-radius:8px;padding:.22rem .65rem;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;flex-shrink:0;">National Scheme</span>';
+      h += '<span style="font-weight:700;font-size:.95rem;color:#065f46;">' + scheme.schemeName + '</span>';
+      h += '</div>';
+      h += '<p style="font-size:.875rem;color:#374151;margin-bottom:1rem;line-height:1.6;">' + scheme.framework + '</p>';
+      h += '<div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#059669;margin-bottom:.6rem;">How to Register — Step by Step</div>';
+      h += '<ol style="margin:0;padding-left:1.3rem;">';
+      scheme.steps.forEach(function(step) {
+        h += '<li style="font-size:.875rem;color:#374151;line-height:1.65;margin-bottom:.45rem;">' + step + '</li>';
+      });
+      h += '</ol>';
+      h += '</div>';
+
+      // ── Amber note: international coverage still needed ──
+      h += '<div style="background:#fffbf0;border:1.5px solid #ffd97d;border-radius:14px;padding:.9rem 1.4rem;margin-bottom:1rem;">';
+      h += '<div style="display:flex;align-items:center;gap:.55rem;margin-bottom:.4rem;">';
+      h += '<i class="fa fa-triangle-exclamation" style="color:#b07a00;font-size:.85rem;flex-shrink:0;"></i>';
+      h += '<span style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#8a6800;">International Coverage Still Required</span>';
+      h += '</div>';
+      h += '<p style="font-size:.84rem;color:#5a4400;margin:0;line-height:1.55;">The national scheme does not cover medical repatriation, ambulance transport, extreme sports injuries, or emergency dental work. An international multi-risk policy is mandatory for the visa application and essential to fill these critical gaps.</p>';
+      h += '</div>';
+    } else {
+      // ── Coral card: no public access, positive framing ──
+      h += '<div style="background:#fff5f5;border:1.5px solid #fca5a5;border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem;">';
+      h += '<div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem;">';
+      h += '<span style="background:#dc2626;color:#fff;border-radius:8px;padding:.22rem .65rem;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;flex-shrink:0;">No Public Access</span>';
+      h += '<span style="font-weight:700;font-size:.9rem;color:#991b1b;">Private Insurance Is Your Primary Coverage</span>';
+      h += '</div>';
+      h += '<p style="font-size:.875rem;color:#374151;margin-bottom:.85rem;line-height:1.6;">WHV holders in <strong>' + dest + '</strong> are not eligible for state healthcare infrastructure, subsidies, or national medical funds. Private international health insurance is mandatory — required for the visa application and for all medical events during your stay.</p>';
+      h += '<div style="padding-top:.75rem;border-top:1px solid #fecaca;">';
+      h += '<div style="font-size:.76rem;font-weight:700;color:#7f1d1d;margin-bottom:.5rem;">In a medical event:</div>';
+      h += '<div style="display:flex;gap:.45rem;flex-wrap:wrap;">';
+      h += '<span style="background:#fee2e2;color:#991b1b;border-radius:20px;padding:.2rem .75rem;font-size:.78rem;font-weight:500;">Use private clinics &amp; hospitals</span>';
+      h += '<span style="background:#fee2e2;color:#991b1b;border-radius:20px;padding:.2rem .75rem;font-size:.78rem;font-weight:500;">Claim back via your policy</span>';
+      h += '<span style="background:#fee2e2;color:#991b1b;border-radius:20px;padding:.2rem .75rem;font-size:.78rem;font-weight:500;">Keep all receipts</span>';
+      h += '</div>';
+      h += '</div>';
+      h += '</div>';
+    }
+
+    // ── Providers table (same for all destinations) ──
+    h += '<div style="background:#fff;border:1.5px solid #dee2e6;border-radius:14px;overflow:hidden;margin-bottom:.75rem;">';
+    h += '<div style="background:#f8f9fa;padding:.7rem 1.4rem;border-bottom:1px solid #dee2e6;">';
+    h += '<i class="fa fa-globe" style="color:#6c757d;margin-right:.5rem;font-size:.85rem;"></i>';
+    h += '<span style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#6c757d;">Recommended International Multi-Risk Providers</span>';
+    h += '</div>';
+    _insuranceProviders.forEach(function(p, idx) {
+      var sep = idx < _insuranceProviders.length - 1 ? 'border-bottom:1px solid #f1f3f5;' : '';
+      h += '<div style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.4rem;' + sep + 'flex-wrap:wrap;gap:.5rem;">';
+      h += '<div style="flex:1;min-width:130px;">';
+      h += '<div style="font-weight:700;font-size:.9rem;color:#212529;">' + p.name + '</div>';
+      h += '<div style="font-size:.8rem;color:#6c757d;">' + p.plan + '</div>';
+      h += '</div>';
+      h += '<div style="text-align:right;flex-shrink:0;">';
+      h += '<div style="font-weight:600;font-size:.88rem;color:#198754;">' + p.price + '</div>';
+      h += '<a href="' + p.href + '" target="_blank" rel="noopener noreferrer" style="font-size:.78rem;color:#0d6efd;text-decoration:none;">' + p.url + ' <i class="fa fa-arrow-up-right-from-square" style="font-size:.6rem;"></i></a>';
+      h += '</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+
+    // Footnote
+    h += '<p style="font-size:.74rem;color:#adb5bd;margin-top:.2rem;margin-bottom:0;">';
+    h += '<i class="fa fa-circle-info" style="margin-right:4px;"></i>';
+    h += 'Premiums shown are indicative estimates. Always confirm current pricing directly with each provider before purchasing.';
+    h += '</p>';
+
+    h += '</div>'; // [data-insurance-section]
+    return h;
+  }
+
   // ─── ORIGIN COUNTRY → CURRENCY CODE ────────────────────────────────────────
   var ORIGIN_CURRENCY = {
     "Andorra":"EUR","Argentina":"ARS","Australia":"AUD","Austria":"EUR",
@@ -1498,10 +1723,10 @@ const COL_DATA = {
 
   function _doInject(panel, dest, ov) {
     if (_obs) _obs.disconnect();
-    ['[data-portal-section]','[data-visa-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
+    ['[data-portal-section]','[data-visa-section]','[data-insurance-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
       var el = panel.querySelector(sel); if (el) el.remove();
     });
-    var html = buildPortalHtml(dest) + buildVisaCostHtml(dest) + buildColHtml(dest, ov) + buildBankHtml(dest);
+    var html = buildPortalHtml(dest) + buildVisaCostHtml(dest) + buildInsuranceHtml(dest) + buildColHtml(dest, ov) + buildBankHtml(dest);
     var embassyCard = panel.querySelector('.embassy-card');
     var anchor = embassyCard ? embassyCard.closest('.row') || embassyCard.parentElement : null;
     if (anchor) anchor.insertAdjacentHTML('beforebegin', html);

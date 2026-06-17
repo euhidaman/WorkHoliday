@@ -1186,6 +1186,115 @@ const COL_DATA = {
     "Vietnam":        { url: "https://evisa.xuatnhapcanh.gov.vn/",                                                                                             steps: "Check the E-visa portal or the specific bilateral MOFA page.",                                   pitfalls: "Working Holiday agreements are limited and often industry-specific." }
   };
 
+  // ─── OFFICIAL VISA APPLICATION FEES (2026) ──────────────────────────────────
+  var VISA_COST_DATA = {
+    "Andorra":        { fee: "Free of charge", eur: "0 €",          note: "No visa application fees for Working Holiday participants." },
+    "Argentina":      { fee: "Free – ~150 €",  eur: null,           note: "Entirely dependent on the applicant's country of citizenship (bilateral agreements)." },
+    "Australia":      { fee: "650 AUD",        eur: "~400 €",       note: "Standard statutory fee for the Working Holiday Visa (Subclass 417 / 462)." },
+    "Austria":        { fee: "75 € – 150 €",   eur: null,           note: "Depending on location of application (inbound/outbound) and Long-Stay Visa Type D frameworks." },
+    "Belgium":        { fee: "180 € – 350 €",  eur: null,           note: "Commonly composed of the standard consular visa fee combined with an additional administrative processing levy." },
+    "Brazil":         { fee: "Free – ~100 €",  eur: null,           note: "Highly dependent on specific bilateral intergovernmental agreements." },
+    "Canada":         { fee: "185 – 272 CAD",  eur: "~130 – 190 €", note: "Includes the base program entry fee (IEC Fee) and required biometric data capture fee." },
+    "Chile":          { fee: "Free – ~150 USD", eur: null,          note: "Varies significantly depending on the formal nationality/passport of the applicant." },
+    "Colombia":       { fee: "~50 – 150 USD",  eur: null,           note: "Processing fee + formal issuance fee calculated based on reciprocal agreements." },
+    "Croatia":        { fee: "~60 – 100 €",    eur: null,           note: "Standard administrative visa fee for long-term stays (National Visa Type D)." },
+    "Cyprus":         { fee: "~60 €",          eur: null,           note: "Standard application processing fee levied by the respective consular missions." },
+    "Czech Republic": { fee: "Free – ~100 €",  eur: null,           note: "Frequently exempted from processing fees for designated bilateral partner countries." },
+    "Denmark":        { fee: "~270 €",         eur: "2,000 DKK",    note: "Statutory case processing fee levied by the Danish Agency for International Recruitment and Integration (SIRI)." },
+    "Ecuador":        { fee: "~50 – 200 USD",  eur: null,           note: "Initial application review fee + formal visa issuance fee applied upon final approval." },
+    "Estonia":        { fee: "100 €",          eur: null,           note: "Regular processing fee for the national long-term visa (National Visa Type D)." },
+    "Finland":        { fee: "380 – 440 €",    eur: null,           note: "Electronic online application pathways are priced lower than traditional physical paper applications." },
+    "France":         { fee: "99 €",           eur: null,           note: "Standard statutory fee for national long-stay visas, discounted for specified partner states." },
+    "Germany":        { fee: "75 €",           eur: null,           note: "Regular official fee for national visas issued specifically under Working Holiday frameworks." },
+    "Greece":         { fee: "75 – 150 €",     eur: null,           note: "National consular processing fee for statutory long-term stays." },
+    "Hong Kong":      { fee: "~250 HKD",       eur: "~30 €",        note: "Very low-cost administrative processing fee collected by the Immigration Department." },
+    "Hungary":        { fee: "60 – 110 €",     eur: null,           note: "Consular administrative fee for visas leading to a formal residence permit structure." },
+    "Iceland":        { fee: "~60 – 100 €",    eur: null,           note: "Administrative case processing fee collected by the Directorate of Immigration." },
+    "Ireland":        { fee: "60 – 300 €",     eur: null,           note: "Varies by country of application (may include supplementary Working Holiday employment authorisation processing fees)." },
+    "Israel":         { fee: "~50 €",          eur: null,           note: "Standard official statutory processing fee for B/1 class employment visas." },
+    "Italy":          { fee: "116 €",          eur: null,           note: "National consular fee structured for long-stay residency and visas (Type D)." },
+    "Japan":          { fee: "Free of charge", eur: "0 €",          note: "Fully fee-exempt under the vast majority of bilateral reciprocal agreements." },
+    "Latvia":         { fee: "60 €",           eur: null,           note: "Standard processing baseline fee structured for the national long-stay visa (Type D)." },
+    "Lithuania":      { fee: "120 €",          eur: null,           note: "Regular mandatory processing fee for national visas (Type D)." },
+    "Luxembourg":     { fee: "Free of charge", eur: "0 €",          note: "Frequently fully fee-exempt under regional cultural exchange and mobility treaties." },
+    "Mexico":         { fee: "~40 – 50 USD",   eur: null,           note: "Low-cost consular processing fee required for the temporary resident visa class." },
+    "Netherlands":    { fee: "350 – 380 €",    eur: null,           note: "Relatively high administrative processing case fee collected by the IND (Immigration and Naturalisation Service)." },
+    "New Zealand":    { fee: "420 – 450 NZD",  eur: "~240 – 260 €", note: "Consolidated price including the baseline visa fee and the International Visitor Conservation and Tourism Levy (IVL)." },
+    "Norway":         { fee: "~550 €",         eur: "6,300 NOK",    note: "Ranked globally among the highest case processing fees for a Working Holiday residence permit." },
+    "Peru":           { fee: "~30 – 50 USD",   eur: null,           note: "Minimal official document issuance fee collected directly by Peruvian consular representations." },
+    "Philippines":    { fee: "~50 – 100 USD",  eur: null,           note: "Initial entry visa processing charge combined with mandatory localised alien registration fees." },
+    "Poland":         { fee: "60 – 80 €",      eur: null,           note: "Standard processing baseline fee structured for the national long-stay visa (Type D)." },
+    "Portugal":       { fee: "75 – 90 €",      eur: null,           note: "National consular processing visa fee structured for long-term stays." },
+    "Singapore":      { fee: "175 SGD",        eur: "~120 €",       note: "Mandatory processing pass fee required by the Ministry of Manpower (MOM Singapore)." },
+    "Slovakia":       { fee: "Free – ~90 €",   eur: null,           note: "Frequently exempted from processing fees subject to strict bilateral reciprocity frameworks." },
+    "Slovenia":       { fee: "77 €",           eur: null,           note: "Standard statutory consular fee required for national long-stay visas (Type D)." },
+    "South Korea":    { fee: "Free – ~90 USD", eur: null,           note: "Completely fee-exempt for citizens holding passports from numerous European partner nations." },
+    "Spain":          { fee: "60 – 100 €",     eur: null,           note: "Consular case processing fee required to submit the national visa application." },
+    "Sweden":         { fee: "~130 €",         eur: "1,500 SEK",    note: "Mandatory online application fee collected by the Swedish Migration Agency (Migrationsverket)." },
+    "Switzerland":    { fee: "80 – 100 €",     eur: null,           note: "Federal statutory visa fee subject to additional regional cantonal authorisation and issuance levies." },
+    "Taiwan":         { fee: "Free – ~100 €",  eur: null,           note: "Highly contingent upon the applicant's nationality (frequently fully exempt via reciprocity)." },
+    "Thailand":       { fee: "~150 – 200 USD", eur: null,           note: "Consular fee structured for multiple-entry visa frameworks (Non-Immigrant Category / Working Holiday)." },
+    "Turkey":         { fee: "~60 – 120 €",    eur: null,           note: "Consular processing fee required for the administrative submission of employment and mobility visas." },
+    "United Kingdom": { fee: "298 GBP",        eur: "~350 €",       note: "Statutory baseline fee for the Youth Mobility Scheme. Note: a separate mandatory Immigration Health Surcharge also applies." },
+    "United States":  { fee: "160 USD",        eur: "~145 €",       note: "Standard non-immigrant visa application fee (MRV fee). Additional fees may apply depending on visa type." },
+    "Uruguay":        { fee: "~40 – 60 USD",   eur: null,           note: "Minimal administrative processing and formal document issuance fees." },
+    "Vietnam":        { fee: "~50 – 135 USD",  eur: null,           note: "Dependent on the individual embassy jurisdiction and requested entry parameter duration (Single vs. Multiple Entry)." }
+  };
+
+  function buildVisaCostHtml(dest) {
+    var d = VISA_COST_DATA[dest];
+    if (!d) return '';
+    var isFree = d.fee.toLowerCase().indexOf('free') !== -1;
+    var accentColor = isFree ? '#198754' : '#5a34d6';
+    var accentBg    = isFree ? '#edfff4' : '#f0edff';
+    var accentBorder= isFree ? '#b6e8cb' : '#c9bfff';
+    var h = '';
+    h += '<div data-visa-section style="margin-bottom:2rem;">';
+
+    // Header
+    h += '<div style="display:flex;align-items:center;margin-bottom:.55rem;">';
+    h += '<i class="fa fa-credit-card" style="font-size:1.2rem;color:#5a34d6;margin-right:.7rem;flex-shrink:0;"></i>';
+    h += '<h4 style="font-weight:700;margin:0;font-size:1.1rem;">Official Visa Application Fee</h4>';
+    h += '</div>';
+    h += '<p style="color:#6c757d;font-size:.875rem;margin-bottom:1.1rem;">2026 estimated government fee to apply for the Working Holiday Visa in this destination.</p>';
+
+    // Main fee card
+    h += '<div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:.85rem;">';
+
+    // Fee amount pill
+    h += '<div style="flex:0 0 auto;background:' + accentBg + ';border:1.5px solid ' + accentBorder + ';border-radius:14px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:.9rem;">';
+    h += '<span style="width:40px;height:40px;border-radius:10px;background:' + accentColor + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;">';
+    h += '<i class="fa fa-money-bill-wave" style="color:#fff;font-size:.9rem;"></i></span>';
+    h += '<div>';
+    h += '<div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:' + accentColor + ';margin-bottom:2px;">Application Fee</div>';
+    h += '<div style="font-size:1.35rem;font-weight:800;color:#1a1a2e;line-height:1.1;">' + d.fee + '</div>';
+    if (d.eur) {
+      h += '<div style="font-size:.75rem;color:#6c757d;margin-top:2px;">≈ ' + d.eur + '</div>';
+    }
+    h += '</div>';
+    h += '</div>';
+
+    // Admin details
+    h += '<div style="flex:1;min-width:200px;background:#fff9ed;border:1.5px solid #ffe082;border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.7rem;">';
+    h += '<i class="fa fa-circle-info" style="color:#f59f00;font-size:1rem;flex-shrink:0;margin-top:2px;"></i>';
+    h += '<div>';
+    h += '<div style="font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#b07a00;margin-bottom:4px;">Administrative Notes</div>';
+    h += '<div style="font-size:.83rem;color:#6b5000;line-height:1.5;">' + d.note + '</div>';
+    h += '</div>';
+    h += '</div>';
+
+    h += '</div>'; // flex row
+
+    // Disclaimer footnote
+    h += '<p style="font-size:.74rem;color:#adb5bd;margin-top:.2rem;margin-bottom:0;">';
+    h += '<i class="fa fa-circle-info" style="margin-right:4px;"></i>';
+    h += 'Fees shown are estimates for 2026. Always verify the current official amount with the destination country\'s immigration authority before applying.';
+    h += '</p>';
+
+    h += '</div>'; // [data-visa-section]
+    return h;
+  }
+
   function buildPortalHtml(dest) {
     var d = PORTAL_DATA[dest];
     if (!d) return '';
@@ -1389,10 +1498,10 @@ const COL_DATA = {
 
   function _doInject(panel, dest, ov) {
     if (_obs) _obs.disconnect();
-    ['[data-portal-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
+    ['[data-portal-section]','[data-visa-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
       var el = panel.querySelector(sel); if (el) el.remove();
     });
-    var html = buildPortalHtml(dest) + buildColHtml(dest, ov) + buildBankHtml(dest);
+    var html = buildPortalHtml(dest) + buildVisaCostHtml(dest) + buildColHtml(dest, ov) + buildBankHtml(dest);
     var embassyCard = panel.querySelector('.embassy-card');
     var anchor = embassyCard ? embassyCard.closest('.row') || embassyCard.parentElement : null;
     if (anchor) anchor.insertAdjacentHTML('beforebegin', html);

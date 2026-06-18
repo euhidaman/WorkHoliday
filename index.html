@@ -113,8 +113,15 @@
 
 
     <!-- Hero Start -->
-    <div class="container-fluid p-0 hero-section">
-        <img class="w-100 hero-img" src="img/carousel-1.jpg" alt="Working Holiday Visas">
+    <div class="container-fluid p-0 hero-section" style="overflow:hidden;">
+        <!-- Height spacer — same dimensions as the old <img> via .hero-img CSS -->
+        <div class="hero-img" aria-hidden="true"></div>
+        <!-- 3-country crossfade slides -->
+        <div id="home-slides" style="position:absolute;inset:0;z-index:0;">
+            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/Australia/1.jpg') center 40%/cover no-repeat;opacity:1;transition:opacity 1.6s ease-in-out;"></div>
+            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/France/1.jpg') center 40%/cover no-repeat;opacity:0;transition:opacity 1.6s ease-in-out;"></div>
+            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/Iceland/1.jpg') center 40%/cover no-repeat;opacity:0;transition:opacity 1.6s ease-in-out;"></div>
+        </div>
         <div class="hero-overlay">
             <div class="hero-content-row text-center px-3">
                 <h1 class="text-white">Working Holiday Visas</h1>
@@ -989,6 +996,18 @@
 
         window.addEventListener('load', () => setTimeout(autoDetectLocation, 800));
 
+    </script>
+    <script>
+    (function () {
+        var slides = document.querySelectorAll('#home-slides .hs');
+        if (!slides.length) return;
+        var cur = 0;
+        setInterval(function () {
+            slides[cur].style.opacity = '0';
+            cur = (cur + 1) % slides.length;
+            slides[cur].style.opacity = '1';
+        }, 5000);
+    })();
     </script>
 </body>
 

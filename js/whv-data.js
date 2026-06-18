@@ -1884,12 +1884,14 @@ const COL_DATA = {
   }
 
   function buildSlideshow(hero, folder, n) {
-    // Clear the hardcoded inline background
-    hero.style.background      = 'none';
-    hero.style.backgroundImage = 'none';
-    hero.style.backgroundColor = 'transparent';
-    hero.style.position        = 'relative';
-    hero.style.overflow        = 'hidden';
+    // Wipe every background-related inline declaration the HTML hardcodes
+    hero.style.background         = '';
+    hero.style.backgroundImage    = '';
+    hero.style.backgroundSize     = '';
+    hero.style.backgroundPosition = '';
+    hero.style.backgroundColor    = 'transparent';
+    hero.style.position           = 'relative';
+    hero.style.overflow           = 'hidden';
 
     // Slides container (z-index 0, behind content)
     var wrap = document.createElement('div');

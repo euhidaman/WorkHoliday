@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Working Holiday Visa Matrix</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary:#7AB730; --green:#28a745; --red:#dc3545;
+  --grid:#e3e6ea; --bg:#fafbfc; --text:#212121; --muted:#6c757d;
+}
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+body {
+  font-family:'Poppins',sans-serif; color:var(--text); background:var(--bg);
+  padding: 32px 24px 48px;
+}
+header { max-width: 1200px; margin: 0 auto 18px; }
+header h1 { color: var(--primary); margin: 0 0 6px; font-weight: 700; font-size: 1.8rem; }
+header p { color: var(--muted); margin: 0 0 4px; font-size: 0.95rem; }
+
+.legend {
+  display: flex; gap: 20px; margin: 12px 0 0; font-size: 0.85rem; color: var(--muted);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .yes { color: var(--green); font-weight: 700; }
+.legend .no  { color: var(--red);   font-weight: 700; }
+
+.filter-bar {
+  max-width: 1200px; margin: 0 auto 16px;
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.filter-bar input {
+  padding: 8px 14px; border: 1.5px solid var(--grid); border-radius: 6px;
+  font-family:'Poppins',sans-serif; font-size: 0.9rem; width: 280px;
+  transition: border-color 0.15s;
+}
+.filter-bar input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(122,183,48,.15); }
+.filter-bar .stat { color: var(--muted); font-size: 0.85rem; }
+
+.matrix { max-width: 100%; margin: 0 auto; overflow-x: auto; }
+table.m { border-collapse: collapse; margin: 0; }
+table.m th, table.m td { border: 1px solid var(--grid); padding: 0; }
+table.m thead th.empty { background: transparent; border: none; }
+
+/* Top-left corner cell: diagonal split */
+table.m thead th.corner {
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.6px), var(--grid) calc(50% - 0.6px), var(--grid) calc(50% + 0.6px), transparent calc(50% + 0.6px)),
+    #fff;
+  position: relative;
+  width: 170px; min-width: 170px;
+  height: 160px;
+  padding: 0;
+  border: 1px solid var(--grid);
+}
+table.m thead th.corner .corner-top {
+  position: absolute; top: 10px; right: 12px;
+  font-size: 0.74rem; font-weight: 600; color: var(--muted);
+  white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em;
+}
+table.m thead th.corner .corner-bot {
+  position: absolute; bottom: 10px; left: 12px;
+  font-size: 0.74rem; font-weight: 600; color: var(--muted);
+  white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em;
+}
+
+table.m th.col {
+  vertical-align: bottom;
+  padding: 6px 0 4px;
+  height: 160px; width: 34px;
+  background: #fff;
+  position: relative;
+  transition: background 0.1s;
+}
+table.m th.col.col-hl { background: #fff3cd; }
+table.m th.col .rotated {
+  display: block; writing-mode: vertical-rl; transform: rotate(180deg);
+  white-space: nowrap; font-weight: 500; font-size: 0.8rem;
+  margin: 0 auto 6px; line-height: 34px;
+}
+table.m th.col .flag { display: block; text-align: center; font-size: 1.2rem; line-height: 1; }
+
+table.m th.row {
+  text-align: left; padding: 0 12px; height: 34px;
+  background: #fff; font-weight: 500; font-size: 0.88rem;
+  white-space: nowrap; min-width: 170px;
+  transition: background 0.1s;
+}
+table.m th.row.row-hl { background: #fff3cd; }
+table.m th.row .flag { margin-right: 6px; font-size: 1.05rem; vertical-align: middle; }
+
+table.m td.cell {
+  width: 34px; height: 34px; text-align: center; vertical-align: middle;
+  font-size: 1.05rem; background: #fff;
+  position: relative; cursor: default;
+  transition: background 0.1s;
+}
+table.m td.cell.self { background: repeating-linear-gradient(45deg,#f1f3f5,#f1f3f5 4px,#e9ecef 4px,#e9ecef 8px); }
+table.m td.cell .yes { color: var(--green); font-weight: 700; }
+table.m td.cell .no  { color: var(--red);   font-weight: 700; }
+table.m td.cell.col-hl { background: #fff8e1; }
+table.m td.cell.col-hl.self { background: repeating-linear-gradient(45deg,#fff3cd,#fff3cd 4px,#ffe69c 4px,#ffe69c 8px); }
+
+table.m td.cell:hover { background: #fff7e6 !important; }
+table.m tr:hover th.row { background: #fff7e6; }
+
+.notes { max-width: 1200px; margin: 32px auto 0; }
+.notes h3 { color: var(--primary); font-weight: 600; font-size: 1.1rem; margin: 0 0 8px; }
+
+.disclaimer { max-width: 1200px; margin: 24px auto 0; font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+/* Count badges */
+.count-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 10px;
+  font-size: 0.72rem; font-weight: 600; vertical-align: middle; margin-left: 4px;
+  background: var(--green); color: #fff;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Working Holiday Visa — Eligibility Matrix</h1>
+  <p>Find your row (passport you hold), then read across to see which destinations have a working-holiday agreement with you.</p>
+  <div class="legend">
+    <span><span class="yes">✓</span> Agreement exists</span>
+    <span><span class="no">✗</span> No bilateral agreement</span>
+    <span style="font-size:0.82rem;background:#f1f3f5;padding:2px 8px;border-radius:4px;">Hover cells for pair details</span>
+  </div>
+</header>
+
+<div class="filter-bar">
+  <input type="text" id="passportFilter" placeholder="🔍  Filter by passport / destination..." oninput="applyFilter(this.value)" autocomplete="off">
+  <span class="stat" id="filterStat"></span>
+</div>
+
+<div class="matrix" id="matrixWrap"></div>
+
+<div class="notes">
+  <h3>How to read this matrix</h3>
+  <ol style="padding-left:24px;color:var(--text);font-size:0.92rem;line-height:1.8;">
+    <li><strong>Find your passport row</strong> — use the filter box above to jump straight to it.</li>
+    <li><strong>Read across</strong> — every <span class="yes" style="color:var(--green)">✓</span> column is a destination where you can apply for a WHV.</li>
+    <li><strong>Hover any cell</strong> to confirm the pair name before clicking through to the full guide.</li>
+    <li>Each bilateral agreement has its own age limit, annual quota, and required funds — check the destination page for exact requirements.</li>
+  </ol>
+</div>
+
+<div class="disclaimer">
+  ⓘ Data reflects published bilateral WHV agreements as of 2026. Requirements (age limits 18–30 or 18–35, annual caps, proof-of-funds, once-per-lifetime rules) vary by pair. Always verify with the official embassy or immigration authority before applying.
+</div>
+
+<script src="js/whv-data.js"></script>
+<script>
+(function () {
+  /* ── Country flags ─────────────────────────────────────────────────── */
+  var ISO = {
+    'Andorra':'AD','Argentina':'AR','Australia':'AU','Austria':'AT',
+    'Belgium':'BE','Brazil':'BR','Bulgaria':'BG','Canada':'CA',
+    'Chile':'CL','Colombia':'CO','Costa Rica':'CR','Croatia':'HR',
+    'Cyprus':'CY','Czech Republic':'CZ','Denmark':'DK','Ecuador':'EC',
+    'Estonia':'EE','Finland':'FI','France':'FR','Germany':'DE',
+    'Greece':'GR','Hong Kong':'HK','Hungary':'HU','Iceland':'IS',
+    'India':'IN','Indonesia':'ID','Ireland':'IE','Israel':'IL',
+    'Italy':'IT','Japan':'JP','Latvia':'LV','Lithuania':'LT',
+    'Luxembourg':'LU','Mainland China':'CN','Malaysia':'MY','Malta':'MT',
+    'Mexico':'MX','Monaco':'MC','Mongolia':'MN','Netherlands':'NL',
+    'New Zealand':'NZ','Norway':'NO','Peru':'PE','Philippines':'PH',
+    'Poland':'PL','Portugal':'PT','Romania':'RO','San Marino':'SM',
+    'Singapore':'SG','Slovakia':'SK','Slovenia':'SI','South Korea':'KR',
+    'Spain':'ES','Sweden':'SE','Switzerland':'CH','Taiwan':'TW',
+    'Thailand':'TH','Turkey':'TR','United Kingdom':'GB','United States':'US',
+    'Uruguay':'UY','Vietnam':'VN'
+  };
+
+  function flag(country) {
+    var code = ISO[country];
+    if (!code) return '';
+    return code.split('').map(function(c){ return String.fromCodePoint(0x1F1E6 + c.charCodeAt(0) - 65); }).join('');
+  }
+
+  /* ── Build country lists ───────────────────────────────────────────── */
+  var destinations = Object.keys(WHV_ELIGIBILITY).sort();
+
+  var originsSet = {};
+  destinations.forEach(function(d){ originsSet[d] = true; });
+  Object.values(WHV_ELIGIBILITY).forEach(function(regions){
+    Object.values(regions).forEach(function(arr){
+      arr.forEach(function(c){ originsSet[c] = true; });
+    });
+  });
+  var origins = Object.keys(originsSet).sort();
+
+  /* ── Lookup: can origin work in destination? ───────────────────────── */
+  function canWork(origin, dest) {
+    if (origin === dest) return null; // same country → self cell
+    var d = WHV_ELIGIBILITY[dest];
+    if (!d) return false;
+    return Object.values(d).some(function(arr){ return arr.indexOf(origin) !== -1; });
+  }
+
+  /* ── Count agreements per row ──────────────────────────────────────── */
+  function countAgreements(origin) {
+    return destinations.reduce(function(n, dest){
+      return n + (canWork(origin, dest) === true ? 1 : 0);
+    }, 0);
+  }
+
+  /* ── Build table HTML ──────────────────────────────────────────────── */
+  var html = '<table class="m" id="matrix">';
+
+  // THEAD
+  html += '<thead><tr>';
+  html += '<th class="corner"><span class="corner-top">Countries to work in →</span><span class="corner-bot">↓ Your Passport</span></th>';
+  destinations.forEach(function(dest, ci){
+    html += '<th class="col" id="col-' + ci + '" title="' + dest + '">'
+          + '<span class="rotated">' + dest + '</span>'
+          + '<span class="flag">' + flag(dest) + '</span>'
+          + '</th>';
+  });
+  html += '</tr></thead>';
+
+  // TBODY
+  html += '<tbody>';
+  origins.forEach(function(origin, ri){
+    var count = countAgreements(origin);
+    html += '<tr id="row-' + ri + '" data-origin="' + origin.toLowerCase() + '">';
+    html += '<th class="row"><span class="flag">' + flag(origin) + '</span>'
+          + origin
+          + '<span class="count-badge" title="' + count + ' destinations">' + count + '</span>'
+          + '</th>';
+    destinations.forEach(function(dest, ci){
+      var result = canWork(origin, dest);
+      if (result === null) {
+        html += '<td class="cell self" aria-label="Same country"></td>';
+      } else if (result) {
+        html += '<td class="cell" data-col="' + ci + '" title="' + origin + ' → ' + dest + ': ✓ agreement exists"><span class="yes">✓</span></td>';
+      } else {
+        html += '<td class="cell" data-col="' + ci + '" title="' + origin + ' → ' + dest + ': ✗ no agreement"><span class="no">✗</span></td>';
+      }
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  document.getElementById('matrixWrap').innerHTML = html;
+
+  /* ── Filter ────────────────────────────────────────────────────────── */
+  var currentHighlightRows = [];
+  var currentHighlightCols = [];
+
+  function applyFilter(val) {
+    // Clear previous highlights
+    currentHighlightRows.forEach(function(el){ el.classList.remove('row-hl'); });
+    currentHighlightCols.forEach(function(el){ el.classList.remove('col-hl'); });
+    document.querySelectorAll('td.cell.col-hl').forEach(function(el){ el.classList.remove('col-hl'); });
+    currentHighlightRows = [];
+    currentHighlightCols = [];
+
+    var q = val.trim().toLowerCase();
+    var stat = document.getElementById('filterStat');
+    if (!q) { stat.textContent = ''; return; }
+
+    // Match origin rows
+    var matchedRows = 0;
+    origins.forEach(function(origin, ri){
+      if (origin.toLowerCase().indexOf(q) !== -1) {
+        var row = document.getElementById('row-' + ri);
+        if (row) {
+          row.querySelector('th.row').classList.add('row-hl');
+          currentHighlightRows.push(row.querySelector('th.row'));
+          matchedRows++;
+        }
+      }
+    });
+
+    // Match destination columns
+    var matchedCols = 0;
+    destinations.forEach(function(dest, ci){
+      if (dest.toLowerCase().indexOf(q) !== -1) {
+        var colTh = document.getElementById('col-' + ci);
+        if (colTh) {
+          colTh.classList.add('col-hl');
+          currentHighlightCols.push(colTh);
+          matchedCols++;
+        }
+        // Highlight all cells in this column
+        document.querySelectorAll('td[data-col="' + ci + '"]').forEach(function(td){
+          td.classList.add('col-hl');
+        });
+      }
+    });
+
+    var parts = [];
+    if (matchedRows) parts.push(matchedRows + ' passport' + (matchedRows > 1 ? 's' : '') + ' highlighted');
+    if (matchedCols) parts.push(matchedCols + ' destination' + (matchedCols > 1 ? 's' : '') + ' highlighted');
+    stat.textContent = parts.length ? parts.join(' · ') : 'No matches';
+  }
+
+  // Expose for inline handler
+  window.applyFilter = applyFilter;
+})();
+</script>
+</body>
+</html>

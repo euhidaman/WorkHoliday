@@ -1431,6 +1431,98 @@ const COL_DATA = {
     return h;
   }
 
+  // ─── EXPAT LIFESTYLE VIDEO DATA ─────────────────────────────────────────────
+  var VIDEO_DATA = {
+    "Andorra":        "SHtXjNRKFuc",
+    "Argentina":      "kx3VQsLKdbA",
+    "Australia":      "GQqrfPW4EKo",
+    "Austria":        "KbxyYg1pfjY",
+    "Belgium":        "78XE20o83t4",
+    "Brazil":         "BWCLIV7Tvnk",
+    "Canada":         "_dnHCQzFT1Y",
+    "Chile":          "cyqRdIH1jdk",
+    "Colombia":       "VLkTT8l4-HA",
+    "Croatia":        "bliLt_NPlpc",
+    "Cyprus":         "LeDUd62jf9o",
+    "Czech Republic": "xP3CSrb1Y4M",
+    "Denmark":        "EGppdDGk62k",
+    "Ecuador":        "DvNPnpm9-BU",
+    "Estonia":        "6xONKkqvz44",
+    "Finland":        "pIy1PPvPDWs",
+    "France":         "cgXaCmSyFrc",
+    "Germany":        "8CaaanUNW58",
+    "Greece":         "Yz0yGNpfwOQ",
+    "Hong Kong":      "IGQq-y7DZmY",
+    "Hungary":        "JiFEpfB95HE",
+    "Iceland":        "7tIU-NVRHKQ",
+    "Ireland":        "DSL9kaSWo6c",
+    "Israel":         "Cgo7KiIF8_w",
+    "Italy":          "-joLlguw75c",
+    "Japan":          "n0IGWYbel4Q",
+    "Latvia":         "rCasI7z6H9Q",
+    "Lithuania":      "ifsxozywXn8",
+    "Luxembourg":     "NYRlHKNW0UA",
+    "Mexico":         "VFYs8J578GQ",
+    "Netherlands":    "DKtp8qkUaYs",
+    "New Zealand":    "TnH3s8dW6Go",
+    "Norway":         "sBiqZe18tYI",
+    "Peru":           "l754k0f2sko",
+    "Philippines":    "vfmrb4o1Ls0",
+    "Poland":         "KGtV2FF4syA",
+    "Portugal":       "zettOc2dNAg",
+    "Singapore":      "UZaEPDEP_b8",
+    "Slovakia":       "zsYyYj8fjXI",
+    "Slovenia":       "q_YlF2AIemg",
+    "South Korea":    "YEyxbtRbjqs",
+    "Spain":          "5eHsw1_dArw",
+    "Sweden":         "2cxx6ie6_Tk",
+    "Switzerland":    "rFRvngd-U6M",
+    "Taiwan":         "E6wxNvGNp-w",
+    "Thailand":       "0qmAPaGcrIo",
+    "Turkey":         "tlavq2nykF4",
+    "United Kingdom": "yoepyy2nK1k",
+    "Uruguay":        "46cbS_A4tTE",
+    "Vietnam":        "alVSfzRoPvU"
+  };
+
+  function buildVideoHtml(dest) {
+    var vid = VIDEO_DATA[dest];
+    if (!vid) return '';
+    var h = '';
+    h += '<section data-video-section style="margin-bottom:2.5rem;">';
+    // outer card
+    h += '<div style="border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#f7fef0 0%,#ffffff 55%);border:1.5px solid #dff0c4;box-shadow:0 4px 20px rgba(122,183,48,.08);">';
+    // header row
+    h += '<div style="padding:1.25rem 1.5rem 1rem;display:flex;align-items:center;gap:0.9rem;">';
+    h += '<div style="width:44px;height:44px;border-radius:12px;background:#fff2f2;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(255,0,0,.12);">';
+    h += '<i class="fab fa-youtube" style="color:#FF0000;font-size:1.5rem;line-height:1;"></i>';
+    h += '</div>';
+    h += '<div>';
+    h += '<div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:#7AB730;margin-bottom:3px;">Expat Perspective</div>';
+    h += '<h5 style="margin:0;font-weight:700;color:#212121;font-size:1.05rem;line-height:1.3;">Life in ' + dest + ' — Real Expat Stories</h5>';
+    h += '</div>';
+    h += '</div>';
+    // 16:9 responsive embed
+    h += '<div style="padding:0 1.25rem;">';
+    h += '<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 6px 28px rgba(0,0,0,.13);">';
+    h += '<iframe src="https://www.youtube.com/embed/' + vid + '?rel=0&modestbranding=1"';
+    h += ' title="Expat Life in ' + dest + '"';
+    h += ' loading="lazy"';
+    h += ' allow="accelerometer;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share"';
+    h += ' allowfullscreen';
+    h += ' style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>';
+    h += '</div>';
+    h += '</div>';
+    // caption
+    h += '<div style="padding:0.75rem 1.5rem 1.1rem;font-size:0.79rem;color:#6c757d;display:flex;align-items:flex-start;gap:0.4rem;">';
+    h += '<i class="fa fa-circle-info" style="color:#7AB730;margin-top:1px;flex-shrink:0;"></i>';
+    h += '<span>Community-curated video showcasing real expat perspectives on living and working in ' + dest + '. Click play to explore.</span>';
+    h += '</div>';
+    h += '</div>'; // card
+    h += '</section>';
+    return h;
+  }
+
   // ─── NATIONAL HEALTH SCHEME DATA ────────────────────────────────────────────
   var INSURANCE_DATA = {
     "Australia": {
@@ -1723,9 +1815,13 @@ const COL_DATA = {
 
   function _doInject(panel, dest, ov) {
     if (_obs) _obs.disconnect();
-    ['[data-portal-section]','[data-visa-section]','[data-insurance-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
+    ['[data-video-section]','[data-portal-section]','[data-visa-section]','[data-insurance-section]','[data-col-section]','[data-bank-section]'].forEach(function(sel) {
       var el = panel.querySelector(sel); if (el) el.remove();
     });
+    // Video pinned to the very top of the panel (above "Relocating to…" heading)
+    var videoHtml = buildVideoHtml(dest);
+    if (videoHtml) panel.insertAdjacentHTML('afterbegin', videoHtml);
+    // Remaining sections go before the embassy card
     var html = buildPortalHtml(dest) + buildVisaCostHtml(dest) + buildInsuranceHtml(dest) + buildColHtml(dest, ov) + buildBankHtml(dest);
     var embassyCard = panel.querySelector('.embassy-card');
     var anchor = embassyCard ? embassyCard.closest('.row') || embassyCard.parentElement : null;

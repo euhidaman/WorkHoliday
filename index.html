@@ -114,13 +114,19 @@
 
     <!-- Hero Start -->
     <div class="container-fluid p-0 hero-section" style="overflow:hidden;">
-        <!-- Height spacer — same dimensions as the old <img> via .hero-img CSS -->
+        <!-- Height spacer keeps the section height via .hero-img CSS -->
         <div class="hero-img" aria-hidden="true"></div>
-        <!-- 3-country crossfade slides -->
-        <div id="home-slides" style="position:absolute;inset:0;z-index:0;">
-            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/Australia/1.jpg') center 40%/cover no-repeat;opacity:1;transition:opacity 1.6s ease-in-out;"></div>
-            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/France/1.jpg') center 40%/cover no-repeat;opacity:0;transition:opacity 1.6s ease-in-out;"></div>
-            <div class="hs" style="position:absolute;inset:0;background:url('img/heroes/Iceland/1.jpg') center 40%/cover no-repeat;opacity:0;transition:opacity 1.6s ease-in-out;"></div>
+        <!-- 3-panel diagonal montage -->
+        <div style="position:absolute;inset:0;z-index:0;">
+            <!-- Left panel — Australia -->
+            <div style="position:absolute;inset:0;background:url('img/heroes/Australia/1.jpg') center 40%/cover no-repeat;clip-path:polygon(0% 0%,36% 0%,32% 100%,0% 100%);"></div>
+            <!-- Centre panel — France -->
+            <div style="position:absolute;inset:0;background:url('img/heroes/France/1.jpg') center 40%/cover no-repeat;clip-path:polygon(36% 0%,68% 0%,64% 100%,32% 100%);"></div>
+            <!-- Right panel — Iceland -->
+            <div style="position:absolute;inset:0;background:url('img/heroes/Iceland/1.jpg') center 40%/cover no-repeat;clip-path:polygon(68% 0%,100% 0%,100% 100%,64% 100%);"></div>
+            <!-- Diagonal dividers -->
+            <div style="position:absolute;inset:0;background:rgba(255,255,255,0.18);clip-path:polygon(35.2% 0%,36.8% 0%,32.8% 100%,31.2% 100%);pointer-events:none;"></div>
+            <div style="position:absolute;inset:0;background:rgba(255,255,255,0.18);clip-path:polygon(67.2% 0%,68.8% 0%,64.8% 100%,63.2% 100%);pointer-events:none;"></div>
         </div>
         <div class="hero-overlay">
             <div class="hero-content-row text-center px-3">
@@ -997,18 +1003,7 @@
         window.addEventListener('load', () => setTimeout(autoDetectLocation, 800));
 
     </script>
-    <script>
-    (function () {
-        var slides = document.querySelectorAll('#home-slides .hs');
-        if (!slides.length) return;
-        var cur = 0;
-        setInterval(function () {
-            slides[cur].style.opacity = '0';
-            cur = (cur + 1) % slides.length;
-            slides[cur].style.opacity = '1';
-        }, 5000);
-    })();
-    </script>
+
 </body>
 
 </html>

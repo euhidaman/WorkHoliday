@@ -1893,21 +1893,36 @@ const COL_DATA = {
     hero.style.position           = 'relative';
     hero.style.overflow           = 'hidden';
 
-    // Slides container (z-index 0, behind content)
+    // 3-panel diagonal montage container (z-index 0)
     var wrap = document.createElement('div');
     wrap.style.cssText = 'position:absolute;inset:0;z-index:0;';
 
-    var slides = [];
-    for (var i = 0; i < n; i++) {
-      var s = document.createElement('div');
-      s.style.cssText =
+    // Clip-path polygons: three diagonal panels + two thin dividers
+    var clips = [
+      'polygon(0% 0%,36% 0%,32% 100%,0% 100%)',       // left
+      'polygon(36% 0%,68% 0%,64% 100%,32% 100%)',      // centre
+      'polygon(68% 0%,100% 0%,100% 100%,64% 100%)'     // right
+    ];
+    var dividers = [
+      'polygon(35.2% 0%,36.8% 0%,32.8% 100%,31.2% 100%)',
+      'polygon(67.2% 0%,68.8% 0%,64.8% 100%,63.2% 100%)'
+    ];
+
+    for (var i = 0; i < Math.min(n, 3); i++) {
+      var panel = document.createElement('div');
+      panel.style.cssText =
         'position:absolute;inset:0;' +
-        'background:url("' + folder + (i + 1) + '.jpg") center/cover no-repeat;' +
-        'opacity:' + (i === 0 ? '1' : '0') + ';' +
-        'transition:opacity 1.6s ease-in-out;';
-      wrap.appendChild(s);
-      slides.push(s);
+        'background:url("' + folder + (i + 1) + '.jpg") center 40%/cover no-repeat;' +
+        'clip-path:' + clips[i] + ';';
+      wrap.appendChild(panel);
     }
+    dividers.forEach(function (cp) {
+      var d = document.createElement('div');
+      d.style.cssText =
+        'position:absolute;inset:0;background:rgba(255,255,255,0.18);' +
+        'clip-path:' + cp + ';pointer-events:none;';
+      wrap.appendChild(d);
+    });
     hero.insertBefore(wrap, hero.firstChild);
 
     // Darkening overlay (z-index 1)
@@ -1915,21 +1930,13 @@ const COL_DATA = {
     ov.style.cssText = 'position:absolute;inset:0;background:rgba(0,0,0,0.52);z-index:1;pointer-events:none;';
     hero.insertBefore(ov, wrap.nextSibling);
 
-    // Lift hero's own child containers above slides + overlay
+    // Lift hero child containers above slides + overlay
     [].forEach.call(hero.children, function (el) {
       if (el !== wrap && el !== ov) {
         el.style.position = 'relative';
         el.style.zIndex   = '2';
       }
     });
-
-    // Cycle every 5 s
-    var cur = 0;
-    setInterval(function () {
-      slides[cur].style.opacity = '0';
-      cur = (cur + 1) % slides.length;
-      slides[cur].style.opacity = '1';
-    }, 5000);
   }
 
   function init() {

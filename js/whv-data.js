@@ -1868,7 +1868,71 @@ const COL_DATA = {
     });
   }
 
+  // ─── HERO MONTAGE SLIDESHOW ──────────────────────────────────────────────────
+  function initHeroSlideshow(dest) {
+    var hero = document.querySelector('.visa-hero');
+    if (!hero) return;
+
+    var folder = '../img/heroes/' + dest.replace(/ /g, '-') + '/';
+    var n = 3;
+
+    // Probe whether the multi-image folder exists
+    var probe = new Image();
+    probe.onload = function () { buildSlideshow(hero, folder, n); };
+    probe.onerror = function () { /* keep the existing single-image CSS background */ };
+    probe.src = folder + '1.jpg';
+  }
+
+  function buildSlideshow(hero, folder, n) {
+    // Clear the hardcoded inline background
+    hero.style.background      = 'none';
+    hero.style.backgroundImage = 'none';
+    hero.style.backgroundColor = 'transparent';
+    hero.style.position        = 'relative';
+    hero.style.overflow        = 'hidden';
+
+    // Slides container (z-index 0, behind content)
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'position:absolute;inset:0;z-index:0;';
+
+    var slides = [];
+    for (var i = 0; i < n; i++) {
+      var s = document.createElement('div');
+      s.style.cssText =
+        'position:absolute;inset:0;' +
+        'background:url("' + folder + (i + 1) + '.jpg") center/cover no-repeat;' +
+        'opacity:' + (i === 0 ? '1' : '0') + ';' +
+        'transition:opacity 1.6s ease-in-out;';
+      wrap.appendChild(s);
+      slides.push(s);
+    }
+    hero.insertBefore(wrap, hero.firstChild);
+
+    // Darkening overlay (z-index 1)
+    var ov = document.createElement('div');
+    ov.style.cssText = 'position:absolute;inset:0;background:rgba(0,0,0,0.52);z-index:1;pointer-events:none;';
+    hero.insertBefore(ov, wrap.nextSibling);
+
+    // Lift hero's own child containers above slides + overlay
+    [].forEach.call(hero.children, function (el) {
+      if (el !== wrap && el !== ov) {
+        el.style.position = 'relative';
+        el.style.zIndex   = '2';
+      }
+    });
+
+    // Cycle every 5 s
+    var cur = 0;
+    setInterval(function () {
+      slides[cur].style.opacity = '0';
+      cur = (cur + 1) % slides.length;
+      slides[cur].style.opacity = '1';
+    }, 5000);
+  }
+
   function init() {
+    var dest = getDestFromUrl();
+    if (dest) initHeroSlideshow(dest);
     injectCol();
     var panel = document.getElementById('wh-content-panel');
     if (panel) {

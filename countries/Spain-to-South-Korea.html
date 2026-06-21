@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- build-guard: page scaffold and section ordering must not be altered without prior review -->
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@
         gap: .4rem;
     }
 
-    /* continent selector row — indigo/navy palette */
+    /* continent selector row â€” indigo/navy palette */
     .wh-cont-row {
         display: flex;
         flex-wrap: wrap;
@@ -80,7 +80,7 @@
         background: rgba(255,255,255,.22);
     }
 
-    /* country pills panel — shown/hidden via JS */
+    /* country pills panel â€” shown/hidden via JS */
     .wh-country-panel {
         display: none;
         flex-wrap: wrap;
@@ -92,7 +92,7 @@
     }
     @keyframes wh-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-    /* country pills — warm teal palette */
+    /* country pills â€” warm teal palette */
     .wh-pill {
         display: inline-flex;
         align-items: center;
@@ -321,7 +321,7 @@
     </div>
     <!-- Footer End -->
 
-        <script src="../js/whv-data.js?v=10"></script>
+        <script src="../js/whv-data.js?v=11"></script>
     <script>
         const ALL_COUNTRIES = [
             "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
@@ -371,7 +371,7 @@
                 const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
                 if (pinned.length) {
                     const grp = document.createElement('div');
-                    grp.className = 'cs-group-label'; grp.textContent = '🌐 Suggested for you';
+                    grp.className = 'cs-group-label'; grp.textContent = 'ðŸŒ Suggested for you';
                     originList.appendChild(grp);
                     pinned.forEach(c => appendOriginOption(c));
                     const all = document.createElement('div');
@@ -512,7 +512,7 @@
         var allPills = [];
 
         if (useGroups) {
-            /* ── GROUPED MODE: continent tabs, country pills hidden until clicked ── */
+            /* â”€â”€ GROUPED MODE: continent tabs, country pills hidden until clicked â”€â”€ */
             var contRow = document.createElement('div');
             contRow.className = 'wh-cont-row';
 
@@ -584,7 +584,7 @@
             }
 
         } else {
-            /* ── FLAT MODE: just pills ── */
+            /* â”€â”€ FLAT MODE: just pills â”€â”€ */
             var row = document.createElement('div');
             row.className = 'wh-pills';
             REGION_ORDER.forEach(function (r) {
@@ -605,7 +605,7 @@
         var placeholder = document.getElementById('wh-tabs-placeholder');
         if (placeholder) placeholder.replaceWith(wrap);
 
-        /* ── content swapping ── */
+        /* â”€â”€ content swapping â”€â”€ */
         var panel = document.getElementById('wh-content-panel');
         var cache = {};
         if (panel) cache[CURRENT] = panel.innerHTML;

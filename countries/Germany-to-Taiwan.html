@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,7 +33,7 @@
         gap: .4rem;
     }
 
-    /* continent selector row — indigo/navy palette */
+    /* continent selector row â€” indigo/navy palette */
     .wh-cont-row {
         display: flex;
         flex-wrap: wrap;
@@ -79,7 +79,7 @@
         background: rgba(255,255,255,.22);
     }
 
-    /* country pills panel — shown/hidden via JS */
+    /* country pills panel â€” shown/hidden via JS */
     .wh-country-panel {
         display: none;
         flex-wrap: wrap;
@@ -91,7 +91,7 @@
     }
     @keyframes wh-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-    /* country pills — warm teal palette */
+    /* country pills â€” warm teal palette */
     .wh-pill {
         display: inline-flex;
         align-items: center;
@@ -274,9 +274,9 @@
                 <div class="col-12">
                     <div class="embassy-card p-4 rounded bg-light border">
                         <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>Taipei Representative Office, Berlin</h5>
-                        <p class="mb-2"><strong>Address:</strong> Markgrafenstraße 35, 10117 Berlin, Germany</p>
+                        <p class="mb-2"><strong>Address:</strong> MarkgrafenstraÃŸe 35, 10117 Berlin, Germany</p>
                         <p class="mb-2"><strong>Phone:</strong> +49 (0) 30 203610</p>
-                        <p class="mb-2"><strong>Visa Section Hours:</strong> Mon–Fri 09:00–11:30 &amp; 14:00–16:00</p>
+                        <p class="mb-2"><strong>Visa Section Hours:</strong> Monâ€“Fri 09:00â€“11:30 &amp; 14:00â€“16:00</p>
                         <p class="mb-2"><strong>Website:</strong> <a href="https://roc-taiwan.org/de_en" target="_blank">roc-taiwan.org/de_en</a></p>
                         <p class="small mb-0 text-muted"><strong>Application Note:</strong> Apply at the Taipei Representative Office in Berlin or branch offices in Frankfurt, Hamburg, or Munich.</p>
                     </div>
@@ -322,7 +322,7 @@
     </div>
     <!-- Footer End -->
 
-        <script src="../js/whv-data.js?v=10"></script>
+        <script src="../js/whv-data.js?v=11"></script>
     <script>
         const ALL_COUNTRIES = [
             "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
@@ -372,7 +372,7 @@
                 const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
                 if (pinned.length) {
                     const grp = document.createElement('div');
-                    grp.className = 'cs-group-label'; grp.textContent = '🌐 Suggested for you';
+                    grp.className = 'cs-group-label'; grp.textContent = 'ðŸŒ Suggested for you';
                     originList.appendChild(grp);
                     pinned.forEach(c => appendOriginOption(c));
                     const all = document.createElement('div');

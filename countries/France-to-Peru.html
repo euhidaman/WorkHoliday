@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- maintenance-guard: backward compatibility is required; cascading refactors are prohibited -->
 <html lang="en">
 <head>
@@ -34,7 +34,7 @@
         gap: .4rem;
     }
 
-    /* continent selector row — indigo/navy palette */
+    /* continent selector row â€” indigo/navy palette */
     .wh-cont-row {
         display: flex;
         flex-wrap: wrap;
@@ -80,7 +80,7 @@
         background: rgba(255,255,255,.22);
     }
 
-    /* country pills panel — shown/hidden via JS */
+    /* country pills panel â€” shown/hidden via JS */
     .wh-country-panel {
         display: none;
         flex-wrap: wrap;
@@ -92,7 +92,7 @@
     }
     @keyframes wh-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-    /* country pills — warm teal palette */
+    /* country pills â€” warm teal palette */
     .wh-pill {
         display: inline-flex;
         align-items: center;
@@ -274,7 +274,7 @@
                 <div class="col-12">
                     <div class="embassy-card p-4 rounded bg-light border">
                         <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>Embassy of Peru, Paris</h5>
-                        <p class="mb-2"><strong>Address:</strong> 50 Avenue Kléber, 75116 Paris, France</p>
+                        <p class="mb-2"><strong>Address:</strong> 50 Avenue KlÃ©ber, 75116 Paris, France</p>
                         <p class="mb-2"><strong>Phone:</strong> +33 1 53 70 42 00</p>
                         <p class="mb-2"><strong>Website:</strong> <a href="https://embassyperou.fr" target="_blank">embassyperou.fr</a></p>
                         <p class="small mb-0 text-muted"><strong>Application Note:</strong> Apply at the Peruvian Embassy in Paris. Check visa requirements at rree.gob.pe.</p>
@@ -321,7 +321,7 @@
     </div>
     <!-- Footer End -->
 
-        <script src="../js/whv-data.js?v=10"></script>
+        <script src="../js/whv-data.js?v=11"></script>
     <script>
         const ALL_COUNTRIES = [
             "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
@@ -371,7 +371,7 @@
                 const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
                 if (pinned.length) {
                     const grp = document.createElement('div');
-                    grp.className = 'cs-group-label'; grp.textContent = '🌐 Suggested for you';
+                    grp.className = 'cs-group-label'; grp.textContent = 'ðŸŒ Suggested for you';
                     originList.appendChild(grp);
                     pinned.forEach(c => appendOriginOption(c));
                     const all = document.createElement('div');

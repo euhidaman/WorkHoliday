@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,7 +33,7 @@
         gap: .4rem;
     }
 
-    /* continent selector row — indigo/navy palette */
+    /* continent selector row â€” indigo/navy palette */
     .wh-cont-row {
         display: flex;
         flex-wrap: wrap;
@@ -79,7 +79,7 @@
         background: rgba(255,255,255,.22);
     }
 
-    /* country pills panel — shown/hidden via JS */
+    /* country pills panel â€” shown/hidden via JS */
     .wh-country-panel {
         display: none;
         flex-wrap: wrap;
@@ -91,7 +91,7 @@
     }
     @keyframes wh-fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
-    /* country pills — warm teal palette */
+    /* country pills â€” warm teal palette */
     .wh-pill {
         display: inline-flex;
         align-items: center;
@@ -274,7 +274,7 @@
                 <div class="col-12">
                     <div class="embassy-card p-4 rounded bg-light border">
                         <h5 class="mb-3"><i class="fa fa-building-columns mr-3 text-primary"></i>New Zealand Embassy, Brasilia</h5>
-                        <p class="mb-2"><strong>Address:</strong> SHIS QI 09, Conjunto 16, Casa 01, 71625-160 Brasília, Brazil</p>
+                        <p class="mb-2"><strong>Address:</strong> SHIS QI 09, Conjunto 16, Casa 01, 71625-160 BrasÃ­lia, Brazil</p>
                         <p class="mb-2"><strong>Phone:</strong> +55 61 3248 9900</p>
                         <p class="mb-2"><strong>Website:</strong> <a href="https://mfat.govt.nz" target="_blank">mfat.govt.nz</a></p>
                         <p class="small mb-0 text-muted"><strong>Application Note:</strong> Apply online at immigration.govt.nz. Contact the Brasilia embassy for consular assistance.</p>
@@ -321,7 +321,7 @@
     </div>
     <!-- Footer End -->
 
-        <script src="../js/whv-data.js?v=10"></script>
+        <script src="../js/whv-data.js?v=11"></script>
     <script>
         const ALL_COUNTRIES = [
             "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
@@ -371,7 +371,7 @@
                 const pinned = hints.filter(c => ALL_COUNTRIES.includes(c));
                 if (pinned.length) {
                     const grp = document.createElement('div');
-                    grp.className = 'cs-group-label'; grp.textContent = '🌐 Suggested for you';
+                    grp.className = 'cs-group-label'; grp.textContent = 'ðŸŒ Suggested for you';
                     originList.appendChild(grp);
                     pinned.forEach(c => appendOriginOption(c));
                     const all = document.createElement('div');
@@ -512,7 +512,7 @@
         var allPills = [];
 
         if (useGroups) {
-            /* ── GROUPED MODE: continent tabs, country pills hidden until clicked ── */
+            /* â”€â”€ GROUPED MODE: continent tabs, country pills hidden until clicked â”€â”€ */
             var contRow = document.createElement('div');
             contRow.className = 'wh-cont-row';
 
@@ -584,7 +584,7 @@
             }
 
         } else {
-            /* ── FLAT MODE: just pills ── */
+            /* â”€â”€ FLAT MODE: just pills â”€â”€ */
             var row = document.createElement('div');
             row.className = 'wh-pills';
             REGION_ORDER.forEach(function (r) {
@@ -605,7 +605,7 @@
         var placeholder = document.getElementById('wh-tabs-placeholder');
         if (placeholder) placeholder.replaceWith(wrap);
 
-        /* ── content swapping ── */
+        /* â”€â”€ content swapping â”€â”€ */
         var panel = document.getElementById('wh-content-panel');
         var cache = {};
         if (panel) cache[CURRENT] = panel.innerHTML;
